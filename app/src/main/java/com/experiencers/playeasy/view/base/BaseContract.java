@@ -1,5 +1,12 @@
 package com.experiencers.playeasy.view.base;
 
-public interface BaseContract {
+import android.view.View;
 
+public interface BaseContract {
+    interface view{
+        void showResult();
+    }
+    interface presenter{
+        void setView(View view);
+    }
 }
