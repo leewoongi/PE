@@ -1,4 +1,4 @@
-package com.experiencers.playeasy.view.main;
+package com.experiencers.playeasy.view.main.activity;
 
 import android.view.View;
 
@@ -9,12 +9,18 @@ public interface MainContract {
     interface view extends BaseContract.view{
         @Override
         void showResult();
+        void init();
+        void setFragment();
     }
 
-    interface presenter extends BaseContract.presenter{
+    interface presenter extends BaseContract.presenter<view>{
         @Override
-        void setView(View view);
+        void setView(view view);
 
+
+
+        @Override
+        void deleteView();
     }
 
 }

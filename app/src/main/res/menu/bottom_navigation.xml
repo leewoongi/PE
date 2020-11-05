@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/home"
+        android:enabled="true"
+        android:title="오늘의 매치"
+        app:itemIconTint="#7ce155"/>
+
+    <item
+        android:id="@+id/register"
+        android:enabled="true"
+        android:title="작성"
+        app:itemIconTint="#7ce155"
+        />
+
+    <item
+        android:id="@+id/myMatch"
+        android:enabled="true"
+        app:itemIconTint="#7ce155"
+        android:title="나의 매치"/>
+
+    <item
+        android:id="@+id/myPage"
+        android:enabled="true"
+        app:itemIconTint="#7ce155"
+        android:title="마이페이지"/>
+</menu>
