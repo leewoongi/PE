@@ -21,7 +21,7 @@ public class ViewPagerAdapter extends FragmentStateAdapter implements MainContra
     @NonNull
     @Override
     public Fragment createFragment(int position) {
-        return null;
+        return fragmentList.get(position);
     }
 
     @Override
@@ -31,7 +31,7 @@ public class ViewPagerAdapter extends FragmentStateAdapter implements MainContra
 
     @Override
     public void refresh() {
-
+        notifyDataSetChanged();
     }
 
     @Override

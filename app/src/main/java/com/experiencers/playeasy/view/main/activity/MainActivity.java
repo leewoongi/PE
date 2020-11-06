@@ -1,16 +1,19 @@
 package com.experiencers.playeasy.view.main.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentActivity;
+import androidx.viewpager2.widget.ViewPager2;
 
 import android.os.Bundle;
 
 import com.experiencers.playeasy.R;
 import com.experiencers.playeasy.utill.UiHelper;
 
-public class MainActivity extends AppCompatActivity implements MainContract.view {
+public class MainActivity extends FragmentActivity implements MainContract.view {
 
     private MainContract.presenter presenter;
     private ViewPagerAdapter viewPagerAdapter;
+    private ViewPager2 viewPager;
 
 
     @Override
@@ -18,15 +21,20 @@ public class MainActivity extends AppCompatActivity implements MainContract.view
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        presenter = new MainPresenter();
-        viewPagerAdapter = new ViewPagerAdapter(this);
+        init();
 
+        presenter = new MainPresenter();
         presenter.setView(this);
+
+        viewPagerAdapter = new ViewPagerAdapter(this);
+        viewPager.setAdapter(viewPagerAdapter);
 
         presenter.setViewPagerView(viewPagerAdapter);
         presenter.setViewPagerModel(viewPagerAdapter);
 
-        init();
+        presenter.loadFragment();
+
+
 
     }
 
@@ -37,8 +45,7 @@ public class MainActivity extends AppCompatActivity implements MainContract.view
 
     @Override
     public void init() {
-        UiHelper.toolBarInitialize(this, findViewById(R.id.mainToolbar));
-        UiHelper.hideWindow(this);
+        viewPager = findViewById(R.id.mainViewPager);
     }
 
 }

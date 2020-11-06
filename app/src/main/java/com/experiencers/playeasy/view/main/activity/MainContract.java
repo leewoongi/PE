@@ -11,6 +11,8 @@ public interface MainContract {
     interface view extends BaseContract.view{
         @Override
         void showResult();
+
+        @Override
         void init();
     }
 
