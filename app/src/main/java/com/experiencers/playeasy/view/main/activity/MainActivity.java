@@ -10,6 +10,7 @@ import com.experiencers.playeasy.utill.UiHelper;
 public class MainActivity extends AppCompatActivity implements MainContract.view {
 
     private MainContract.presenter presenter;
+    private ViewPagerAdapter viewPagerAdapter;
 
 
     @Override
@@ -18,7 +19,13 @@ public class MainActivity extends AppCompatActivity implements MainContract.view
         setContentView(R.layout.activity_main);
 
         presenter = new MainPresenter();
+        viewPagerAdapter = new ViewPagerAdapter(this);
+
         presenter.setView(this);
+
+        presenter.setViewPagerView(viewPagerAdapter);
+        presenter.setViewPagerModel(viewPagerAdapter);
+
         init();
 
     }
@@ -34,8 +41,4 @@ public class MainActivity extends AppCompatActivity implements MainContract.view
         UiHelper.hideWindow(this);
     }
 
-    @Override
-    public void setFragment() {
-
-    }
 }
