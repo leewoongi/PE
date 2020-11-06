@@ -1,7 +1,6 @@
 package com.experiencers.playeasy.view.main.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.os.Bundle;
@@ -9,12 +8,11 @@ import android.os.Bundle;
 import com.experiencers.playeasy.R;
 import com.experiencers.playeasy.utill.UiHelper;
 
-public class MainActivity extends FragmentActivity implements MainContract.view {
+public class MainActivity extends AppCompatActivity implements MainContract.view {
 
     private MainContract.presenter presenter;
     private ViewPagerAdapter viewPagerAdapter;
     private ViewPager2 viewPager;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,8 +32,6 @@ public class MainActivity extends FragmentActivity implements MainContract.view 
 
         presenter.loadFragment();
 
-
-
     }
 
     @Override
@@ -45,6 +41,7 @@ public class MainActivity extends FragmentActivity implements MainContract.view 
 
     @Override
     public void init() {
+        UiHelper.hideWindow(this);
         viewPager = findViewById(R.id.mainViewPager);
     }
 

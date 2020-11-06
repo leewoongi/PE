@@ -7,7 +7,10 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import com.experiencers.playeasy.view.main.activity.MainActivity;
+
 public class UiHelper {
+
     public static void toolBarInitialize(AppCompatActivity activity, View view) {
         Toolbar toolBar = (Toolbar) view;
         activity.setSupportActionBar(toolBar);
@@ -20,4 +23,6 @@ public class UiHelper {
         activity.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
     }
+
+
 }

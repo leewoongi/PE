@@ -20,7 +20,9 @@ public class HomeFragment extends Fragment implements HomeContract.view {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.home_fragment, container, false);
 
+        presenter = new HomePresenter();
         presenter.setView(this);
+
         return rootView;
     }
 

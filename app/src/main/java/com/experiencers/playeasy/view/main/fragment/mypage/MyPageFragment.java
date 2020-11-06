@@ -9,11 +9,14 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.experiencers.playeasy.R;
+
 public class MyPageFragment extends Fragment {
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return super.onCreateView(inflater, container, savedInstanceState);
+        ViewGroup rootView = (ViewGroup)inflater.inflate(R.layout.mypage_frament,container,false);
+        return rootView;
     }
 }
