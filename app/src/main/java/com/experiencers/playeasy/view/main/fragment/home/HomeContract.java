@@ -10,6 +10,10 @@ public interface HomeContract {
 
         @Override
         void init();
+        void recyclerViewInit();
+        void calenderInit();
+
+        void selectDate();
     }
 
     interface presenter extends BaseContract.presenter<view>{
@@ -18,6 +22,18 @@ public interface HomeContract {
 
         @Override
         void deleteView();
+        void receiveDate();
+
+        void setAdapterView(HomeRecyclerAdapter adapter);
+        void setAdapterModel(HomeRecyclerAdapter adapter);
+    }
+
+    interface adapterView{
+        void refresh();
+    }
+
+    interface adapterModel{
+        void add();
     }
 
 }
