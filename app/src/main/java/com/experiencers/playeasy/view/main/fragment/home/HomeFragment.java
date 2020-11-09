@@ -12,12 +12,14 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.experiencers.playeasy.R;
+import com.experiencers.playeasy.application.HorizontalCalendarManager;
 
 import java.util.Calendar;
 
 import devs.mulham.horizontalcalendar.HorizontalCalendar;
+import devs.mulham.horizontalcalendar.utils.HorizontalCalendarListener;
 
-public class HomeFragment extends Fragment implements HomeContract.view {
+public class HomeFragment extends Fragment implements HomeContract.view{
 
     private HomeContract.presenter presenter;
 
@@ -59,17 +61,8 @@ public class HomeFragment extends Fragment implements HomeContract.view {
 
     @Override
     public void calenderInit() {
-        /** end after 1 month from now */
-        Calendar endDate = Calendar.getInstance();
-        endDate.add(Calendar.MONTH, 1);
-        /** start before 1 month from now */
-        Calendar startDate = Calendar.getInstance();
-        startDate.add(Calendar.MONTH, -1);
-
-        HorizontalCalendar horizontalCalendar = new HorizontalCalendar.Builder(rootView,R.id.horizontalCalendarView)
-                .range(startDate, endDate)
-                .datesNumberOnScreen(5)
-                .build();
+        HorizontalCalendarListener listener = null;
+        HorizontalCalendarManager.initialize(rootView, listener);
     }
 
     @Override
@@ -81,4 +74,6 @@ public class HomeFragment extends Fragment implements HomeContract.view {
     public void showResult() {
 
     }
+
+
 }

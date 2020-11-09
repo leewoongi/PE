@@ -10,11 +10,15 @@ public interface LoginContract {
 
         @Override
         void showResult();
+
+        void changeActivity();
     }
 
     interface presenter extends BaseContract.presenter<view>{
         @Override
         void setView(view view);
+
+        void sendUserKey(String userKey);
 
         @Override
         void deleteView();
