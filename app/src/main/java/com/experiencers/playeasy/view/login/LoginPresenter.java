@@ -1,14 +1,20 @@
 package com.experiencers.playeasy.view.login;
 
-import com.experiencers.playeasy.model.Repository;
+import android.content.Context;
 
-public class LoginPresenter implements LoginContract.presenter{
+import com.experiencers.playeasy.application.TokenManger;
+import com.experiencers.playeasy.model.Repository;
+import com.experiencers.playeasy.view.callback.RetrofitCallback;
+
+public class LoginPresenter implements LoginContract.presenter, RetrofitCallback {
 
     private LoginContract.view view;
     private Repository repository;
 
+    private Context context;
+
     public LoginPresenter() {
-        repository = new Repository(this);
+        this.repository = new Repository(this);
     }
 
     @Override
@@ -18,12 +24,20 @@ public class LoginPresenter implements LoginContract.presenter{
 
     @Override
     public void sendUserKey(String userKey) {
-
+        repository.postAccessToken(userKey);
     }
 
 
     @Override
     public void deleteView() {
 
+    }
+
+    @Override
+    public void onSuccess(Object jwt) {
+        String userKey = (String) jwt;
+        if(TokenManger.read(context) == null){
+            TokenManger.save(context, userKey );
+        }
     }
 }

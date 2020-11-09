@@ -2,7 +2,8 @@ package com.experiencers.playeasy.model.datasource;
 
 import com.experiencers.playeasy.model.entity.LoginRequestVo;
 
-import io.reactivex.Maybe;
+
+import io.reactivex.rxjava3.core.Maybe;
 import retrofit2.http.Body;
 import retrofit2.http.POST;
 
