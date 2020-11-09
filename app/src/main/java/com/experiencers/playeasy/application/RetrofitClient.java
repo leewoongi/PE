@@ -1,14 +1,12 @@
 package com.experiencers.playeasy.application;
 
-import com.experiencers.playeasy.model.datasource.WebService;
-
 import retrofit2.Retrofit;
-import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
+import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitClient {
 
-    private static final String baseUrl = "https://api.github.com/";
+    private static final String baseUrl = "http://api.theplayeasy.com/";
     private static Retrofit retrofit = null;
 
     private RetrofitClient() { }
@@ -18,8 +16,8 @@ public class RetrofitClient {
         if(retrofit == null){
             retrofit = new Retrofit.Builder()
                     .baseUrl(baseUrl)
+                    .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
                     .addConverterFactory(GsonConverterFactory.create())
-                    .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                     .build();
         }
         return retrofit;

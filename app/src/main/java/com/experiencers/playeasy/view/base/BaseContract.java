@@ -4,6 +4,7 @@ public interface BaseContract {
 
     interface view{
         void init();
+        void changeActivity();
         void showResult();
     }
 

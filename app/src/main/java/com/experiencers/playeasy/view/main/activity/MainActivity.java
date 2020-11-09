@@ -45,4 +45,9 @@ public class MainActivity extends AppCompatActivity implements MainContract.view
         viewPager = findViewById(R.id.mainViewPager);
     }
 
+    @Override
+    public void changeActivity() {
+
+    }
+
 }

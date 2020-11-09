@@ -1,9 +1,9 @@
 package com.experiencers.playeasy.model.entity;
 
-public class LoginRequestVo {
+public class LoginRequest {
     private String access_token;
 
-    public LoginRequestVo(String access_token) {
+    public LoginRequest(String access_token) {
         this.access_token = access_token;
     }
 

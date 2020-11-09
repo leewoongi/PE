@@ -54,6 +54,11 @@ public class HomeFragment extends Fragment implements HomeContract.view{
     }
 
     @Override
+    public void changeActivity() {
+
+    }
+
+    @Override
     public void recyclerViewInit() {
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapter);

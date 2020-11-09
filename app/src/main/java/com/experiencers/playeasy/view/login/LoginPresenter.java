@@ -10,11 +10,11 @@ public class LoginPresenter implements LoginContract.presenter, RetrofitCallback
 
     private LoginContract.view view;
     private Repository repository;
+    private Context mContext;
 
-    private Context context;
 
     public LoginPresenter() {
-        this.repository = new Repository(this);
+        this.repository = new Repository();
     }
 
     @Override
@@ -23,16 +23,23 @@ public class LoginPresenter implements LoginContract.presenter, RetrofitCallback
     }
 
     @Override
-    public void sendUserKey(String userKey) {
-        repository.postAccessToken(userKey);
+    public void setView(LoginContract.view view, Context context) {
+        this.view = view;
+        this.mContext = context;
     }
 
     @Override
+    public void sendUserKey(String access_token, LoginContract.presenter presenter) {
+        repository.postAccessToken(access_token, this);
+
+    }
+
+
+    @Override
     public void onSuccess(Object jwt) {
-        String userKey = (String) jwt;
-        if(TokenManger.read(context) == null){
-            TokenManger.save(context, userKey );
-        }
+        String key = (String) jwt;
+        TokenManger.save(mContext, key);
+        view.changeActivity();
     }
 
     @Override

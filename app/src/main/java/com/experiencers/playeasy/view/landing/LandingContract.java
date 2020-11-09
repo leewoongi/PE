@@ -7,6 +7,7 @@ public interface LandingContract {
         @Override
         void init();
 
+        @Override
         void changeActivity();
 
         @Override

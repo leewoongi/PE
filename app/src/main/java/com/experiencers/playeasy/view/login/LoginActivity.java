@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.experiencers.playeasy.R;
 import com.experiencers.playeasy.utill.UiHelper;
 import com.experiencers.playeasy.view.main.activity.MainActivity;
+import com.experiencers.playeasy.view.myinformation.MyInfoActivity;
 import com.kakao.auth.ApiResponseCallback;
 import com.kakao.auth.AuthService;
 import com.kakao.auth.ISessionCallback;
@@ -22,9 +23,8 @@ import com.kakao.util.exception.KakaoException;
 
 public class LoginActivity extends AppCompatActivity implements LoginContract.view {
 
-    private LoginButton loginButton;
     private LoginPresenter presenter;
-    private String accessToken;
+    private String access_token;
 
     // 세션 콜백 구현
     private ISessionCallback sessionCallback = new ISessionCallback() {
@@ -47,10 +47,10 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.vi
                         public void onSuccess(AccessTokenInfoResponse result) {
                             Log.i("KAKAO_API", "사용자 아이디: " + result.getUserId());
                             Log.i("KAKAO_API", "남은 시간(s): " + result.getExpiresIn());;
-                            accessToken = Session.getCurrentSession().getAccessToken();
-                            Log.d("KAKAO_ACCESS_TOKEN", accessToken);
+                            access_token = Session.getCurrentSession().getAccessToken();
+                            Log.d("KAKAO_ACCESS_TOKEN", access_token);
 
-                            presenter.sendUserKey(accessToken);
+                            presenter.sendUserKey(access_token, presenter);
                         }
                     });
         }
@@ -71,14 +71,13 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.vi
         Session.getCurrentSession().addCallback(sessionCallback);
 
         presenter = new LoginPresenter();
-        presenter.setView(this);
+        presenter.setView(this, getApplicationContext());
 
     }
 
     @Override
     public void init() {
         UiHelper.hideWindow(this);
-        loginButton = findViewById(R.id.loginButton);
     }
 
 
@@ -89,7 +88,7 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.vi
 
     @Override
     public void changeActivity() {
-        Intent intent = new Intent(this, MainActivity.class);
+        Intent intent = new Intent(this, MyInfoActivity.class);
         startActivity(intent);
     }
 
