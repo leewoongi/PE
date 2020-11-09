@@ -27,12 +27,6 @@ public class LoginPresenter implements LoginContract.presenter, RetrofitCallback
         repository.postAccessToken(userKey);
     }
 
-
-    @Override
-    public void deleteView() {
-
-    }
-
     @Override
     public void onSuccess(Object jwt) {
         String userKey = (String) jwt;
@@ -40,4 +34,10 @@ public class LoginPresenter implements LoginContract.presenter, RetrofitCallback
             TokenManger.save(context, userKey );
         }
     }
+
+    @Override
+    public void deleteView() {
+        view = null;
+    }
+
 }
