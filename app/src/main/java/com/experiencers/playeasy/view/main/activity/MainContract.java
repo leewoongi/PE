@@ -21,8 +21,9 @@ public interface MainContract {
         void setView(view view);
         void setViewPagerView(ViewPagerAdapter viewPagerAdapter);
         void setViewPagerModel(ViewPagerAdapter viewPagerAdapter);
-        void loadFragment();
 
+        void loadFragment();
+        Fragment changeFragment(int fragmentId);
         @Override
         void deleteView();
     }

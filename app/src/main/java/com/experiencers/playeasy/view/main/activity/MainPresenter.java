@@ -2,6 +2,7 @@ package com.experiencers.playeasy.view.main.activity;
 
 import androidx.fragment.app.Fragment;
 
+import com.experiencers.playeasy.R;
 import com.experiencers.playeasy.view.main.fragment.home.HomeFragment;
 import com.experiencers.playeasy.view.main.fragment.mypage.MyPageFragment;
 
@@ -14,6 +15,13 @@ public class MainPresenter implements MainContract.presenter{
     private MainContract.adapterView adapterView;
     private MainContract.adapterModel adapterModel;
 
+    private HomeFragment homeFragment;
+    private MyPageFragment myPageFragment;
+
+    public MainPresenter() {
+        homeFragment = new HomeFragment();
+        myPageFragment = new MyPageFragment();
+    }
 
     @Override
     public void setView(MainContract.view view) {
@@ -32,13 +40,26 @@ public class MainPresenter implements MainContract.presenter{
 
     @Override
     public void loadFragment() {
+
         List<Fragment> fragments = new ArrayList<>();
-        fragments.add(new HomeFragment());
-        fragments.add(new MyPageFragment());
+        fragments.add(homeFragment);
+        fragments.add(myPageFragment);
 
         adapterModel.add(fragments);
         adapterView.refresh();
     }
+
+    @Override
+    public Fragment changeFragment(int fragmentId) {
+        switch (fragmentId){
+            case R.id.home:
+                return homeFragment;
+            case R.id.myPage:
+                return myPageFragment;
+        }
+        return null;
+    }
+
 
     @Override
     public void deleteView() {
