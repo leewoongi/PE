@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -141,30 +142,6 @@
         app:layout_constraintTop_toBottomOf="@+id/myPageMyAge" />
 
     <TextView
-        android:id="@+id/myPageAbilityTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="실력"
-        android:textColor="@color/colorPoint"
-        android:textSize="20dp"
-        app:layout_constraintEnd_toEndOf="@+id/myPageMyTeamTitle"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/myPageMyTeamTitle"
-        app:layout_constraintTop_toBottomOf="@+id/myPageMyTeamTitle" />
-
-    <Spinner
-        android:id="@+id/myMyPageAbilitySpinner"
-        android:layout_width="95dp"
-        android:layout_height="28dp"
-        android:layout_marginTop="16dp"
-        android:entries="@array/실력"
-        app:layout_constraintEnd_toEndOf="@+id/myPageMyTeam"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/myPageMyTeam"
-        app:layout_constraintTop_toBottomOf="@+id/myPageMyTeam" />
-
-    <TextView
         android:id="@+id/myPageMyPhoneTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -172,9 +149,9 @@
         android:text="번호"
         android:textColor="@color/colorPoint"
         android:textSize="20dp"
-        app:layout_constraintEnd_toEndOf="@+id/myPageAbilityTitle"
-        app:layout_constraintStart_toStartOf="@+id/myPageAbilityTitle"
-        app:layout_constraintTop_toBottomOf="@+id/myPageAbilityTitle" />
+        app:layout_constraintEnd_toEndOf="@+id/myPageMyTeamTitle"
+        app:layout_constraintStart_toStartOf="@+id/myPageMyTeamTitle"
+        app:layout_constraintTop_toBottomOf="@+id/myPageMyTeamTitle" />
 
     <EditText
         android:id="@+id/myPageMyPhone"
@@ -183,10 +160,10 @@
         android:layout_marginTop="12dp"
         android:background="@null"
         android:hint="01089740000"
-        app:layout_constraintEnd_toEndOf="@+id/myMyPageAbilitySpinner"
+        app:layout_constraintEnd_toEndOf="@+id/myPageMyTeam"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/myMyPageAbilitySpinner"
-        app:layout_constraintTop_toBottomOf="@+id/myMyPageAbilitySpinner" />
+        app:layout_constraintStart_toStartOf="@+id/myPageMyTeam"
+        app:layout_constraintTop_toBottomOf="@+id/myPageMyTeam" />
 
     <TextView
         android:id="@+id/myPageMyInformationTitle"
@@ -203,9 +180,9 @@
 
     <EditText
         android:id="@+id/myPageMyInformation"
-        android:layout_width="325dp"
-        android:layout_height="67dp"
-        android:layout_marginTop="8dp"
+        android:layout_width="370dp"
+        android:layout_height="72dp"
+        android:layout_marginTop="16dp"
         android:background="@null"
         android:ems="10"
         android:hint="자기 소개 글을 써주세요"

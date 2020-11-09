@@ -50,14 +50,18 @@ public class MainPresenter implements MainContract.presenter{
     }
 
     @Override
-    public Fragment changeFragment(int fragmentId) {
+    public int changeFragment(int fragmentId) {
         switch (fragmentId){
             case R.id.home:
-                return homeFragment;
+                return 0;
+            case R.id.register:
+                return 1;
+            case R.id.myMatch:
+                return 2;
             case R.id.myPage:
-                return myPageFragment;
+                return 3;
         }
-        return null;
+        return 0;
     }
 
 

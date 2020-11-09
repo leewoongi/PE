@@ -52,7 +52,7 @@ public class LandingActivity extends AppCompatActivity implements LandingContrac
     public void changeActivity() {
         Intent intent;
         String key = TokenManger.read(getApplicationContext());
-        Log.d("토큰값", key);
+        Log.d("토큰값!!", key);
 
         if(key == ""){
             intent = new Intent(getApplicationContext(), LoginActivity.class);

@@ -23,7 +23,7 @@ public interface MainContract {
         void setViewPagerModel(ViewPagerAdapter viewPagerAdapter);
 
         void loadFragment();
-        Fragment changeFragment(int fragmentId);
+        int changeFragment(int fragmentId);
         @Override
         void deleteView();
     }
