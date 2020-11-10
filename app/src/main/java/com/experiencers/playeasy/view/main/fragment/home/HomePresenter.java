@@ -1,15 +1,11 @@
 package com.experiencers.playeasy.view.main.fragment.home;
 
-import com.experiencers.playeasy.model.entity.Match;
-
-import java.util.ArrayList;
-import java.util.List;
-
-public class HomePresenter implements HomeContract.presenter {
+public class HomePresenter implements HomeContract.presenter, HomeContract.adapterView, HomeContract.adapterModel {
 
     private HomeContract.view view;
     private HomeContract.adapterView adapterView;
     private HomeContract.adapterModel adapterModel;
+
 
     @Override
     public void setView(HomeContract.view view) {
@@ -34,10 +30,19 @@ public class HomePresenter implements HomeContract.presenter {
     }
 
 
+    @Override
+    public void refresh() {
+
+    }
+
+    @Override
+    public void add() {
+
+    }
 
     @Override
     public void deleteView() {
-
+        view = null;
     }
 }
 
