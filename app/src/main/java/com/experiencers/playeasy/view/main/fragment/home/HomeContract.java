@@ -2,6 +2,8 @@ package com.experiencers.playeasy.view.main.fragment.home;
 
 import com.experiencers.playeasy.view.base.BaseContract;
 
+import java.util.Calendar;
+
 public interface HomeContract {
 
     interface view extends BaseContract.view{
@@ -10,6 +12,7 @@ public interface HomeContract {
 
         @Override
         void init();
+
         void recyclerViewInit();
         void calenderInit();
 
@@ -22,7 +25,7 @@ public interface HomeContract {
 
         @Override
         void deleteView();
-        void receiveDate();
+        void receiveDate(Calendar date);
 
         void setAdapterView(HomeRecyclerAdapter adapter);
         void setAdapterModel(HomeRecyclerAdapter adapter);

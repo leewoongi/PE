@@ -6,6 +6,9 @@ import androidx.viewpager.widget.ViewPager;
 import androidx.viewpager2.widget.ViewPager2;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.MotionEvent;
+import android.view.View;
+
 import com.experiencers.playeasy.R;
 import com.experiencers.playeasy.utill.UiHelper;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -47,6 +50,7 @@ public class MainActivity extends AppCompatActivity implements MainContract.view
     public void init() {
         UiHelper.hideWindow(this);
         viewPager = findViewById(R.id.mainViewPager);
+        viewPager.setUserInputEnabled(false);
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
     }
 
