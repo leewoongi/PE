@@ -5,7 +5,8 @@ import com.experiencers.playeasy.model.entity.Match;
 import com.experiencers.playeasy.model.entity.User;
 import com.experiencers.playeasy.model.entity.dao.LoginRequest;
 import com.experiencers.playeasy.model.entity.dao.LoginResponse;
-import com.experiencers.playeasy.model.entity.dao.MatchListResponse;
+
+import java.util.List;
 
 import io.reactivex.rxjava3.core.Maybe;
 import retrofit2.http.Body;
@@ -22,7 +23,7 @@ public interface WebService {
 
     //매치 리스트 불러오기 (메인화면)
     @GET("api/match/list")
-    Maybe<MatchListResponse> retrieveMatchList(@Query("date")String date);
+    Maybe<List<Match>> retrieveMatchList(@Query("date")String date);
 
     //내 정보
     // 불러오기

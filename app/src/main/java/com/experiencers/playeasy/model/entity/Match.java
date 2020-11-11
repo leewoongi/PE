@@ -12,8 +12,9 @@ public class Match {
     private String phone;
     private int quota;
     private String status;
+    private Location location;
 
-    public Match(int id, String type, String description, String startAt, String endAt, int fee, String phone, int quota, String status) {
+    public Match(int id, String type, String description, String startAt, String endAt, int fee, String phone, int quota, String status, Location location) {
         this.id = id;
         this.type = type;
         this.description = description;
@@ -23,6 +24,7 @@ public class Match {
         this.phone = phone;
         this.quota = quota;
         this.status = status;
+        this.location = location;
     }
 
     public int getId() {
@@ -95,5 +97,13 @@ public class Match {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public Location getLocation() {
+        return location;
+    }
+
+    public void setLocation(Location location) {
+        this.location = location;
     }
 }

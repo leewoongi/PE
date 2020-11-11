@@ -9,14 +9,14 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.experiencers.playeasy.R;
-import com.experiencers.playeasy.model.entity.dao.MatchListResponse;
+import com.experiencers.playeasy.model.entity.Match;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class HomeRecyclerAdapter extends RecyclerView.Adapter<HomeRecyclerAdapter.myViewHolder> implements HomeContract.adapterView, HomeContract.adapterModel  {
 
-    private List<MatchListResponse> item = new ArrayList<>();
+    private List<Match> item = new ArrayList<>();
     @NonNull
     @Override
     public myViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -26,10 +26,10 @@ public class HomeRecyclerAdapter extends RecyclerView.Adapter<HomeRecyclerAdapte
 
     @Override
     public void onBindViewHolder(@NonNull myViewHolder holder, int position) {
-        holder.matchTime.setText(item.get(position).getMatch().getStartAt());
-        holder.matchPlace.setText(item.get(position).getMatchLocation().getDetail());
-        holder.matchType.setText(item.get(position).getMatch().getType());
-        holder.matchStatus.setText(item.get(position).getMatch().getStatus());
+        holder.matchTime.setText(item.get(position).getStartAt());
+        holder.matchPlace.setText(item.get(position).getLocation().getDetail());
+        holder.matchType.setText(item.get(position).getType());
+        holder.matchStatus.setText(item.get(position).getStatus());
     }
 
     @Override
@@ -44,7 +44,7 @@ public class HomeRecyclerAdapter extends RecyclerView.Adapter<HomeRecyclerAdapte
 
     @Override
     public void add(Object object) {
-        item = (List<MatchListResponse>) object;
+        item = (List<Match>) object;
     }
 
     public class myViewHolder extends RecyclerView.ViewHolder {
