@@ -11,7 +11,7 @@ public interface LandingContract {
         void changeActivity();
 
         @Override
-        void showResult();
+        void showResult(Object object);
     }
 
     interface presenter extends BaseContract.presenter<view>{

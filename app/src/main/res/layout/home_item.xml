@@ -10,6 +10,7 @@
         android:id="@+id/matchTime"
         android:layout_width="96dp"
         android:layout_height="26dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:text="10:00 ~ 12:00"
         app:layout_constraintStart_toStartOf="parent"
@@ -19,6 +20,7 @@
         android:id="@+id/matchPlace"
         android:layout_width="198dp"
         android:layout_height="34dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:text="용산 아이파크몰 4구장"
         android:textStyle="bold"
@@ -29,13 +31,14 @@
         android:id="@+id/matchType"
         android:layout_width="74dp"
         android:layout_height="29dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:text="5:5 풋살"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/matchPlace" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/matchStatus"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="40dp"

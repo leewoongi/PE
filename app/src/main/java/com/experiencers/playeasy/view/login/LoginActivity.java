@@ -82,14 +82,14 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.vi
 
 
     @Override
-    public void showResult() {
-
-    }
-
-    @Override
     public void changeActivity() {
         Intent intent = new Intent(this, MyInfoActivity.class);
         startActivity(intent);
+    }
+
+    @Override
+    public void showResult(Object object) {
+
     }
 
 

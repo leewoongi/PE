@@ -47,6 +47,11 @@ public class HomeFragment extends Fragment implements HomeContract.view {
     }
 
     @Override
+    public void showResult(Object object) {
+
+    }
+
+    @Override
     public void init() {
         recyclerView = rootView.findViewById(R.id.homeItem);
         layoutManager = new LinearLayoutManager(rootView.getContext());
@@ -90,19 +95,11 @@ public class HomeFragment extends Fragment implements HomeContract.view {
         horizontalCalendar.setCalendarListener(new HorizontalCalendarListener() {
             @Override
             public void onDateSelected(Calendar date, int position) {
-                presenter.receiveDate(date);
+                presenter.receiveDate(date, presenter);
             }
         });
 
     }
 
-    @Override
-    public void selectDate() {
 
-    }
-
-    @Override
-    public void showResult() {
-
-    }
 }

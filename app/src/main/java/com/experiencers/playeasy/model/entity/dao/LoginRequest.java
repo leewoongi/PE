@@ -1,4 +1,4 @@
-package com.experiencers.playeasy.model.entity;
+package com.experiencers.playeasy.model.entity.dao;
 
 public class LoginRequest {
     private String access_token;

@@ -9,7 +9,7 @@ public interface MyPageContract {
         void init();
 
         @Override
-        void showResult();
+        void showResult(Object object);
     }
 
     interface presenter extends BaseContract.presenter<view>{

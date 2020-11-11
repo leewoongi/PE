@@ -1,12 +1,12 @@
 package com.experiencers.playeasy.model.entity;
 
-public class Location {
+public class MatchLocation {
 
     private int id;
     private String address;
     private String detail;
 
-    public Location(int id, String address, String detail) {
+    public MatchLocation(int id, String address, String detail) {
         this.id = id;
         this.address = address;
         this.detail = detail;

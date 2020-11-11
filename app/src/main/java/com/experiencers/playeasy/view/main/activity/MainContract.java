@@ -10,7 +10,7 @@ public interface MainContract {
 
     interface view extends BaseContract.view{
         @Override
-        void showResult();
+        void showResult(Object object);
 
         @Override
         void init();

@@ -1,4 +1,4 @@
-package com.experiencers.playeasy.model.entity;
+package com.experiencers.playeasy.model.entity.dao;
 
 public class LoginResponse {
     private String token;

@@ -11,14 +11,14 @@ public interface MyInfoContract {
         void changeActivity();
 
         @Override
-        void showResult();
+        void showResult(Object object);
     }
 
     interface presenter extends BaseContract.presenter<view>{
         @Override
         void setView(view view);
-
-        void confirmButtonClick(int itemId);
+        void setUserInfo(String userKey);
+        void confirmButtonClick(int itemId, String userKey);
 
         @Override
         void deleteView();

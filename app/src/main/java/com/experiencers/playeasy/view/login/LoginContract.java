@@ -14,7 +14,7 @@ public interface LoginContract {
         void changeActivity();
 
         @Override
-        void showResult();
+        void showResult(Object object);
 
 
     }

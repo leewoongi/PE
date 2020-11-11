@@ -8,7 +8,7 @@ public interface HomeContract {
 
     interface view extends BaseContract.view{
         @Override
-        void showResult();
+        void showResult(Object object);
 
         @Override
         void init();
@@ -16,7 +16,6 @@ public interface HomeContract {
         void recyclerViewInit();
         void calenderInit();
 
-        void selectDate();
     }
 
     interface presenter extends BaseContract.presenter<view>{
@@ -25,10 +24,10 @@ public interface HomeContract {
 
         @Override
         void deleteView();
-        void receiveDate(Calendar date);
+        void receiveDate(Calendar date, presenter presenter);
 
-        void setAdapterView(HomeRecyclerAdapter adapter);
-        void setAdapterModel(HomeRecyclerAdapter adapter);
+        void setAdapterView(HomeContract.adapterView adapter);
+        void setAdapterModel(HomeContract.adapterModel adapter);
     }
 
     interface adapterView{
@@ -36,7 +35,7 @@ public interface HomeContract {
     }
 
     interface adapterModel{
-        void add();
+        void add(Object object);
     }
 
 }

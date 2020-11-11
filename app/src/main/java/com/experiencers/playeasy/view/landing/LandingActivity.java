@@ -66,6 +66,11 @@ public class LandingActivity extends AppCompatActivity implements LandingContrac
     }
 
     @Override
+    public void showResult(Object object) {
+
+    }
+
+    @Override
     protected void onPostResume() {
         super.onPostResume();
         handler.postDelayed(runnable, 2500);
@@ -76,10 +81,5 @@ public class LandingActivity extends AppCompatActivity implements LandingContrac
     protected void onPause() {
         super.onPause();
         handler.removeCallbacks(runnable);
-    }
-
-    @Override
-    public void showResult() {
-
     }
 }

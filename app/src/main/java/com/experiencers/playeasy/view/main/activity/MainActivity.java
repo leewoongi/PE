@@ -41,8 +41,9 @@ public class MainActivity extends AppCompatActivity implements MainContract.view
 
     }
 
+
     @Override
-    public void showResult() {
+    public void showResult(Object object) {
 
     }
 

@@ -31,7 +31,6 @@ public class LoginPresenter implements LoginContract.presenter, RetrofitCallback
     @Override
     public void sendUserKey(String access_token, LoginContract.presenter presenter) {
         repository.postAccessToken(access_token, this);
-
     }
 
 
