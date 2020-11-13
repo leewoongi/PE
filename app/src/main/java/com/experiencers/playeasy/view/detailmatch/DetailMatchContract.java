@@ -10,7 +10,7 @@ public interface DetailMatchContract {
 
         @Override
         void changeActivity();
-
+        void showPopUp();
         @Override
         void showResult(Object object);
     }

@@ -33,6 +33,7 @@ public interface WebService {
 
     // 매치
     // 상세보기
+    @GET("api/match")
     Maybe<Match> retrieveMatch(@Query("matchId ")int matchId,
                                @Header("Authorization")String userKey);
 }

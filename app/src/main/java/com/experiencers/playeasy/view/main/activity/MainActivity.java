@@ -6,8 +6,6 @@ import androidx.viewpager.widget.ViewPager;
 import androidx.viewpager2.widget.ViewPager2;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.MotionEvent;
-import android.view.View;
 
 import com.experiencers.playeasy.R;
 import com.experiencers.playeasy.utill.UiHelper;
@@ -16,7 +14,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 public class MainActivity extends AppCompatActivity implements MainContract.view, BottomNavigationView.OnNavigationItemSelectedListener, ViewPager.OnPageChangeListener {
 
     private MainContract.presenter presenter;
-    private ViewPagerAdapter viewPagerAdapter;
+    private MainViewPagerAdapter mainViewPagerAdapter;
     private ViewPager2 viewPager;
     private BottomNavigationView bottomNavigationView;
 
@@ -30,11 +28,11 @@ public class MainActivity extends AppCompatActivity implements MainContract.view
         presenter = new MainPresenter();
         presenter.setView(this);
 
-        viewPagerAdapter = new ViewPagerAdapter(this);
-        viewPager.setAdapter(viewPagerAdapter);
+        mainViewPagerAdapter = new MainViewPagerAdapter(this);
+        viewPager.setAdapter(mainViewPagerAdapter);
 
-        presenter.setViewPagerView(viewPagerAdapter);
-        presenter.setViewPagerModel(viewPagerAdapter);
+        presenter.setViewPagerView(mainViewPagerAdapter);
+        presenter.setViewPagerModel(mainViewPagerAdapter);
 
         presenter.loadFragment();
         bottomNavigationView.setOnNavigationItemSelectedListener(this);

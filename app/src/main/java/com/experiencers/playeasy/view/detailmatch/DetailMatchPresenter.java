@@ -22,6 +22,11 @@ public class DetailMatchPresenter implements DetailMatchContract.presenter, Retr
         repository.getMatch(matchId, userKey, this);
     }
 
+    @Override
+    public void clickApply() {
+        view.showPopUp();
+    }
+
 
     @Override
     public void onSuccess(Object object) {

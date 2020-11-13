@@ -1,4 +1,4 @@
-package com.experiencers.playeasy.view.main.activity;
+package com.experiencers.playeasy.view.apply.activity;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -8,15 +8,13 @@ import androidx.viewpager2.adapter.FragmentStateAdapter;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ViewPagerAdapter extends FragmentStateAdapter implements MainContract.adapterView, MainContract.adapterModel {
+public class ApplyViewPagerAdapter extends FragmentStateAdapter implements ApplyContract.adapterView, ApplyContract.adapterModel{
 
     private List<Fragment> fragmentList = new ArrayList<>();
 
-    public ViewPagerAdapter(@NonNull MainActivity fragment) {
-        super(fragment);
+    public ApplyViewPagerAdapter(@NonNull FragmentActivity fragmentActivity) {
+        super(fragmentActivity);
     }
-
-
 
     @NonNull
     @Override
@@ -35,17 +33,7 @@ public class ViewPagerAdapter extends FragmentStateAdapter implements MainContra
     }
 
     @Override
-    public void add(List<Fragment> item) {
-        fragmentList = item;
-    }
-
-    @Override
-    public void remove() {
-
-    }
-
-    @Override
-    public void getItem() {
-
+    public void add(List<Fragment> fragments) {
+        fragmentList = fragments;
     }
 }

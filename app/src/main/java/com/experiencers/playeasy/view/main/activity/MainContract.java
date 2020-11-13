@@ -19,8 +19,8 @@ public interface MainContract {
     interface presenter extends BaseContract.presenter<view>{
         @Override
         void setView(view view);
-        void setViewPagerView(ViewPagerAdapter viewPagerAdapter);
-        void setViewPagerModel(ViewPagerAdapter viewPagerAdapter);
+        void setViewPagerView(MainViewPagerAdapter mainViewPagerAdapter);
+        void setViewPagerModel(MainViewPagerAdapter mainViewPagerAdapter);
 
         void loadFragment();
         int changeFragment(int fragmentId);

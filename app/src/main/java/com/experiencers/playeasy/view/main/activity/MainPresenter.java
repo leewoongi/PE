@@ -29,13 +29,13 @@ public class MainPresenter implements MainContract.presenter{
     }
 
     @Override
-    public void setViewPagerView(ViewPagerAdapter viewPagerAdapter) {
-        this.adapterView = viewPagerAdapter;
+    public void setViewPagerView(MainViewPagerAdapter mainViewPagerAdapter) {
+        this.adapterView = mainViewPagerAdapter;
     }
 
     @Override
-    public void setViewPagerModel(ViewPagerAdapter viewPagerAdapter) {
-        this.adapterModel = viewPagerAdapter;
+    public void setViewPagerModel(MainViewPagerAdapter mainViewPagerAdapter) {
+        this.adapterModel = mainViewPagerAdapter;
     }
 
     @Override

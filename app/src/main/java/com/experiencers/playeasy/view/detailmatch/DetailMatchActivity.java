@@ -1,5 +1,6 @@
 package com.experiencers.playeasy.view.detailmatch;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -10,6 +11,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.experiencers.playeasy.R;
 import com.experiencers.playeasy.application.TokenManger;
 import com.experiencers.playeasy.model.entity.Match;
+import com.experiencers.playeasy.utill.UiHelper;
+import com.experiencers.playeasy.view.apply.activity.ApplyActivity;
 import com.google.android.material.button.MaterialButton;
 
 public class DetailMatchActivity extends AppCompatActivity implements DetailMatchContract.view {
@@ -49,6 +52,8 @@ public class DetailMatchActivity extends AppCompatActivity implements DetailMatc
 
     @Override
     public void init() {
+        UiHelper.hideWindow(this);
+
         detailTeamName = findViewById(R.id.detailTeamName);
         detailPlace = findViewById(R.id.detailPlace);
         detailLocation = findViewById(R.id.detailLocation);
@@ -63,6 +68,12 @@ public class DetailMatchActivity extends AppCompatActivity implements DetailMatc
     @Override
     public void changeActivity() {
 
+    }
+
+    @Override
+    public void showPopUp() {
+        Intent intent = new Intent(this, ApplyActivity.class);
+        startActivity(intent);
     }
 
     @Override
