@@ -1,7 +1,5 @@
 package com.experiencers.playeasy.model.entity;
 
-import java.util.List;
-
 public class Match {
     private int id;
     private String type;

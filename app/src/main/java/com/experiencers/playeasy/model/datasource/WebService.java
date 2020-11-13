@@ -29,4 +29,10 @@ public interface WebService {
     // 불러오기
     @GET("api/user")
     Maybe<User> retrieveUserInfo(@Header("Authorization")String userKey);
+
+
+    // 매치
+    // 상세보기
+    Maybe<Match> retrieveMatch(@Query("matchId ")int matchId,
+                               @Header("Authorization")String userKey);
 }

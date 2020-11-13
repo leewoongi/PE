@@ -5,6 +5,7 @@ import android.util.Log;
 import com.experiencers.playeasy.application.RetrofitClient;
 import com.experiencers.playeasy.model.datasource.WebService;
 import com.experiencers.playeasy.model.entity.dao.LoginRequest;
+import com.experiencers.playeasy.view.detailmatch.DetailMatchPresenter;
 import com.experiencers.playeasy.view.login.LoginPresenter;
 import com.experiencers.playeasy.view.main.fragment.home.HomePresenter;
 import com.experiencers.playeasy.view.myinformation.MyInfoPresenter;
@@ -69,4 +70,22 @@ public class Repository {
                     Log.d("onComplete", "nothing");
                 });
     }
+
+
+    //매치 상세보기
+    public void getMatch(int matchId, String userKey, DetailMatchPresenter presenter){
+        WebService webService = RetrofitClient.getInstance().create(WebService.class);
+        Disposable disposable = webService.retrieveMatch(matchId, userKey)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe((item) ->{
+                    presenter.onSuccess(item);
+                },throwable -> {
+                    Log.d("error", "TT.. " + throwable.getMessage());
+                    throwable.printStackTrace();
+                },()->{
+                    Log.d("onComplete", "nothing");
+                });
+    }
+
 }

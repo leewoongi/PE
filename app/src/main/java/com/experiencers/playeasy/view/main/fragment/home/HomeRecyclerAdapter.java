@@ -1,5 +1,6 @@
 package com.experiencers.playeasy.view.main.fragment.home;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.experiencers.playeasy.R;
 import com.experiencers.playeasy.model.entity.Match;
+import com.experiencers.playeasy.view.detailmatch.DetailMatchActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,6 +19,8 @@ import java.util.List;
 public class HomeRecyclerAdapter extends RecyclerView.Adapter<HomeRecyclerAdapter.myViewHolder> implements HomeContract.adapterView, HomeContract.adapterModel  {
 
     private List<Match> item = new ArrayList<>();
+    private int matchId;
+
     @NonNull
     @Override
     public myViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -30,6 +34,7 @@ public class HomeRecyclerAdapter extends RecyclerView.Adapter<HomeRecyclerAdapte
         holder.matchPlace.setText(item.get(position).getLocation().getDetail());
         holder.matchType.setText(item.get(position).getType());
         holder.matchStatus.setText(item.get(position).getStatus());
+        matchId = (item.get(position).getId());
     }
 
     @Override
@@ -52,6 +57,7 @@ public class HomeRecyclerAdapter extends RecyclerView.Adapter<HomeRecyclerAdapte
         private TextView matchPlace;
         private TextView matchType;
         private TextView matchStatus;
+
         public myViewHolder(@NonNull View itemView) {
             super(itemView);
 
@@ -59,6 +65,15 @@ public class HomeRecyclerAdapter extends RecyclerView.Adapter<HomeRecyclerAdapte
             matchPlace = itemView.findViewById(R.id.matchPlace);
             matchType = itemView.findViewById(R.id.matchType);
             matchStatus = itemView.findViewById(R.id.matchStatus);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(itemView.getContext(), DetailMatchActivity.class);
+                    intent.getIntExtra("matchId", matchId);
+                    v.getContext().startActivity(intent);
+                }
+            });
         }
     }
 }
