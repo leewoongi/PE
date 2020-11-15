@@ -6,7 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <TextView
-        android:id="@+id/applyTeamMemberTitle"
+        android:id="@+id/applyUserMemberTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -18,7 +18,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/applyTeamMember"
+        android:id="@+id/applyUserMember"
         android:layout_width="76dp"
         android:layout_height="37dp"
         android:layout_marginStart="120dp"
@@ -28,23 +28,23 @@
         android:hint="6"
         android:inputType="number"
         android:textSize="14dp"
-        app:layout_constraintEnd_toStartOf="@+id/applyTeamMemberCountTitle"
+        app:layout_constraintEnd_toStartOf="@+id/applyUserMemberCountTitle"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/applyTeamMemberTitle" />
+        app:layout_constraintTop_toBottomOf="@+id/applyUserMemberTitle" />
 
     <TextView
-        android:id="@+id/applyTeamMemberCountTitle"
+        android:id="@+id/applyUserMemberCountTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:text="명"
         android:textSize="20dp"
-        app:layout_constraintBottom_toBottomOf="@+id/applyTeamMember"
-        app:layout_constraintStart_toEndOf="@+id/applyTeamMember" />
+        app:layout_constraintBottom_toBottomOf="@+id/applyUserMember"
+        app:layout_constraintStart_toEndOf="@+id/applyUserMember" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/applyTeamButton"
+        android:id="@+id/applyUserButton"
         android:layout_width="402dp"
         android:layout_height="74dp"
         android:layout_marginBottom="5dp"

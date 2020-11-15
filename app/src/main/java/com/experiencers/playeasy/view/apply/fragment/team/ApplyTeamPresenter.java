@@ -20,7 +20,7 @@ public class ApplyTeamPresenter implements ApplyTeamContract.presenter, Retrofit
 
     @Override
     public void completionApply(String userKey, Apply apply) {
-        repository.postMatchApply(userKey, apply, this);
+        repository.postMatchApplyTeam(userKey, apply, this);
     }
 
     @Override

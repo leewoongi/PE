@@ -7,6 +7,7 @@ import com.experiencers.playeasy.model.datasource.WebService;
 import com.experiencers.playeasy.model.entity.Apply;
 import com.experiencers.playeasy.model.entity.LoginRequest;
 import com.experiencers.playeasy.view.apply.fragment.team.ApplyTeamPresenter;
+import com.experiencers.playeasy.view.apply.fragment.user.ApplyUserPresenter;
 import com.experiencers.playeasy.view.detailmatch.DetailMatchPresenter;
 import com.experiencers.playeasy.view.login.LoginPresenter;
 import com.experiencers.playeasy.view.main.fragment.home.HomePresenter;
@@ -90,8 +91,24 @@ public class Repository {
                 });
     }
 
-    //매치 신청하기
-    public void postMatchApply(String userKey, Apply apply, ApplyTeamPresenter presenter){
+    //매치 신청하기 팀
+    public void postMatchApplyTeam(String userKey, Apply apply, ApplyTeamPresenter presenter){
+        WebService webService = RetrofitClient.getInstance().create(WebService.class);
+        Disposable disposable = webService.sendMatchApply(userKey, apply)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe((item) ->{
+                    presenter.onSuccess(item);
+                },throwable -> {
+                    Log.d("error", "TT.. " + throwable.getMessage());
+                    throwable.printStackTrace();
+                },()->{
+                    Log.d("onComplete", "nothing");
+                });
+    }
+
+    //매치 신청하기 개인
+    public void postMatchApplyPersonal(String userKey, Apply apply, ApplyUserPresenter presenter){
         WebService webService = RetrofitClient.getInstance().create(WebService.class);
         Disposable disposable = webService.sendMatchApply(userKey, apply)
                 .subscribeOn(Schedulers.io())

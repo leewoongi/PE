@@ -1,6 +1,5 @@
 package com.experiencers.playeasy.view.apply.fragment.team;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,8 +15,6 @@ import com.experiencers.playeasy.R;
 import com.experiencers.playeasy.application.TokenManger;
 import com.experiencers.playeasy.model.entity.Apply;
 import com.experiencers.playeasy.model.entity.ApplyResponse;
-import com.experiencers.playeasy.view.apply.activity.ApplyActivity;
-import com.experiencers.playeasy.view.detailmatch.DetailMatchActivity;
 import com.google.android.material.button.MaterialButton;
 
 public class ApplyTeamFragment extends Fragment implements ApplyTeamContract.view {
@@ -51,8 +48,8 @@ public class ApplyTeamFragment extends Fragment implements ApplyTeamContract.vie
 
     @Override
     public void init() {
-        applyTeamMember = rootView.findViewById(R.id.applyTeamMember);
-        applyTeamButton = rootView.findViewById(R.id.applyTeamButton);
+        applyTeamMember = rootView.findViewById(R.id.applyUserMember);
+        applyTeamButton = rootView.findViewById(R.id.applyUserButton);
     }
 
     @Override
