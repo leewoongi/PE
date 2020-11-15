@@ -9,11 +9,29 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-public class CreateFragment extends Fragment  {
+public class CreateFragment extends Fragment implements CreateContract.view  {
+
+    private CreatePresenter presenter;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+
         return super.onCreateView(inflater, container, savedInstanceState);
+    }
+
+    @Override
+    public void init() {
+
+    }
+
+    @Override
+    public void changeActivity() {
+
+    }
+
+    @Override
+    public void showResult(Object object) {
+
     }
 }

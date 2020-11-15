@@ -36,7 +36,8 @@ public class ApplyActivity extends AppCompatActivity implements ApplyContract.vi
         presenter.setViewpagerView(applyViewPagerAdapter);
         presenter.setViewPagerModel(applyViewPagerAdapter);
 
-        presenter.loadFragment();
+        int matchId = getIntent().getIntExtra("matchId",0);
+        presenter.loadFragment(matchId);
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
 
             @Override

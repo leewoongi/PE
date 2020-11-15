@@ -25,7 +25,7 @@ public interface ApplyContract {
         void setViewpagerView(ApplyViewPagerAdapter adapter);
         void setViewPagerModel(ApplyViewPagerAdapter adapter);
 
-        void loadFragment();
+        void loadFragment(int matchId);
 
         @Override
         void deleteView();

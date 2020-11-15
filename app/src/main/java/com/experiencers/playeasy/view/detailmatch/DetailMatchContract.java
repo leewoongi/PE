@@ -10,7 +10,7 @@ public interface DetailMatchContract {
 
         @Override
         void changeActivity();
-        void showPopUp();
+        void showPopUp(int matchId);
         @Override
         void showResult(Object object);
     }
@@ -20,7 +20,7 @@ public interface DetailMatchContract {
         void setView(view view);
 
         void receiveMatchId(int matchId, String userKey);
-        void clickApply();
+        void clickApply(int matchId);
 
 
         @Override

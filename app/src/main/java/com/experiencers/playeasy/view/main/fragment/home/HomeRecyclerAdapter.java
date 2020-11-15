@@ -19,7 +19,6 @@ import java.util.List;
 public class HomeRecyclerAdapter extends RecyclerView.Adapter<HomeRecyclerAdapter.myViewHolder> implements HomeContract.adapterView, HomeContract.adapterModel  {
 
     private List<Match> item = new ArrayList<>();
-    private int matchId;
 
     @NonNull
     @Override
@@ -30,11 +29,16 @@ public class HomeRecyclerAdapter extends RecyclerView.Adapter<HomeRecyclerAdapte
 
     @Override
     public void onBindViewHolder(@NonNull myViewHolder holder, int position) {
-        holder.matchTime.setText(item.get(position).getStartAt());
-        holder.matchPlace.setText(item.get(position).getLocation().getDetail());
+        holder.matchTime.setText(item.get(position).getStartAt().substring(12,16) + " ~ "+ item.get(position).getEndAt().substring(12,16));
+        holder.matchPlace.setText(item.get(position).getLocation().getPlaceName() + " " +item.get(position).getLocation().getPlaceDetail());
         holder.matchType.setText(item.get(position).getType());
-        holder.matchStatus.setText(item.get(position).getStatus());
-        matchId = (item.get(position).getId());
+        String status = "";
+        if(item.get(position).getStatus().equals("WAITING")) {
+            holder.matchStatus.setText("신청 가능");
+        }else{
+            holder.matchStatus.setText("신청 마감");
+        }
+        holder.matchId.setText(String.valueOf(item.get(position).getId()));
     }
 
     @Override
@@ -57,6 +61,7 @@ public class HomeRecyclerAdapter extends RecyclerView.Adapter<HomeRecyclerAdapte
         private TextView matchPlace;
         private TextView matchType;
         private TextView matchStatus;
+        private TextView matchId;
 
         public myViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -65,12 +70,14 @@ public class HomeRecyclerAdapter extends RecyclerView.Adapter<HomeRecyclerAdapte
             matchPlace = itemView.findViewById(R.id.matchPlace);
             matchType = itemView.findViewById(R.id.matchType);
             matchStatus = itemView.findViewById(R.id.matchStatus);
+            matchId = itemView.findViewById(R.id.matchId);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    String clickMatchId = matchId.getText().toString();
                     Intent intent = new Intent(itemView.getContext(), DetailMatchActivity.class);
-                    intent.getIntExtra("matchId", matchId);
+                    intent.putExtra("matchId", clickMatchId);
                     v.getContext().startActivity(intent);
                 }
             });

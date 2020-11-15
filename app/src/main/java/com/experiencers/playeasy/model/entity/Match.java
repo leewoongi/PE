@@ -11,8 +11,9 @@ public class Match {
     private int quota;
     private String status;
     private Location location;
+    private String teamName;
 
-    public Match(int id, String type, String description, String startAt, String endAt, int fee, String phone, int quota, String status, Location location) {
+    public Match(int id, String type, String description, String startAt, String endAt, int fee, String phone, int quota, String status, Location location, String teamName) {
         this.id = id;
         this.type = type;
         this.description = description;
@@ -23,6 +24,7 @@ public class Match {
         this.quota = quota;
         this.status = status;
         this.location = location;
+        this.teamName = teamName;
     }
 
     public int getId() {
@@ -103,5 +105,13 @@ public class Match {
 
     public void setLocation(Location location) {
         this.location = location;
+    }
+
+    public String getTeamName() {
+        return teamName;
+    }
+
+    public void setTeamName(String teamName) {
+        this.teamName = teamName;
     }
 }

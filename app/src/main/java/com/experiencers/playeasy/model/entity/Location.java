@@ -3,13 +3,17 @@ package com.experiencers.playeasy.model.entity;
 public class Location {
 
     private int id;
-    private String address;
-    private String detail;
+    private int mapId;
+    private String placeName;
+    private String addressName;
+    private String placeDetail;
 
-    public Location(int id, String address, String detail) {
+    public Location(int id, int mapId, String placeName, String addressName, String placeDetail) {
         this.id = id;
-        this.address = address;
-        this.detail = detail;
+        this.mapId = mapId;
+        this.placeName = placeName;
+        this.addressName = addressName;
+        this.placeDetail = placeDetail;
     }
 
     public int getId() {
@@ -20,19 +24,36 @@ public class Location {
         this.id = id;
     }
 
-    public String getAddress() {
-        return address;
+    public int getMapId() {
+        return mapId;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setMapId(int mapId) {
+        this.mapId = mapId;
     }
 
-    public String getDetail() {
-        return detail;
+    public String getPlaceName() {
+        return placeName;
     }
 
-    public void setDetail(String detail) {
-        this.detail = detail;
+    public void setPlaceName(String placeName) {
+        this.placeName = placeName;
+    }
+
+    public String getAddressName() {
+        return addressName;
+    }
+
+    public void setAddressName(String addressName) {
+        this.addressName = addressName;
+    }
+
+    public String getPlaceDetail() {
+        return placeDetail;
+    }
+
+    public void setPlaceDetail(String placeDetail) {
+        this.placeDetail = placeDetail;
     }
 }
+

@@ -23,8 +23,8 @@ public class DetailMatchPresenter implements DetailMatchContract.presenter, Retr
     }
 
     @Override
-    public void clickApply() {
-        view.showPopUp();
+    public void clickApply(int matchId) {
+        view.showPopUp(matchId);
     }
 
 

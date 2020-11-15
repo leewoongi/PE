@@ -1,4 +1,4 @@
 package com.experiencers.playeasy.view.apply.fragment.user;
 
-public class ApplyUserContract {
+public interface ApplyUserContract {
 }

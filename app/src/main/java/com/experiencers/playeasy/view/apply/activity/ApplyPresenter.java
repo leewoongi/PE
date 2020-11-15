@@ -1,5 +1,7 @@
 package com.experiencers.playeasy.view.apply.activity;
 
+import android.os.Bundle;
+
 import androidx.fragment.app.Fragment;
 
 import com.experiencers.playeasy.view.apply.fragment.team.ApplyTeamFragment;
@@ -37,7 +39,13 @@ public class ApplyPresenter implements ApplyContract.presenter {
     }
 
     @Override
-    public void loadFragment() {
+    public void loadFragment(int matchId) {
+        Bundle bundle = new Bundle();
+        bundle.putInt("matchId", matchId);
+
+        teamFragment.setArguments(bundle);
+        userFragment.setArguments(bundle);
+
         List<Fragment> fragments = new ArrayList<>();
         fragments.add(teamFragment);
         fragments.add(userFragment);

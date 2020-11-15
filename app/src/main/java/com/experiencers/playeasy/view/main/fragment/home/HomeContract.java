@@ -12,7 +12,7 @@ public interface HomeContract {
 
         @Override
         void init();
-
+        void findDate();
         void recyclerViewInit();
         void calenderInit();
 
@@ -24,6 +24,7 @@ public interface HomeContract {
 
         @Override
         void deleteView();
+        void initMatchList(String date, presenter presenter);
         void receiveDate(Calendar date, presenter presenter);
 
         void setAdapterView(HomeContract.adapterView adapter);

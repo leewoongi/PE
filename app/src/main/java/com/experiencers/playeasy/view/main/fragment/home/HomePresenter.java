@@ -63,6 +63,11 @@ public class HomePresenter implements HomeContract.presenter, RetrofitCallback {
     }
 
     @Override
+    public void initMatchList(String date, HomeContract.presenter presenter) {
+        repository.getMatchList(date, this);
+    }
+
+    @Override
     public void onSuccess(Object object) {
 
         if(object != null){

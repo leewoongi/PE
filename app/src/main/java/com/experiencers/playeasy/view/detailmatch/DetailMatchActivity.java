@@ -22,7 +22,7 @@ public class DetailMatchActivity extends AppCompatActivity implements DetailMatc
     private TextView detailTeamName;
     private TextView detailPlace;
     private TextView detailLocation;
-    private TextView detailTime;
+    private TextView detailNeed;
     private TextView detailType;
     private TextView detailFee;
     private TextView detailPhone;
@@ -39,13 +39,14 @@ public class DetailMatchActivity extends AppCompatActivity implements DetailMatc
         presenter = new DetailMatchPresenter();
         presenter.setView(this);
 
-        int matchId = getIntent().getIntExtra("matchId", 0);
+        int matchId = Integer.valueOf(getIntent().getStringExtra("matchId"));
         String userKey = TokenManger.read(getApplicationContext());
         presenter.receiveMatchId(matchId,userKey);
+
         detailApplyButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.clickApply();
+                presenter.clickApply(matchId);
             }
         });
     }
@@ -57,7 +58,7 @@ public class DetailMatchActivity extends AppCompatActivity implements DetailMatc
         detailTeamName = findViewById(R.id.detailTeamName);
         detailPlace = findViewById(R.id.detailPlace);
         detailLocation = findViewById(R.id.detailLocation);
-        detailTime = findViewById(R.id.detailTime);
+        detailNeed = findViewById(R.id.detailNeed);
         detailType = findViewById(R.id.detailType);
         detailFee = findViewById(R.id.detailFee);
         detailPhone = findViewById(R.id.detailPhone);
@@ -71,17 +72,19 @@ public class DetailMatchActivity extends AppCompatActivity implements DetailMatc
     }
 
     @Override
-    public void showPopUp() {
+    public void showPopUp(int matchId) {
         Intent intent = new Intent(this, ApplyActivity.class);
+        intent.putExtra("matchId",matchId);
         startActivity(intent);
     }
 
     @Override
     public void showResult(Object object) {
         Match item = (Match) object;
-        detailPlace.setText(item.getLocation().getDetail());
-        detailLocation.setText(item.getLocation().getAddress());
-        detailTime.setText(item.getStartAt());
+        detailTeamName.setText(item.getTeamName());
+        detailPlace.setText(item.getLocation().getPlaceName() + " " +item.getLocation().getPlaceDetail());
+        detailLocation.setText(item.getLocation().getAddressName());
+        detailNeed.setText(String.valueOf(item.getQuota()));
         detailType.setText(item.getType());
         detailFee.setText(String.valueOf(item.getFee()));
         detailPhone.setText(item.getPhone());
