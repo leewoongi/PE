@@ -6,14 +6,17 @@ import com.experiencers.playeasy.application.RetrofitClient;
 import com.experiencers.playeasy.model.datasource.WebService;
 import com.experiencers.playeasy.model.entity.Apply;
 import com.experiencers.playeasy.model.entity.LoginRequest;
+import com.experiencers.playeasy.model.entity.MapResponse;
 import com.experiencers.playeasy.view.apply.fragment.team.ApplyTeamPresenter;
 import com.experiencers.playeasy.view.apply.fragment.user.ApplyUserPresenter;
 import com.experiencers.playeasy.view.detailmatch.DetailMatchPresenter;
 import com.experiencers.playeasy.view.login.LoginPresenter;
+import com.experiencers.playeasy.view.main.fragment.create.CreatePresenter;
 import com.experiencers.playeasy.view.main.fragment.home.HomePresenter;
 import com.experiencers.playeasy.view.myinformation.MyInfoPresenter;
 
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
+import io.reactivex.rxjava3.core.Observable;
 import io.reactivex.rxjava3.disposables.Disposable;
 import io.reactivex.rxjava3.schedulers.Schedulers;
 
@@ -114,6 +117,28 @@ public class Repository {
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe((item) ->{
+                    presenter.onSuccess(item);
+                },throwable -> {
+                    Log.d("error", "TT.. " + throwable.getMessage());
+                    throwable.printStackTrace();
+                },()->{
+                    Log.d("onComplete", "nothing");
+                });
+    }
+
+    // 위치 검색
+    public void getPlace(String keyWord, String userKey, CreatePresenter presenter){
+        WebService webService = RetrofitClient.getInstance().create(WebService.class);
+        Disposable disposable = webService.retrievePlace(keyWord, userKey)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .map(item -> {
+                    if (item == null || item.size() == 0) {
+                        item.add(new MapResponse());
+                    }
+                    return item;
+                })
+                .subscribe((item)->{
                     presenter.onSuccess(item);
                 },throwable -> {
                     Log.d("error", "TT.. " + throwable.getMessage());

@@ -1,5 +1,7 @@
 package com.experiencers.playeasy.view.main.fragment.create;
 
+import android.text.Editable;
+
 import com.experiencers.playeasy.view.base.BaseContract;
 
 public interface CreateContract {
@@ -18,6 +20,7 @@ public interface CreateContract {
         @Override
         void setView(view view);
 
+        void receiveKeyWord(String word, String userKey);
         @Override
         void deleteView();
     }

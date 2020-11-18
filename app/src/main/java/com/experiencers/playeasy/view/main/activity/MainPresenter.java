@@ -3,6 +3,7 @@ package com.experiencers.playeasy.view.main.activity;
 import androidx.fragment.app.Fragment;
 
 import com.experiencers.playeasy.R;
+import com.experiencers.playeasy.view.main.fragment.create.CreateFragment;
 import com.experiencers.playeasy.view.main.fragment.home.HomeFragment;
 import com.experiencers.playeasy.view.main.fragment.mypage.MyPageFragment;
 
@@ -17,10 +18,12 @@ public class MainPresenter implements MainContract.presenter{
 
     private HomeFragment homeFragment;
     private MyPageFragment myPageFragment;
+    private CreateFragment createFragment;
 
     public MainPresenter() {
         homeFragment = new HomeFragment();
         myPageFragment = new MyPageFragment();
+        createFragment = new CreateFragment();
     }
 
     @Override
@@ -43,6 +46,7 @@ public class MainPresenter implements MainContract.presenter{
 
         List<Fragment> fragments = new ArrayList<>();
         fragments.add(homeFragment);
+        fragments.add(createFragment);
         fragments.add(myPageFragment);
 
         adapterModel.add(fragments);
