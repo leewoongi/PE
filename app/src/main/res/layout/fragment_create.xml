@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
@@ -8,7 +9,7 @@
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/matchCreateToolBar"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
+        android:layout_height="0dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="8dp"
@@ -46,9 +47,13 @@
         <ScrollView
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0">
@@ -124,7 +129,6 @@
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="8dp"
-                    android:background="@color/colorPoint"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
@@ -149,7 +153,7 @@
 
                 <TimePicker
                     android:id="@+id/timePickerStart"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginStart="8dp"
@@ -206,16 +210,34 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/timePickerEnd" />
 
-                <Spinner
-                    android:id="@+id/matchTypeSpinner"
-                    android:layout_width="wrap_content"
+                <Button
+                    android:id="@+id/fiveFootSal"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
+                    android:layout_marginStart="16dp"
                     android:layout_marginTop="8dp"
-                    android:layout_marginEnd="644dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.0"
+                    android:text="5:5"
                     app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/matchType" />
+
+                <Button
+                    android:id="@+id/sixFootSal"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="8dp"
+                    android:text="6:6"
+                    app:layout_constraintStart_toEndOf="@+id/fiveFootSal"
+                    app:layout_constraintTop_toBottomOf="@+id/matchType" />
+
+                <Button
+                    android:id="@+id/soccer"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="8dp"
+                    android:text="11:11"
+                    app:layout_constraintStart_toEndOf="@+id/sixFootSal"
                     app:layout_constraintTop_toBottomOf="@+id/matchType" />
 
                 <TextView
@@ -231,7 +253,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/matchTypeSpinner" />
+                    app:layout_constraintTop_toBottomOf="@+id/fiveFootSal" />
 
                 <EditText
                     android:id="@+id/matchFee"
@@ -239,11 +261,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp"
-                    android:layout_marginEnd="93dp"
                     android:ems="10"
                     android:hint="5000"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/matchFeeTitle" />
 
@@ -251,14 +270,12 @@
                     android:id="@+id/feePerPeople"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="28dp"
+                    android:layout_marginStart="8dp"
                     android:text="원 / 1인당"
                     android:textSize="20dp"
                     android:textStyle="bold"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.044"
-                    app:layout_constraintStart_toEndOf="@+id/matchFee"
-                    app:layout_constraintTop_toBottomOf="@+id/matchFeeTitle" />
+                    app:layout_constraintBottom_toBottomOf="@+id/matchFee"
+                    app:layout_constraintStart_toEndOf="@+id/matchFee" />
 
                 <TextView
                     android:id="@+id/matchNeedPeopleTitle"
@@ -277,16 +294,13 @@
 
                 <EditText
                     android:id="@+id/needPeople"
-                    android:layout_width="306dp"
-                    android:layout_height="45dp"
+                    android:layout_width="295dp"
+                    android:layout_height="55dp"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp"
-                    android:layout_marginEnd="93dp"
                     android:ems="10"
                     android:hint="5 필요한 인원 수만 숫자로 적어주세요"
                     android:inputType="textPersonName"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/matchNeedPeopleTitle" />
 
@@ -294,14 +308,12 @@
                     android:id="@+id/needPerPeople"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="24dp"
+                    android:layout_marginStart="8dp"
                     android:text="명"
                     android:textSize="20dp"
                     android:textStyle="bold"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.031"
-                    app:layout_constraintStart_toEndOf="@+id/needPeople"
-                    app:layout_constraintTop_toBottomOf="@+id/matchNeedPeopleTitle" />
+                    app:layout_constraintBottom_toBottomOf="@+id/needPeople"
+                    app:layout_constraintStart_toEndOf="@+id/needPeople" />
 
 
                 <TextView
@@ -321,16 +333,13 @@
 
                 <EditText
                     android:id="@+id/matchPhoneNumber"
-                    android:layout_width="306dp"
-                    android:layout_height="45dp"
+                    android:layout_width="254dp"
+                    android:layout_height="53dp"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp"
-                    android:layout_marginEnd="93dp"
                     android:ems="10"
                     android:hint="' - ' 빼고 번호를 입력해주세요"
                     android:inputType="textPersonName"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/matchPhone" />
 
@@ -353,50 +362,35 @@
                     android:id="@+id/matchEtc"
                     android:layout_width="0dp"
                     android:layout_height="98dp"
-                    android:layout_marginStart="8dp"
+                    android:layout_marginStart="16dp"
                     android:layout_marginTop="8dp"
-                    android:layout_marginEnd="8dp"
+                    android:layout_marginEnd="16dp"
                     android:ems="10"
-                    android:hint="샤워장, 주차장과 같은 기타 사항을 입력해주세요"
+                    android:hint="샤워장, 주차장과 같은 기타 사항을\n
+                    입력해주세요"
                     android:inputType="textPersonName"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/matchEtcTitle" />
 
                 <TextView
-                    android:id="@+id/locationY"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/mapId"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="75dp"
-                    android:layout_marginTop="9dp"
-                    android:layout_marginBottom="43dp"
-                    android:text="TextView"
-                    android:visibility="invisible"
-                    app:layout_constraintBottom_toTopOf="@+id/matchLocationMap"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:id="@+id/locationX"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="9dp"
-                    android:text="TextView"
-                    android:visibility="invisible"
-                    app:layout_constraintStart_toEndOf="@+id/locationY"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:id="@+id/locationPlaceName"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="30dp"
                     android:layout_marginTop="8dp"
-                    android:visibility="invisible"
+                    android:layout_marginEnd="19dp"
                     android:text="TextView"
-                    app:layout_constraintStart_toEndOf="@+id/locationX"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/addressName"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="9dp"
+                    android:layout_marginEnd="16dp"
+                    android:text="TextView"
+                    app:layout_constraintEnd_toStartOf="@+id/mapId"
                     app:layout_constraintTop_toTopOf="parent" />
 
 

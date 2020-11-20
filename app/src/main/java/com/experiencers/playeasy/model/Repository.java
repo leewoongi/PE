@@ -5,6 +5,7 @@ import android.util.Log;
 import com.experiencers.playeasy.application.RetrofitClient;
 import com.experiencers.playeasy.model.datasource.WebService;
 import com.experiencers.playeasy.model.entity.Apply;
+import com.experiencers.playeasy.model.entity.CreateMatchRequest;
 import com.experiencers.playeasy.model.entity.LoginRequest;
 import com.experiencers.playeasy.model.entity.MapResponse;
 import com.experiencers.playeasy.view.apply.fragment.team.ApplyTeamPresenter;
@@ -141,6 +142,21 @@ public class Repository {
                 .subscribe((item)->{
                     presenter.onSuccess(item);
                 },throwable -> {
+                    Log.d("error", "TT.. " + throwable.getMessage());
+                    throwable.printStackTrace();
+                },()->{
+                    Log.d("onComplete", "nothing");
+                });
+    }
+
+    public void postCreateMatch(String userKey, CreateMatchRequest createMatchRequest, CreatePresenter presenter){
+        WebService webService = RetrofitClient.getInstance().create(WebService.class);
+        Disposable disposable = webService.sendCreateMatch(userKey, createMatchRequest)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(item ->{
+                    presenter.CreateSuccess(item);
+                },throwable ->{
                     Log.d("error", "TT.. " + throwable.getMessage());
                     throwable.printStackTrace();
                 },()->{

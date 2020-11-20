@@ -3,6 +3,7 @@ package com.experiencers.playeasy.model.datasource;
 
 import com.experiencers.playeasy.model.entity.Apply;
 import com.experiencers.playeasy.model.entity.ApplyResponse;
+import com.experiencers.playeasy.model.entity.CreateMatchRequest;
 import com.experiencers.playeasy.model.entity.MapResponse;
 import com.experiencers.playeasy.model.entity.Match;
 import com.experiencers.playeasy.model.entity.User;
@@ -45,6 +46,17 @@ public interface WebService {
     /**
      * 매치
      */
+
+    //작성하기
+    //지도 검색
+    @GET("api/map/search")
+    Maybe<List<MapResponse>> retrievePlace(@Query("keyword")String keyWord,
+                                           @Header("Authorization") String userKey);
+    //작성하기
+    @POST("api/match")
+    Maybe<Match> sendCreateMatch(@Header("Authorization") String userKey,
+                                 @Body CreateMatchRequest createMatchRequest);
+
     // 상세보기
     @GET("api/match")
     Maybe<Match> retrieveMatch(@Query("matchId")int matchId,
@@ -55,8 +67,4 @@ public interface WebService {
     Maybe<ApplyResponse> sendMatchApply(@Header("Authorization")String userKey,
                                         @Body Apply apply);
 
-    //지도 검색
-    @GET("api/map/search")
-    Maybe<List<MapResponse>> retrievePlace(@Query("keyword")String keyWord,
-                                        @Header("Authorization") String userKey);
 }

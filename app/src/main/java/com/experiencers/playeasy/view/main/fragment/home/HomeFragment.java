@@ -89,7 +89,6 @@ public class HomeFragment extends Fragment implements HomeContract.view {
     @Override
     public void calenderInit() {
         Calendar startDate = Calendar.getInstance();
-        // 현재 날짜 받아오기
         startDate.add(Calendar.MONTH, -1);
 
         /* end after 1 month from now */

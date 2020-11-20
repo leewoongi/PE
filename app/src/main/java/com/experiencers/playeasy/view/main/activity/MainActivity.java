@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 import androidx.viewpager2.widget.ViewPager2;
+
 import android.os.Bundle;
 import android.view.MenuItem;
 
@@ -36,6 +37,7 @@ public class MainActivity extends AppCompatActivity implements MainContract.view
 
         presenter.loadFragment();
         bottomNavigationView.setOnNavigationItemSelectedListener(this);
+
 
     }
 
