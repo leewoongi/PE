@@ -2,7 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <TextView
@@ -28,13 +28,22 @@
 
     <TextView
         android:id="@+id/registerMatchStatus"
-        android:layout_width="74dp"
+        android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
-        android:text="5:5 풋살"
+        android:text="신청 현황"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/registerMatchPlace" />
+
+    <TextView
+        android:id="@+id/registerPeople"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="10 / 12"
+        app:layout_constraintBottom_toBottomOf="@+id/registerMatchStatus"
+        app:layout_constraintStart_toEndOf="@+id/registerMatchStatus" />
 
     <TextView
         android:id="@+id/registerMatchId"
@@ -73,5 +82,6 @@
         android:text="지원 현황 확인하기"
         app:layout_constraintBottom_toBottomOf="@+id/registerMatchContinue"
         app:layout_constraintEnd_toStartOf="@+id/registerMatchEnd" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

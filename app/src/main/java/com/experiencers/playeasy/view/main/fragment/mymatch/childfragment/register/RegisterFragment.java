@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.experiencers.playeasy.R;
+import com.experiencers.playeasy.application.TokenManger;
 
 public class RegisterFragment extends Fragment implements RegisterContract.view{
 
@@ -26,8 +27,20 @@ public class RegisterFragment extends Fragment implements RegisterContract.view{
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         rootView = (ViewGroup) inflater.inflate(R.layout.fragment_mymatch_register, container, false);
 
+        init();
+        recyclerInit();
+
+        String userKey = TokenManger.read(getActivity());
         presenter = new RegisterPresenter();
         presenter.setView(this);
+
+        presenter.setRecyclerAdapterView(adapter);
+        presenter.setRecyclerAdapterModel(adapter);
+
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setAdapter(adapter);
+
+        presenter.receiveMatchList(userKey);
         return rootView;
     }
 

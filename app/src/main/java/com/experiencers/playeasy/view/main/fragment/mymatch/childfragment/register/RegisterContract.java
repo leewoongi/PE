@@ -17,7 +17,10 @@ public interface RegisterContract {
     interface presenter extends BaseContract.presenter<view>{
         @Override
         void setView(view view);
+        void setRecyclerAdapterView(RegisterRecyclerViewAdapter adapterView);
+        void setRecyclerAdapterModel(RegisterRecyclerViewAdapter adapterModel);
 
+        void receiveMatchList(String userKey);
         @Override
         void deleteView();
     }
@@ -26,6 +29,6 @@ public interface RegisterContract {
         void refresh();
     }
     interface adapterModel{
-        void add();
+        void add(Object object);
     }
 }

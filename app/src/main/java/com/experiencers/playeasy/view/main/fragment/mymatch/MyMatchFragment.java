@@ -27,10 +27,10 @@ public class MyMatchFragment extends Fragment implements MyMatchContract.view{
         rootView = (ViewGroup) inflater.inflate(R.layout.fragment_mymatch, container, false);
 
         init();
-
-        myMatchViewPagerAdapter = new MyMatchViewPagerAdapter(getChildFragmentManager(), getLifecycle());
         presenter = new MyMatchPresenter();
         presenter.setView(this);
+        myMatchViewPagerAdapter = new MyMatchViewPagerAdapter(this);
+        viewPager.setAdapter(myMatchViewPagerAdapter);
 
         presenter.setPageAdapterView(myMatchViewPagerAdapter);
         presenter.setPageAdapterModel(myMatchViewPagerAdapter);
