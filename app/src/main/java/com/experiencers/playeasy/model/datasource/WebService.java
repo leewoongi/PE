@@ -67,4 +67,8 @@ public interface WebService {
     Maybe<ApplyResponse> sendMatchApply(@Header("Authorization")String userKey,
                                         @Body Apply apply);
 
+    /** 나의매치 **/
+    //내가 등록한 매치
+    @GET("api/user/matches")
+    Maybe<List<Match>> retrieveRegisterMatchList(@Header("Authorization")String userKey);
 }

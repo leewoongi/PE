@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment;
 import com.experiencers.playeasy.R;
 import com.experiencers.playeasy.view.main.fragment.create.CreateFragment;
 import com.experiencers.playeasy.view.main.fragment.home.HomeFragment;
+import com.experiencers.playeasy.view.main.fragment.mymatch.MyMatchFragment;
 import com.experiencers.playeasy.view.main.fragment.mypage.MyPageFragment;
 
 import java.util.ArrayList;
@@ -19,11 +20,13 @@ public class MainPresenter implements MainContract.presenter{
     private HomeFragment homeFragment;
     private MyPageFragment myPageFragment;
     private CreateFragment createFragment;
+    private MyMatchFragment myMatchFragment;
 
     public MainPresenter() {
         homeFragment = new HomeFragment();
         myPageFragment = new MyPageFragment();
         createFragment = new CreateFragment();
+        myMatchFragment = new MyMatchFragment();
     }
 
     @Override
@@ -47,6 +50,7 @@ public class MainPresenter implements MainContract.presenter{
         List<Fragment> fragments = new ArrayList<>();
         fragments.add(homeFragment);
         fragments.add(createFragment);
+        fragments.add(myMatchFragment);
         fragments.add(myPageFragment);
 
         adapterModel.add(fragments);

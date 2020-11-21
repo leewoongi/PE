@@ -14,6 +14,7 @@ import com.experiencers.playeasy.view.detailmatch.DetailMatchPresenter;
 import com.experiencers.playeasy.view.login.LoginPresenter;
 import com.experiencers.playeasy.view.main.fragment.create.CreatePresenter;
 import com.experiencers.playeasy.view.main.fragment.home.HomePresenter;
+import com.experiencers.playeasy.view.main.fragment.mymatch.childfragment.register.RegisterPresenter;
 import com.experiencers.playeasy.view.myinformation.MyInfoPresenter;
 
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
@@ -160,6 +161,22 @@ public class Repository {
                     Log.d("error", "TT.. " + throwable.getMessage());
                     throwable.printStackTrace();
                 },()->{
+                    Log.d("onComplete", "nothing");
+                });
+    }
+
+    /**나의매치**/
+    public void getRegisterMyMatch(String userKey, RegisterPresenter presenter){
+        WebService webService = RetrofitClient.getInstance().create(WebService.class);
+        Disposable disposable = webService.retrieveRegisterMatchList(userKey)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(item ->{
+                    presenter.onSuccess(item);
+                },throwable -> {
+                    Log.d("error", "TT.. " + throwable.getMessage());
+                    throwable.printStackTrace();
+                },() ->{
                     Log.d("onComplete", "nothing");
                 });
     }

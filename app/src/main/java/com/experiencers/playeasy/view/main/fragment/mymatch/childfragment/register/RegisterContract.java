@@ -1,16 +1,12 @@
-package com.experiencers.playeasy.view.main.fragment.mymatch;
-
-import androidx.fragment.app.Fragment;
+package com.experiencers.playeasy.view.main.fragment.mymatch.childfragment.register;
 
 import com.experiencers.playeasy.view.base.BaseContract;
 
-import java.util.List;
-
-public interface MyMatchContract {
+public interface RegisterContract {
     interface view extends BaseContract.view{
         @Override
         void init();
-
+        void recyclerInit();
         @Override
         void changeActivity();
 
@@ -22,9 +18,6 @@ public interface MyMatchContract {
         @Override
         void setView(view view);
 
-        void loadFragment();
-        void setPageAdapterView(MyMatchViewPagerAdapter adapter);
-        void setPageAdapterModel(MyMatchViewPagerAdapter adapter);
         @Override
         void deleteView();
     }
@@ -32,8 +25,7 @@ public interface MyMatchContract {
     interface adapterView{
         void refresh();
     }
-
     interface adapterModel{
-        void add(List<Fragment> fragments);
+        void add();
     }
 }

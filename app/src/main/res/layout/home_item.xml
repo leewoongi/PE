@@ -7,7 +7,7 @@
     android:layout_height="wrap_content">
 
     <TextView
-        android:id="@+id/matchTime"
+        android:id="@+id/registerMatchTime"
         android:layout_width="262dp"
         android:layout_height="25dp"
         android:layout_marginStart="16dp"
@@ -17,7 +17,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/matchPlace"
+        android:id="@+id/registerMatchPlace"
         android:layout_width="198dp"
         android:layout_height="34dp"
         android:layout_marginStart="16dp"
@@ -25,10 +25,10 @@
         android:text="용산 아이파크몰 4구장"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/matchTime" />
+        app:layout_constraintTop_toBottomOf="@+id/registerMatchTime" />
 
     <TextView
-        android:id="@+id/matchType"
+        android:id="@+id/registerMatchStatus"
         android:layout_width="74dp"
         android:layout_height="29dp"
         android:layout_marginStart="16dp"
@@ -37,7 +37,7 @@
         android:text="5:5 풋살"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/matchPlace" />
+        app:layout_constraintTop_toBottomOf="@+id/registerMatchPlace" />
 
     <TextView
         android:id="@+id/matchStatus"
@@ -45,12 +45,12 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="40dp"
         android:text="신청 가능"
-        app:layout_constraintBottom_toBottomOf="@+id/matchPlace"
+        app:layout_constraintBottom_toBottomOf="@+id/registerMatchPlace"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/matchPlace" />
+        app:layout_constraintTop_toTopOf="@+id/registerMatchPlace" />
 
     <TextView
-        android:id="@+id/matchId"
+        android:id="@+id/registerMatchId"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="40dp"

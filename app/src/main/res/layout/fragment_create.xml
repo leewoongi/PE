@@ -196,7 +196,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/matchEndTime" />
 
                 <TextView
-                    android:id="@+id/matchType"
+                    android:id="@+id/registerMatchStatus"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
@@ -218,7 +218,7 @@
                     android:layout_marginTop="8dp"
                     android:text="5:5"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/matchType" />
+                    app:layout_constraintTop_toBottomOf="@+id/registerMatchStatus" />
 
                 <Button
                     android:id="@+id/sixFootSal"
@@ -228,7 +228,7 @@
                     android:layout_marginTop="8dp"
                     android:text="6:6"
                     app:layout_constraintStart_toEndOf="@+id/fiveFootSal"
-                    app:layout_constraintTop_toBottomOf="@+id/matchType" />
+                    app:layout_constraintTop_toBottomOf="@+id/registerMatchStatus" />
 
                 <Button
                     android:id="@+id/soccer"
@@ -238,7 +238,7 @@
                     android:layout_marginTop="8dp"
                     android:text="11:11"
                     app:layout_constraintStart_toEndOf="@+id/sixFootSal"
-                    app:layout_constraintTop_toBottomOf="@+id/matchType" />
+                    app:layout_constraintTop_toBottomOf="@+id/registerMatchStatus" />
 
                 <TextView
                     android:id="@+id/matchFeeTitle"
