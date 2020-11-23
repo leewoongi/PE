@@ -30,22 +30,21 @@ public class MatchApplyRecyclerViewAdapter extends RecyclerView.Adapter<MatchApp
 
     @Override
     public void onBindViewHolder(@NonNull myViewHolder holder, int position) {
-        if(item.get(position).getStartAt() != ""){
-            holder.applyMatchTime.setText(item.get(position).getStartAt().substring(12,16) + " ~ "+ item.get(position).getEndAt().substring(12,16));
-            holder.applyMatchPlace.setText(item.get(position).getLocation().getPlaceName() + " " +item.get(position).getLocation().getPlaceDetail());
+        holder.applyMatchTime.setText(item.get(position).getStartAt().substring(12, 16) + " ~ " + item.get(position).getEndAt().substring(12, 16));
+        holder.applyMatchPlace.setText(item.get(position).getLocation().getPlaceName() + " " + item.get(position).getLocation().getPlaceDetail());
 
-            String type;
-            if(item.get(position).getType() == "SOCCER"){
-                type = "11";
-            }else if(item.get(position).getType() == "FUTSAL5"){
-                type = "5";
-            }else{
-                type = "6";
-            }
-            holder.applyPeople.setText(item.get(position).getQuota() + " / " + type);
-            holder.applyMatchContinue.setText(item.get(position).getStatus());
-            holder.applyMatchId.setText(String.valueOf(item.get(position).getId()));
+        String type;
+        if (item.get(position).getType() == "SOCCER") {
+            type = "11";
+        } else if (item.get(position).getType() == "FUTSAL5") {
+            type = "5";
+        } else {
+            type = "6";
         }
+        holder.applyPeople.setText(item.get(position).getQuota() + " / " + type);
+        holder.applyMatchContinue.setText(item.get(position).getStatus());
+        holder.applyMatchId.setText(String.valueOf(item.get(position).getId()));
+
     }
 
     @Override
@@ -86,7 +85,7 @@ public class MatchApplyRecyclerViewAdapter extends RecyclerView.Adapter<MatchApp
                 public void onClick(View v) {
                     Intent intent = new Intent(itemView.getContext(), MatchCancelActivity.class);
                     int matchId = Integer.parseInt(applyMatchId.getText().toString());
-                    intent.putExtra("matchId",matchId);
+                    intent.putExtra("matchId", matchId);
                     itemView.getContext().startActivity(intent);
                 }
             });

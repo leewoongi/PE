@@ -1,5 +1,6 @@
 package com.experiencers.playeasy.view.main.fragment.mymatch.childfragment.register;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.experiencers.playeasy.R;
 import com.experiencers.playeasy.model.entity.Match;
+import com.experiencers.playeasy.view.modifymatch.ModifyMatchActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,6 +40,7 @@ public class RegisterRecyclerViewAdapter extends RecyclerView.Adapter<RegisterRe
         }
         holder.registerPeople.setText(item.get(position).getQuota() + " / " + type);
         holder.registerMatchContinue.setText(item.get(position).getStatus());
+        holder.applyMatchId.setText(String.valueOf(item.get(position).getId()));
     }
 
     @Override
@@ -58,6 +61,7 @@ public class RegisterRecyclerViewAdapter extends RecyclerView.Adapter<RegisterRe
     public class myViewHolder extends RecyclerView.ViewHolder {
         private TextView registerMatchTime;
         private TextView registerMatchPlace;
+        private TextView applyMatchId;
         private TextView registerPeople;
         private TextView registerMatchContinue;
         public myViewHolder(@NonNull View itemView) {
@@ -67,6 +71,17 @@ public class RegisterRecyclerViewAdapter extends RecyclerView.Adapter<RegisterRe
             registerMatchPlace = itemView.findViewById(R.id.applyMatchPlace);
             registerPeople = itemView.findViewById(R.id.applyPeople);
             registerMatchContinue = itemView.findViewById(R.id.applyMatchContinue);
+            applyMatchId = itemView.findViewById(R.id.applyMatchId);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int matchId = Integer.parseInt(applyMatchId.getText().toString());
+                    Intent intent = new Intent(itemView.getContext(), ModifyMatchActivity.class);
+                    intent.putExtra("matchId", matchId);
+                    itemView.getContext().startActivity(intent);
+                }
+            });
 
         }
     }

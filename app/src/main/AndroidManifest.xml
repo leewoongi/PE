@@ -30,6 +30,7 @@
             android:theme="@style/Theme.MaterialComponents.Light.Dialog"/>
         <activity android:name=".view.main.fragment.mymatch.popup.cancel.MatchCancelActivity"
             android:theme="@style/theme.myDialog"/>
+        <activity android:name=".view.modifymatch.ModifyMatchActivity"/>
 
 
         <meta-data

@@ -1,10 +1,12 @@
 package com.experiencers.playeasy.view.modifymatch;
 
+
 import com.experiencers.playeasy.model.entity.CreateMatchRequest;
-import com.experiencers.playeasy.model.entity.Match;
+import com.experiencers.playeasy.model.entity.ModifyMatchRequest;
 import com.experiencers.playeasy.view.base.BaseContract;
 
 import java.util.Calendar;
+
 
 public interface ModifyMatchContract {
 
@@ -15,6 +17,7 @@ public interface ModifyMatchContract {
         String convertDate(Calendar date);
         String convertSTime();
         String convertETime();
+        void showMap(Object object);
         @Override
         void changeActivity();
 
@@ -25,9 +28,11 @@ public interface ModifyMatchContract {
     interface presenter extends BaseContract.presenter<view>{
         @Override
         void setView(view view);
-        void modifyMatch(String userKey, Match match);
+
+        void retrieveMatchInfo(String userKey, int matchId);
         void sendKeyWord(String word, String userKey);
-        void CreateSuccess(Object object);
+        void sendMatchInfo(String userKey, ModifyMatchRequest modifyMatchRequest);
+
         @Override
         void deleteView();
     }

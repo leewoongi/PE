@@ -8,6 +8,7 @@ import com.experiencers.playeasy.model.entity.ChangeMatchStatusResponse;
 import com.experiencers.playeasy.model.entity.CreateMatchRequest;
 import com.experiencers.playeasy.model.entity.MapResponse;
 import com.experiencers.playeasy.model.entity.Match;
+import com.experiencers.playeasy.model.entity.ModifyMatchRequest;
 import com.experiencers.playeasy.model.entity.User;
 import com.experiencers.playeasy.model.entity.LoginRequest;
 import com.experiencers.playeasy.model.entity.LoginResponse;
@@ -61,11 +62,6 @@ public interface WebService {
     Maybe<Match> sendCreateMatch(@Header("Authorization") String userKey,
                                  @Body CreateMatchRequest createMatchRequest);
 
-    //수정하기
-    @PUT
-    @POST("api/match")
-    Maybe<Match> modifyMatch(@Header("Authorization") String userKey,
-                             @Body CreateMatchRequest createMatchRequest);
     // 상세보기
     @GET("api/match")
     Maybe<Match> retrieveMatch(@Query("matchId")int matchId,
@@ -88,6 +84,12 @@ public interface WebService {
 
     //나의 신청 현황 -> 취소하기
     @PUT("api/application")
-    Maybe<Response> ModifyApplyStatus(@Header("Authorization")String userKey,
+    Maybe<Match> ModifyApplyStatus(@Header("Authorization")String userKey,
                                       @Body ChangeMatchStatusRequest changeMatchStatusRequest);
+
+    /** 매치수정 **/
+    //수정하기
+    @PUT("api/match")
+    Maybe<Match> modifyMatch(@Header("Authorization") String userKey,
+                             @Body ModifyMatchRequest modifyMatchRequest);
 }

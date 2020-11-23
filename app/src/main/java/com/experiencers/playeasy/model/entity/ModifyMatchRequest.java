@@ -1,6 +1,6 @@
 package com.experiencers.playeasy.model.entity;
 
-public class Match {
+public class ModifyMatchRequest {
     private int id;
     private String type;
     private String description;
@@ -9,11 +9,12 @@ public class Match {
     private int fee;
     private String phone;
     private int quota;
-    private String status;
-    private Location location;
-    private String teamName;
+    private int mapId;
+    private String placeName;
+    private String addressName;
+    private String placeDetail;
 
-    public Match(int id, String type, String description, String startAt, String endAt, int fee, String phone, int quota, String status, Location location, String teamName) {
+    public ModifyMatchRequest(int id, String type, String description, String startAt, String endAt, int fee, String phone, int quota, int mapId, String placeName, String addressName, String placeDetail) {
         this.id = id;
         this.type = type;
         this.description = description;
@@ -22,9 +23,10 @@ public class Match {
         this.fee = fee;
         this.phone = phone;
         this.quota = quota;
-        this.status = status;
-        this.location = location;
-        this.teamName = teamName;
+        this.mapId = mapId;
+        this.placeName = placeName;
+        this.addressName = addressName;
+        this.placeDetail = placeDetail;
     }
 
     public int getId() {
@@ -91,27 +93,35 @@ public class Match {
         this.quota = quota;
     }
 
-    public String getStatus() {
-        return status;
+    public int getMapId() {
+        return mapId;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void setMapId(int mapId) {
+        this.mapId = mapId;
     }
 
-    public Location getLocation() {
-        return location;
+    public String getPlaceName() {
+        return placeName;
     }
 
-    public void setLocation(Location location) {
-        this.location = location;
+    public void setPlaceName(String placeName) {
+        this.placeName = placeName;
     }
 
-    public String getTeamName() {
-        return teamName;
+    public String getAddressName() {
+        return addressName;
     }
 
-    public void setTeamName(String teamName) {
-        this.teamName = teamName;
+    public void setAddressName(String addressName) {
+        this.addressName = addressName;
+    }
+
+    public String getPlaceDetail() {
+        return placeDetail;
+    }
+
+    public void setPlaceDetail(String placeDetail) {
+        this.placeDetail = placeDetail;
     }
 }

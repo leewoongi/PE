@@ -52,6 +52,11 @@ public class MatchApplyStatusFragment extends Fragment implements MatchApplyCont
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String type = selectType.getItemAtPosition(position).toString();
+                if(type.equals("개인")){
+                    type = "PERSONAL";
+                }else{
+                    type = "TEAM";
+                }
                 presenter.sendType(type, userKey);
             }
 
