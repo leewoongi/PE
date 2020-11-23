@@ -61,6 +61,11 @@ public interface WebService {
     Maybe<Match> sendCreateMatch(@Header("Authorization") String userKey,
                                  @Body CreateMatchRequest createMatchRequest);
 
+    //수정하기
+    @PUT
+    @POST("api/match")
+    Maybe<Match> modifyMatch(@Header("Authorization") String userKey,
+                             @Body CreateMatchRequest createMatchRequest);
     // 상세보기
     @GET("api/match")
     Maybe<Match> retrieveMatch(@Query("matchId")int matchId,

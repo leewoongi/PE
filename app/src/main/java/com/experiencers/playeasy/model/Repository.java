@@ -19,6 +19,7 @@ import com.experiencers.playeasy.view.main.fragment.home.HomePresenter;
 import com.experiencers.playeasy.view.main.fragment.mymatch.childfragment.myapplicationstatus.MatchApplyPresenter;
 import com.experiencers.playeasy.view.main.fragment.mymatch.childfragment.register.RegisterPresenter;
 import com.experiencers.playeasy.view.main.fragment.mymatch.popup.cancel.MatchCancelPresenter;
+import com.experiencers.playeasy.view.modifymatch.ModifyMatchPresenter;
 import com.experiencers.playeasy.view.myinformation.MyInfoPresenter;
 
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
@@ -134,6 +135,28 @@ public class Repository {
 
     // 위치 검색
     public void getPlace(String keyWord, String userKey, CreatePresenter presenter){
+        WebService webService = RetrofitClient.getInstance().create(WebService.class);
+        Disposable disposable = webService.retrievePlace(keyWord, userKey)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .map(item -> {
+                    if (item == null || item.size() == 0) {
+                        item.add(new MapResponse());
+                    }
+                    return item;
+                })
+                .subscribe((item)->{
+                    presenter.onSuccess(item);
+                },throwable -> {
+                    Log.d("error", "TT.. " + throwable.getMessage());
+                    throwable.printStackTrace();
+                },()->{
+                    Log.d("onComplete", "nothing");
+                });
+    }
+
+    // 위치 수정
+    public void getModifyPlace(String keyWord, String userKey, ModifyMatchPresenter presenter){
         WebService webService = RetrofitClient.getInstance().create(WebService.class);
         Disposable disposable = webService.retrievePlace(keyWord, userKey)
                 .subscribeOn(Schedulers.io())
