@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="selectType">
+        <item> 개인 </item>
+        <item> 팀 </item>
+    </string-array>
+</resources>

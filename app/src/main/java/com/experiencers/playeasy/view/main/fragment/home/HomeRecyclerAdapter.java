@@ -66,11 +66,11 @@ public class HomeRecyclerAdapter extends RecyclerView.Adapter<HomeRecyclerAdapte
         public myViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            matchTime = itemView.findViewById(R.id.registerMatchTime);
-            matchPlace = itemView.findViewById(R.id.registerMatchPlace);
-            matchType = itemView.findViewById(R.id.registerMatchStatus);
+            matchTime = itemView.findViewById(R.id.applyMatchTime);
+            matchPlace = itemView.findViewById(R.id.applyMatchPlace);
+            matchType = itemView.findViewById(R.id.applyMatchStatus);
             matchStatus = itemView.findViewById(R.id.matchStatus);
-            matchId = itemView.findViewById(R.id.registerMatchId);
+            matchId = itemView.findViewById(R.id.applyMatchId);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override

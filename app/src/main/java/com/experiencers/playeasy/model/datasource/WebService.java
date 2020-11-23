@@ -3,6 +3,8 @@ package com.experiencers.playeasy.model.datasource;
 
 import com.experiencers.playeasy.model.entity.Apply;
 import com.experiencers.playeasy.model.entity.ApplyResponse;
+import com.experiencers.playeasy.model.entity.ChangeMatchStatusRequest;
+import com.experiencers.playeasy.model.entity.ChangeMatchStatusResponse;
 import com.experiencers.playeasy.model.entity.CreateMatchRequest;
 import com.experiencers.playeasy.model.entity.MapResponse;
 import com.experiencers.playeasy.model.entity.Match;
@@ -13,10 +15,12 @@ import com.experiencers.playeasy.model.entity.LoginResponse;
 import java.util.List;
 
 import io.reactivex.rxjava3.core.Maybe;
+import retrofit2.Response;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
 import retrofit2.http.Query;
 
 public interface WebService {
@@ -71,4 +75,14 @@ public interface WebService {
     //내가 등록한 매치
     @GET("api/user/matches")
     Maybe<List<Match>> retrieveRegisterMatchList(@Header("Authorization")String userKey);
+
+    //나의 신청현황
+    @GET("api/user/applications")
+    Maybe<List<Match>> retrieveApplyMatchList(@Query("type")String type,
+                                              @Header("Authorization")String userKey);
+
+    //나의 신청 현황 -> 취소하기
+    @PUT("api/application")
+    Maybe<Response> ModifyApplyStatus(@Header("Authorization")String userKey,
+                                      @Body ChangeMatchStatusRequest changeMatchStatusRequest);
 }

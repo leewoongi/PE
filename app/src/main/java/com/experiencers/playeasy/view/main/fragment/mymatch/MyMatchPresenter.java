@@ -3,7 +3,7 @@ package com.experiencers.playeasy.view.main.fragment.mymatch;
 import androidx.fragment.app.Fragment;
 
 import com.experiencers.playeasy.model.Repository;
-import com.experiencers.playeasy.view.main.fragment.mymatch.childfragment.applystatus.MatchApplyStatus;
+import com.experiencers.playeasy.view.main.fragment.mymatch.childfragment.myapplicationstatus.MatchApplyStatusFragment;
 import com.experiencers.playeasy.view.main.fragment.mymatch.childfragment.register.RegisterFragment;
 
 import java.util.ArrayList;
@@ -15,14 +15,14 @@ public class MyMatchPresenter implements MyMatchContract.presenter {
     private MyMatchContract.adapterView adapterView;
     private MyMatchContract.adapterModel adapterModel;
     private RegisterFragment registerFragment;
-    private MatchApplyStatus matchApplyStatus;
+    private MatchApplyStatusFragment matchApplyStatus;
 
     private Repository repository;
 
     public MyMatchPresenter() {
         repository = new Repository();
         registerFragment = new RegisterFragment();
-        matchApplyStatus = new MatchApplyStatus();
+        matchApplyStatus = new MatchApplyStatusFragment();
     }
 
     @Override

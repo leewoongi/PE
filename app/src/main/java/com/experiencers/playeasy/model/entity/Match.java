@@ -13,6 +13,20 @@ public class Match {
     private Location location;
     private String teamName;
 
+    public Match(){
+        this.id = 0;
+        this.type = "";
+        this.description = "";
+        this.startAt = "";
+        this.endAt = "";
+        this.fee = 0;
+        this.phone = "";
+        this.quota = 0;
+        this.status = "";
+        this.location = null;
+        this.teamName = "";
+    }
+
     public Match(int id, String type, String description, String startAt, String endAt, int fee, String phone, int quota, String status, Location location, String teamName) {
         this.id = id;
         this.type = type;

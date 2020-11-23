@@ -28,6 +28,8 @@
         <activity android:name=".view.detailmatch.DetailMatchActivity"/>
         <activity android:name=".view.apply.activity.ApplyActivity"
             android:theme="@style/Theme.MaterialComponents.Light.Dialog"/>
+        <activity android:name=".view.main.fragment.mymatch.popup.cancel.MatchCancelActivity"
+            android:theme="@style/theme.myDialog"/>
 
 
         <meta-data

@@ -63,10 +63,10 @@ public class RegisterRecyclerViewAdapter extends RecyclerView.Adapter<RegisterRe
         public myViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            registerMatchTime = itemView.findViewById(R.id.registerMatchTime);
-            registerMatchPlace = itemView.findViewById(R.id.registerMatchPlace);
-            registerPeople = itemView.findViewById(R.id.registerPeople);
-            registerMatchContinue = itemView.findViewById(R.id.registerMatchContinue);
+            registerMatchTime = itemView.findViewById(R.id.applyMatchTime);
+            registerMatchPlace = itemView.findViewById(R.id.applyMatchPlace);
+            registerPeople = itemView.findViewById(R.id.applyPeople);
+            registerMatchContinue = itemView.findViewById(R.id.applyMatchContinue);
 
         }
     }
