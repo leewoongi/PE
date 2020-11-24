@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -11,7 +12,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.experiencers.playeasy.R;
 import com.experiencers.playeasy.model.entity.Match;
+import com.experiencers.playeasy.view.main.fragment.mymatch.popup.close.MatchCloseActivity;
 import com.experiencers.playeasy.view.modifymatch.ModifyMatchActivity;
+import com.google.android.material.textview.MaterialTextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -64,6 +67,8 @@ public class RegisterRecyclerViewAdapter extends RecyclerView.Adapter<RegisterRe
         private TextView applyMatchId;
         private TextView registerPeople;
         private TextView registerMatchContinue;
+        private TextView applyMatchEnd;
+        private TextView confirmApplyStatus;
         public myViewHolder(@NonNull View itemView) {
             super(itemView);
 
@@ -72,17 +77,26 @@ public class RegisterRecyclerViewAdapter extends RecyclerView.Adapter<RegisterRe
             registerPeople = itemView.findViewById(R.id.applyPeople);
             registerMatchContinue = itemView.findViewById(R.id.applyMatchContinue);
             applyMatchId = itemView.findViewById(R.id.applyMatchId);
+            applyMatchEnd = itemView.findViewById(R.id.applyMatchEnd);
+            confirmApplyStatus = itemView.findViewById(R.id.confirmApplyStatus);
 
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    int matchId = Integer.parseInt(applyMatchId.getText().toString());
-                    Intent intent = new Intent(itemView.getContext(), ModifyMatchActivity.class);
-                    intent.putExtra("matchId", matchId);
-                    itemView.getContext().startActivity(intent);
-                }
+            itemView.setOnClickListener(v -> {
+                int matchId = Integer.parseInt(applyMatchId.getText().toString());
+                Intent intent = new Intent(itemView.getContext(), ModifyMatchActivity.class);
+                intent.putExtra("matchId", matchId);
+                itemView.getContext().startActivity(intent);
             });
 
+            applyMatchEnd.setOnClickListener(v->{
+                int matchId = Integer.parseInt(applyMatchId.getText().toString());
+                Intent intent = new Intent(itemView.getContext(), MatchCloseActivity.class);
+                intent.putExtra("matchId", matchId);
+                itemView.getContext().startActivity(intent);
+            });
+
+            confirmApplyStatus.setOnClickListener(V->{
+                
+            });
         }
     }
 }

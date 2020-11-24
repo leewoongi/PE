@@ -6,6 +6,7 @@ import com.experiencers.playeasy.application.RetrofitClient;
 import com.experiencers.playeasy.model.datasource.WebService;
 import com.experiencers.playeasy.model.entity.Apply;
 import com.experiencers.playeasy.model.entity.ChangeMatchStatusRequest;
+import com.experiencers.playeasy.model.entity.CloseMatchRequest;
 import com.experiencers.playeasy.model.entity.CreateMatchRequest;
 import com.experiencers.playeasy.model.entity.LoginRequest;
 import com.experiencers.playeasy.model.entity.MapResponse;
@@ -19,6 +20,7 @@ import com.experiencers.playeasy.view.main.fragment.home.HomePresenter;
 import com.experiencers.playeasy.view.main.fragment.mymatch.childfragment.myapplicationstatus.MatchApplyPresenter;
 import com.experiencers.playeasy.view.main.fragment.mymatch.childfragment.register.RegisterPresenter;
 import com.experiencers.playeasy.view.main.fragment.mymatch.popup.cancel.MatchCancelPresenter;
+import com.experiencers.playeasy.view.main.fragment.mymatch.popup.close.MatchClosePresenter;
 import com.experiencers.playeasy.view.modifymatch.ModifyMatchPresenter;
 import com.experiencers.playeasy.view.myinformation.MyInfoPresenter;
 
@@ -205,7 +207,7 @@ public class Repository {
     //내가 신청한 매치 취소하기
     public void putApplyMatchCancel(String userKey, ChangeMatchStatusRequest changeMatchStatusRequest, MatchCancelPresenter presenter){
         WebService webService = RetrofitClient.getInstance().create(WebService.class);
-        Disposable disposable = webService.ModifyApplyStatus(userKey, changeMatchStatusRequest)
+        Disposable disposable = webService.modifyApplyStatus(userKey, changeMatchStatusRequest)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(item->{
@@ -273,4 +275,35 @@ public class Repository {
                 });
     }
 
+    //매치 마감 (최종 확정)
+    public void putCloseMatch(String userKey, CloseMatchRequest closeMatchRequest, MatchClosePresenter presenter){
+        WebService webService = RetrofitClient.getInstance().create(WebService.class);
+        Disposable disposable = webService.closeMatch(userKey, closeMatchRequest)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(item ->{
+                    presenter.onSuccess(item);
+                },throwable ->{
+                    Log.d("error", "TT.. " + throwable.getMessage());
+                    throwable.printStackTrace();
+                },()->{
+                    Log.d("onComplete", "nothing");
+                });
+    }
+
+    //매치 삭제
+    public void putDeleteMatch(String userKey, CloseMatchRequest closeMatchRequest, MatchClosePresenter presenter){
+        WebService webService = RetrofitClient.getInstance().create(WebService.class);
+        Disposable disposable = webService.closeMatch(userKey, closeMatchRequest)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(item ->{
+                    presenter.deleteSuccess(item);
+                },throwable ->{
+                    Log.d("error", "TT.. " + throwable.getMessage());
+                    throwable.printStackTrace();
+                },()->{
+                    Log.d("onComplete", "nothing");
+                });
+    }
 }
