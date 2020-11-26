@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.experiencers.playeasy.R;
 import com.experiencers.playeasy.model.entity.Match;
+import com.experiencers.playeasy.view.detailapplystatus.DetailApplyStatusActivity;
 import com.experiencers.playeasy.view.main.fragment.mymatch.popup.close.MatchCloseActivity;
 import com.experiencers.playeasy.view.modifymatch.ModifyMatchActivity;
 import com.google.android.material.textview.MaterialTextView;
@@ -95,7 +96,10 @@ public class RegisterRecyclerViewAdapter extends RecyclerView.Adapter<RegisterRe
             });
 
             confirmApplyStatus.setOnClickListener(V->{
-                
+                int matchId = Integer.parseInt(applyMatchId.getText().toString());
+                Intent intent = new Intent(itemView.getContext(), DetailApplyStatusActivity.class);
+                intent.putExtra("matchId", matchId);
+                itemView.getContext().startActivity(intent);
             });
         }
     }

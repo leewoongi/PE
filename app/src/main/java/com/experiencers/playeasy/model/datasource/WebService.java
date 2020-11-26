@@ -3,6 +3,7 @@ package com.experiencers.playeasy.model.datasource;
 
 import com.experiencers.playeasy.model.entity.Apply;
 import com.experiencers.playeasy.model.entity.ApplyResponse;
+import com.experiencers.playeasy.model.entity.ApplyStatusResponse;
 import com.experiencers.playeasy.model.entity.ChangeMatchStatusRequest;
 import com.experiencers.playeasy.model.entity.ChangeMatchStatusResponse;
 import com.experiencers.playeasy.model.entity.CloseMatchRequest;
@@ -98,4 +99,13 @@ public interface WebService {
     @PUT("api/match/status")
     Maybe<Match> closeMatch(@Header("Authorization") String userKey,
                             @Body CloseMatchRequest closeMatchRequest);
+
+    /** 매치 지원현황 **/
+    //팀. 개인으로 매치 지원 현황
+    @GET("api/application/list")
+    Maybe<List<ApplyStatusResponse>> retrieveApplyMatchList(@Header("Authorization") String userKey,
+                                                            @Query("matchId") int matchId,
+                                                            @Query("type") String type);
+
+
 }

@@ -13,6 +13,8 @@ import com.experiencers.playeasy.model.entity.MapResponse;
 import com.experiencers.playeasy.model.entity.ModifyMatchRequest;
 import com.experiencers.playeasy.view.apply.fragment.team.ApplyTeamPresenter;
 import com.experiencers.playeasy.view.apply.fragment.user.ApplyUserPresenter;
+import com.experiencers.playeasy.view.detailapplystatus.fragment.teamStauts.TeamStatusPresenter;
+import com.experiencers.playeasy.view.detailapplystatus.fragment.userStatus.UserStatusPresenter;
 import com.experiencers.playeasy.view.detailmatch.DetailMatchPresenter;
 import com.experiencers.playeasy.view.login.LoginPresenter;
 import com.experiencers.playeasy.view.main.fragment.create.CreatePresenter;
@@ -306,4 +308,37 @@ public class Repository {
                     Log.d("onComplete", "nothing");
                 });
     }
+
+    // 팀 매치 지원 현황
+    public void getRetrieveTeamApplyMatchList(String userKey, int matchId, String type, TeamStatusPresenter presenter){
+        WebService webService = RetrofitClient.getInstance().create(WebService.class);
+        Disposable disposable = webService.retrieveApplyMatchList(userKey, matchId, type)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(item ->{
+                    presenter.onSuccess(item);
+                },throwable ->{
+                    Log.d("error", "TT.. " + throwable.getMessage());
+                    throwable.printStackTrace();
+                },()->{
+                    Log.d("onComplete", "nothing");
+                });
+    }
+
+    // 개인 매치 지원 현황
+    public void getRetrieveUserApplyMatchList(String userKey, int matchId, String type, UserStatusPresenter presenter){
+        WebService webService = RetrofitClient.getInstance().create(WebService.class);
+        Disposable disposable = webService.retrieveApplyMatchList(userKey, matchId, type)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(item ->{
+                    presenter.onSuccess(item);
+                },throwable ->{
+                    Log.d("error", "TT.. " + throwable.getMessage());
+                    throwable.printStackTrace();
+                },()->{
+                    Log.d("onComplete", "nothing");
+                });
+    }
+
 }
