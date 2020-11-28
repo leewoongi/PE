@@ -50,16 +50,7 @@ public class LandingActivity extends AppCompatActivity implements LandingContrac
 
     @Override
     public void changeActivity() {
-        Intent intent;
-        String key = TokenManger.read(getApplicationContext());
-        Log.d("토큰값!!", key);
-
-        if(key == ""){
-            intent = new Intent(getApplicationContext(), LoginActivity.class);
-        }else{
-            intent = new Intent(getApplicationContext(), MainActivity.class);
-        }
-
+        Intent intent = new Intent(getApplicationContext(), LoginActivity.class);;
         startActivity(intent);
         overridePendingTransition(R.anim.fade_in,R.anim.fade_out);
         finish();
