@@ -80,11 +80,21 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.vi
         UiHelper.hideWindow(this);
     }
 
-
     @Override
     public void changeActivity() {
-        Intent intent = new Intent(this, MyInfoActivity.class);
+
+    }
+
+    @Override
+    public void changeActivity(int result) {
+        Intent intent;
+        if(result == 0){
+            intent = new Intent(this, MyInfoActivity.class);
+        }else{
+            intent = new Intent(this, MainActivity.class);
+        }
         startActivity(intent);
+        finish();
     }
 
     @Override

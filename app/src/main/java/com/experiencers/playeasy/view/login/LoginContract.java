@@ -12,6 +12,7 @@ public interface LoginContract {
 
         @Override
         void changeActivity();
+        void changeActivity(int result);
 
         @Override
         void showResult(Object object);
