@@ -26,6 +26,10 @@ public interface UserStatusContract {
         void setRecyclerAdapterView(UserStatusRecyclerViewAdapter adapterView);
         void setRecyclerAdapterModel(UserStatusRecyclerViewAdapter adapterModel);
 
+        void matchOk(int matchId, String status);
+        void matchReject(int matchId, String status);
+        void teamMatchList(Object object);
+
         @Override
         void deleteView();
     }

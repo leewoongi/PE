@@ -2,6 +2,7 @@ package com.experiencers.playeasy.view.detailapplystatus.fragment.teamStauts;
 
 import com.experiencers.playeasy.model.Repository;
 import com.experiencers.playeasy.model.entity.ApplyStatusResponse;
+import com.experiencers.playeasy.model.entity.ChangeMatchStatusRequest;
 import com.experiencers.playeasy.view.callback.RetrofitCallback;
 
 import java.util.List;
@@ -12,6 +13,7 @@ public class TeamStatusPresenter implements TeamStatusContract.presenter, Retrof
     private Repository repository;
     private TeamStatusContract.adapterView adapterView;
     private TeamStatusContract.adapterModel adapterModel;
+    private String userKey;
 
     public TeamStatusPresenter() {
         repository = new Repository();
@@ -24,6 +26,7 @@ public class TeamStatusPresenter implements TeamStatusContract.presenter, Retrof
 
     @Override
     public void receiveTeamMatch(String userKey, int matchId, String type) {
+        this.userKey = userKey;
         repository.getRetrieveTeamApplyMatchList(userKey,matchId, type, this);
     }
 
@@ -37,6 +40,27 @@ public class TeamStatusPresenter implements TeamStatusContract.presenter, Retrof
         this.adapterModel = adapterModel;
     }
 
+    @Override
+    public void matchOk(int matchId, String status) {
+        ChangeMatchStatusRequest changeMatchStatusRequest = new ChangeMatchStatusRequest(matchId, status);
+        repository.putApplyMatchTeamOX(userKey,changeMatchStatusRequest,this);
+    }
+
+    @Override
+    public void matchReject(int matchId, String status) {
+        ChangeMatchStatusRequest changeMatchStatusRequest = new ChangeMatchStatusRequest(matchId, status);
+        repository.putApplyMatchTeamOX(userKey,changeMatchStatusRequest,this);
+    }
+
+    @Override
+    public void teamMatchList(Object object) {
+        List<ApplyStatusResponse> item = (List<ApplyStatusResponse>) object;
+
+        adapterModel.add(item);
+        adapterView.refresh();
+
+    }
+
 
     @Override
     public void deleteView() {
@@ -45,11 +69,16 @@ public class TeamStatusPresenter implements TeamStatusContract.presenter, Retrof
 
     @Override
     public void onSuccess(Object object) {
-        List<ApplyStatusResponse> item = (List<ApplyStatusResponse>) object;
+        ApplyStatusResponse applyStatusResponse = (ApplyStatusResponse) object;
+        System.out.println(applyStatusResponse.getStatus());
+        String statusType = applyStatusResponse.getStatus();
 
-        if(item.size() != 0){
-            adapterModel.add(item);
-            adapterView.refresh();
+        if(statusType.equals("CONFIRMED")){
+            view.showResult(1);
+        }else{
+            view.showResult(2);
         }
+
     }
+
 }

@@ -1,6 +1,7 @@
 package com.experiencers.playeasy.view.main.fragment.mymatch.childfragment.myapplicationstatus;
 
 import com.experiencers.playeasy.model.Repository;
+import com.experiencers.playeasy.model.entity.ApplyStatusResponse;
 import com.experiencers.playeasy.model.entity.Match;
 import com.experiencers.playeasy.view.callback.RetrofitCallback;
 
@@ -40,13 +41,13 @@ public class MatchApplyPresenter implements MatchApplyContract.presenter, Retrof
 
     @Override
     public void onSuccess(Object object) {
-        List<Match> list = (List<Match>) object;
+        List<ApplyStatusResponse> list = (List<ApplyStatusResponse>) object;
         adapterModel.add(list);
         adapterView.refresh();
     }
 
     @Override
     public void deleteView() {
-
+        view = null;
     }
 }

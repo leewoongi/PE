@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -24,16 +25,17 @@ public class TeamStatusFragment extends Fragment implements TeamStatusContract.v
 
     private String userKey;
     private int matchId;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         rootView = (ViewGroup) inflater.inflate(R.layout.fragment_team_status, container, false);
 
-        init();
-        recyclerInit();
-
         presenter = new TeamStatusPresenter();
         presenter.setView(this);
+
+        init();
+        recyclerInit();
 
         userKey = TokenManger.read(rootView.getContext());
         matchId = getArguments().getInt("matchId", 0);
@@ -57,7 +59,7 @@ public class TeamStatusFragment extends Fragment implements TeamStatusContract.v
 
     @Override
     public void recyclerInit() {
-        adapter = new TeamStatusRecyclerViewAdapter();
+        adapter = new TeamStatusRecyclerViewAdapter(presenter);
         layoutManager = new LinearLayoutManager(getContext());
     }
 
@@ -68,6 +70,11 @@ public class TeamStatusFragment extends Fragment implements TeamStatusContract.v
 
     @Override
     public void showResult(Object object) {
-
+        int check = (int) object;
+        if(check == 1){
+            Toast.makeText(getActivity(), "매치를 승인했습니다.", Toast.LENGTH_SHORT).show();
+        }else{
+            Toast.makeText(getActivity(), "매치를 거절 했습니다.", Toast.LENGTH_SHORT).show();
+        }
     }
 }

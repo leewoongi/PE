@@ -18,6 +18,12 @@ import java.util.List;
 public class UserStatusRecyclerViewAdapter extends RecyclerView.Adapter<UserStatusRecyclerViewAdapter.myViewHolder> implements UserStatusContract.adapterView, UserStatusContract.adapterModel {
 
     private List<ApplyStatusResponse> item = new ArrayList<>();
+    private UserStatusPresenter presenter;
+    private int matchId;
+
+    public UserStatusRecyclerViewAdapter(UserStatusPresenter presenter) {
+        this.presenter = presenter;
+    }
 
     @NonNull
     @Override
@@ -31,6 +37,7 @@ public class UserStatusRecyclerViewAdapter extends RecyclerView.Adapter<UserStat
         holder.userStatusName.setText(item.get(position).getUser().getTeamName());
         holder.userStatusQuota.setText(String.valueOf(item.get(position).getQuota()));
         holder.userStatusPhone.setText("전화번호 : " + item.get(position).getUser().getPhone());
+        matchId = item.get(position).getMatch().getId();
     }
 
     @Override
@@ -63,6 +70,20 @@ public class UserStatusRecyclerViewAdapter extends RecyclerView.Adapter<UserStat
             userStatusPhone = itemView.findViewById(R.id.userStatusPhone);
             userStatusOk = itemView.findViewById(R.id.userStatusOk);
             userStatusX = itemView.findViewById(R.id.userStatusX);
+
+            userStatusOk.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    presenter.matchOk(matchId,"CONFIRMED");
+                }
+            });
+
+            userStatusX.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    presenter.matchReject(matchId, "DENIED");
+                }
+            });
         }
     }
 }

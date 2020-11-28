@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.experiencers.playeasy.R;
+import com.experiencers.playeasy.model.entity.ApplyStatusResponse;
 import com.experiencers.playeasy.model.entity.Match;
 import com.experiencers.playeasy.view.main.fragment.mymatch.popup.cancel.MatchCancelActivity;
 
@@ -19,7 +20,7 @@ import java.util.List;
 
 public class MatchApplyRecyclerViewAdapter extends RecyclerView.Adapter<MatchApplyRecyclerViewAdapter.myViewHolder> implements MatchApplyContract.adapterView, MatchApplyContract.adapterModel {
 
-    private List<Match> item = new ArrayList<>();
+    private List<ApplyStatusResponse> item = new ArrayList<>();
 
     @NonNull
     @Override
@@ -30,8 +31,8 @@ public class MatchApplyRecyclerViewAdapter extends RecyclerView.Adapter<MatchApp
 
     @Override
     public void onBindViewHolder(@NonNull myViewHolder holder, int position) {
-        holder.applyMatchTime.setText(item.get(position).getStartAt().substring(12, 16) + " ~ " + item.get(position).getEndAt().substring(12, 16));
-        holder.applyMatchPlace.setText(item.get(position).getLocation().getPlaceName() + " " + item.get(position).getLocation().getPlaceDetail());
+        holder.applyMatchTime.setText(item.get(position).getMatch().getStartAt().substring(12, 16) + " ~ " + item.get(position).getMatch().getEndAt().substring(12, 16));
+        //holder.applyMatchPlace.setText(item.get(position).getLocation().getPlaceName() + " " + item.get(position).getLocation().getPlaceDetail());
 
         String type;
         if (item.get(position).getType() == "SOCCER") {
@@ -58,7 +59,7 @@ public class MatchApplyRecyclerViewAdapter extends RecyclerView.Adapter<MatchApp
     }
 
     @Override
-    public void add(List<Match> list) {
+    public void add(List<ApplyStatusResponse> list) {
         item = list;
     }
 

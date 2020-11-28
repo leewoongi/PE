@@ -17,6 +17,12 @@ import java.util.List;
 
 public class TeamStatusRecyclerViewAdapter extends RecyclerView.Adapter<TeamStatusRecyclerViewAdapter.myViewHolder> implements TeamStatusContract.adapterView, TeamStatusContract.adapterModel {
     private List<ApplyStatusResponse> item = new ArrayList<>();
+    private TeamStatusPresenter presenter;
+    private int matchId;
+
+    public TeamStatusRecyclerViewAdapter(TeamStatusPresenter presenter) {
+        this.presenter = presenter;
+    }
 
     @NonNull
     @Override
@@ -30,6 +36,7 @@ public class TeamStatusRecyclerViewAdapter extends RecyclerView.Adapter<TeamStat
         holder.teamStatusName.setText(item.get(position).getUser().getTeamName());
         holder.teamStatusQuota.setText(String.valueOf(item.get(position).getQuota()));
         holder.teamStatusPhone.setText("전화번호 : " + item.get(position).getUser().getPhone());
+        matchId = item.get(position).getMatch().getId();
     }
 
     @Override
@@ -63,6 +70,19 @@ public class TeamStatusRecyclerViewAdapter extends RecyclerView.Adapter<TeamStat
             teamStatusOk = itemView.findViewById(R.id.teamStatusOk);
             teamStatusX = itemView.findViewById(R.id.teamStatusX);
 
+            teamStatusOk.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    presenter.matchOk(matchId,"CONFIRMED");
+                }
+            });
+
+            teamStatusX.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    presenter.matchReject(matchId, "DENIED");
+                }
+            });
         }
     }
 }

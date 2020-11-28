@@ -19,9 +19,14 @@ public interface TeamStatusContract {
     interface presenter extends BaseContract.presenter<view>{
         @Override
         void setView(view view);
+
         void receiveTeamMatch(String userKey, int matchId, String type);
         void setRecyclerAdapterView(TeamStatusRecyclerViewAdapter adapterView);
         void setRecyclerAdapterModel(TeamStatusRecyclerViewAdapter adapterModel);
+
+        void matchOk(int matchId, String status);
+        void matchReject(int matchId, String status);
+        void teamMatchList(Object object);
 
         @Override
         void deleteView();

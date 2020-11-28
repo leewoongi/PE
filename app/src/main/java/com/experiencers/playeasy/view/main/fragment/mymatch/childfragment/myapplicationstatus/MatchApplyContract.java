@@ -1,5 +1,6 @@
 package com.experiencers.playeasy.view.main.fragment.mymatch.childfragment.myapplicationstatus;
 
+import com.experiencers.playeasy.model.entity.ApplyStatusResponse;
 import com.experiencers.playeasy.model.entity.Match;
 import com.experiencers.playeasy.view.base.BaseContract;
 
@@ -36,7 +37,7 @@ public interface MatchApplyContract {
     }
 
     interface adapterModel{
-        void add(List<Match> list);
+        void add(List<ApplyStatusResponse> list);
     }
 
 }

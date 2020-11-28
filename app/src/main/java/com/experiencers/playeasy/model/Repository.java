@@ -206,7 +206,7 @@ public class Repository {
                 });
     }
 
-    //내가 신청한 매치 취소하기
+    //내가 신청한 매치 취소
     public void putApplyMatchCancel(String userKey, ChangeMatchStatusRequest changeMatchStatusRequest, MatchCancelPresenter presenter){
         WebService webService = RetrofitClient.getInstance().create(WebService.class);
         Disposable disposable = webService.modifyApplyStatus(userKey, changeMatchStatusRequest)
@@ -221,6 +221,40 @@ public class Repository {
                     Log.d("onComplete", "nothing");
                 });
     }
+    // 팀 승인 및 거절
+    public void putApplyMatchTeamOX(String userKey, ChangeMatchStatusRequest changeMatchStatusRequest, TeamStatusPresenter presenter){
+        WebService webService = RetrofitClient.getInstance().create(WebService.class);
+        Disposable disposable = webService.modifyApplyStatus(userKey, changeMatchStatusRequest)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(item->{
+                    presenter.onSuccess(item);
+                },throwable -> {
+                    Log.d("error", "TT.. " + throwable.getMessage());
+                    throwable.printStackTrace();
+                },() ->{
+                    Log.d("onComplete", "nothing");
+                });
+    }
+
+    // 개인 승인 및 거절
+    public void putApplyMatchUserOX(String userKey, ChangeMatchStatusRequest changeMatchStatusRequest, UserStatusPresenter presenter){
+        WebService webService = RetrofitClient.getInstance().create(WebService.class);
+        Disposable disposable = webService.modifyApplyStatus(userKey, changeMatchStatusRequest)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(item->{
+                    presenter.onSuccess(item);
+                },throwable -> {
+                    Log.d("error", "TT.. " + throwable.getMessage());
+                    throwable.printStackTrace();
+                },() ->{
+                    Log.d("onComplete", "nothing");
+                });
+    }
+
+
+
 
     /**매치 수정**/
     //매치 상세보기
@@ -316,7 +350,7 @@ public class Repository {
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(item ->{
-                    presenter.onSuccess(item);
+                    presenter.teamMatchList(item);
                 },throwable ->{
                     Log.d("error", "TT.. " + throwable.getMessage());
                     throwable.printStackTrace();
@@ -332,7 +366,7 @@ public class Repository {
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(item ->{
-                    presenter.onSuccess(item);
+                    presenter.teamMatchList(item);
                 },throwable ->{
                     Log.d("error", "TT.. " + throwable.getMessage());
                     throwable.printStackTrace();

@@ -48,6 +48,7 @@ public interface WebService {
     // 불러오기
     @GET("api/user")
     Maybe<User> retrieveUserInfo(@Header("Authorization")String userKey);
+    //Call<User> UserInfo(@Header("Authorization")String userKey);
 
 
     /**
@@ -81,12 +82,13 @@ public interface WebService {
 
     //나의 신청현황
     @GET("api/user/applications")
-    Maybe<List<Match>> retrieveApplyMatchList(@Query("type")String type,
+    Maybe<List<ApplyStatusResponse>> retrieveApplyMatchList(@Query("type")String type,
                                               @Header("Authorization")String userKey);
 
     //나의 신청 현황 -> 취소하기
+    //내가 등록한 매치 -> 매치 팀 승인 및 거절
     @PUT("api/application")
-    Maybe<Match> modifyApplyStatus(@Header("Authorization")String userKey,
+    Maybe<ApplyStatusResponse> modifyApplyStatus(@Header("Authorization")String userKey,
                                    @Body ChangeMatchStatusRequest changeMatchStatusRequest);
 
     /** 매치수정 **/

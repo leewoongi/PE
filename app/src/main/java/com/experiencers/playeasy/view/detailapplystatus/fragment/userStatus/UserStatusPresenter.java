@@ -2,6 +2,7 @@ package com.experiencers.playeasy.view.detailapplystatus.fragment.userStatus;
 
 import com.experiencers.playeasy.model.Repository;
 import com.experiencers.playeasy.model.entity.ApplyStatusResponse;
+import com.experiencers.playeasy.model.entity.ChangeMatchStatusRequest;
 import com.experiencers.playeasy.view.callback.RetrofitCallback;
 
 import java.util.List;
@@ -12,6 +13,7 @@ public class UserStatusPresenter implements UserStatusContract.presenter, Retrof
     private Repository repository;
     private UserStatusContract.adapterView adapterView;
     private UserStatusContract.adapterModel adapterModel;
+    private String userKey;
 
     public UserStatusPresenter() {
         repository = new Repository();
@@ -24,6 +26,7 @@ public class UserStatusPresenter implements UserStatusContract.presenter, Retrof
 
     @Override
     public void receiveUserMatch(String userKey, int matchId, String type) {
+        this.userKey = userKey;
         repository.getRetrieveUserApplyMatchList(userKey, matchId, type, this);
     }
 
@@ -37,14 +40,38 @@ public class UserStatusPresenter implements UserStatusContract.presenter, Retrof
         this.adapterModel = adapterModel;
     }
 
+    @Override
+    public void matchOk(int matchId, String status) {
+        ChangeMatchStatusRequest changeMatchStatusRequest = new ChangeMatchStatusRequest(matchId, status);
+        repository.putApplyMatchUserOX(userKey,changeMatchStatusRequest,this);
+    }
 
     @Override
-    public void onSuccess(Object object) {
+    public void matchReject(int matchId, String status) {
+        ChangeMatchStatusRequest changeMatchStatusRequest = new ChangeMatchStatusRequest(matchId, status);
+        repository.putApplyMatchUserOX(userKey,changeMatchStatusRequest,this);
+    }
+
+    @Override
+    public void teamMatchList(Object object) {
         List<ApplyStatusResponse> item = (List<ApplyStatusResponse>) object;
 
         adapterModel.add(item);
         adapterView.refresh();
+    }
 
+
+    @Override
+    public void onSuccess(Object object) {
+        ApplyStatusResponse applyStatusResponse = (ApplyStatusResponse) object;
+        System.out.println(applyStatusResponse.getStatus());
+        String statusType = applyStatusResponse.getStatus();
+
+        if(statusType.equals("CONFIRMED")){
+            view.showResult(1);
+        }else{
+            view.showResult(2);
+        }
     }
 
     @Override
