@@ -1,6 +1,7 @@
 package com.experiencers.playeasy.view.main.fragment.home;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,8 +36,10 @@ public class HomeRecyclerAdapter extends RecyclerView.Adapter<HomeRecyclerAdapte
         String status = "";
         if(item.get(position).getStatus().equals("WAITING")) {
             holder.matchStatus.setText("신청 가능");
+            holder.matchStatus.setTextColor(Color.parseColor("#7ce155"));
         }else{
             holder.matchStatus.setText("신청 마감");
+            holder.matchStatus.setTextColor(Color.parseColor("#d1d1d1"));
         }
         holder.matchId.setText(String.valueOf(item.get(position).getId()));
     }
@@ -66,11 +69,11 @@ public class HomeRecyclerAdapter extends RecyclerView.Adapter<HomeRecyclerAdapte
         public myViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            matchTime = itemView.findViewById(R.id.applyMatchTime);
-            matchPlace = itemView.findViewById(R.id.applyMatchPlace);
-            matchType = itemView.findViewById(R.id.applyMatchStatus);
+            matchTime = itemView.findViewById(R.id.matchTime);
+            matchPlace = itemView.findViewById(R.id.matchPlace);
+            matchType = itemView.findViewById(R.id.matchType);
             matchStatus = itemView.findViewById(R.id.matchStatus);
-            matchId = itemView.findViewById(R.id.applyMatchId);
+            matchId = itemView.findViewById(R.id.matchId);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
