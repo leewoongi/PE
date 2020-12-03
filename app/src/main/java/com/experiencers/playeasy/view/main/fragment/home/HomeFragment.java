@@ -1,18 +1,24 @@
 package com.experiencers.playeasy.view.main.fragment.home;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.experiencers.playeasy.R;
+import com.experiencers.playeasy.utill.RecyclerViewDeco;
+
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 
 import devs.mulham.horizontalcalendar.HorizontalCalendar;
 import devs.mulham.horizontalcalendar.utils.HorizontalCalendarListener;
@@ -21,6 +27,7 @@ public class HomeFragment extends Fragment implements HomeContract.view {
 
     private HomeContract.presenter presenter;
     private View rootView;
+    private TextView matchMonth;
     private RecyclerView recyclerView;
     private RecyclerView.LayoutManager layoutManager;
     private HomeRecyclerAdapter adapter;
@@ -33,6 +40,7 @@ public class HomeFragment extends Fragment implements HomeContract.view {
         rootView = inflater.inflate(R.layout.fragment_home, container, false);
 
         init();
+        dateInit();
         calenderInit();
         recyclerViewInit();
         findDate();
@@ -56,6 +64,12 @@ public class HomeFragment extends Fragment implements HomeContract.view {
         return rootView;
     }
 
+    private void dateInit() {
+        GregorianCalendar today = new GregorianCalendar();
+        int Month = today.get(Calendar.MONTH);
+        matchMonth.setText(String.valueOf(Month + 1) + " 월");
+    }
+
     @Override
     public void showResult(Object object) {
 
@@ -63,9 +77,12 @@ public class HomeFragment extends Fragment implements HomeContract.view {
 
     @Override
     public void init() {
+        matchMonth = rootView.findViewById(R.id.matchMonth);
         recyclerView = rootView.findViewById(R.id.homeItem);
         layoutManager = new LinearLayoutManager(rootView.getContext());
         adapter = new HomeRecyclerAdapter();
+
+
     }
 
     @Override
@@ -82,14 +99,16 @@ public class HomeFragment extends Fragment implements HomeContract.view {
 
     @Override
     public void recyclerViewInit() {
+        recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapter);
+        recyclerView.addItemDecoration(new RecyclerViewDeco(30));
     }
 
     @Override
     public void calenderInit() {
         Calendar startDate = Calendar.getInstance();
-        startDate.add(Calendar.MONTH, -1);
+        startDate.add(Calendar.MONTH, 0);
 
         /* end after 1 month from now */
         Calendar endDate = Calendar.getInstance();
@@ -98,6 +117,13 @@ public class HomeFragment extends Fragment implements HomeContract.view {
         horizontalCalendar = new HorizontalCalendar.Builder(rootView, R.id.horizontalCalendarView)
                 .range(startDate, endDate)
                 .datesNumberOnScreen(5)
+                .configure()
+                    .showTopText(false)
+                    .selectedDateBackground(rootView.getContext().getDrawable(R.drawable.calendar_round_corner))
+                    .selectorColor(Color.TRANSPARENT)
+                    .sizeBottomText(15)
+                    .sizeBottomText(15)
+                    .end()
                 .build();
     }
 

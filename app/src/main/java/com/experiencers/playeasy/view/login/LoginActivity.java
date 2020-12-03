@@ -2,8 +2,11 @@ package com.experiencers.playeasy.view.login;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.SpannableString;
+import android.text.style.UnderlineSpan;
 import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
 
 
 import androidx.annotation.Nullable;
@@ -25,6 +28,7 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.vi
 
     private LoginPresenter presenter;
     private String access_token;
+    private TextView loginTitle;
 
     // 세션 콜백 구현
     private ISessionCallback sessionCallback = new ISessionCallback() {
@@ -73,11 +77,13 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.vi
         presenter = new LoginPresenter();
         presenter.setView(this, getApplicationContext());
 
+
     }
 
     @Override
     public void init() {
         UiHelper.hideWindow(this);
+        loginTitle = findViewById(R.id.login_title);
     }
 
     @Override
