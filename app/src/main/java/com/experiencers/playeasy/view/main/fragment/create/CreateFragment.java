@@ -1,5 +1,6 @@
 package com.experiencers.playeasy.view.main.fragment.create;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -55,7 +56,6 @@ public class CreateFragment extends Fragment implements CreateContract.view, Vie
     private TimePicker timePickerStart,timePickerEnd;
     private Button fiveFootSal,sixFootSal,soccer;
     private EditText matchFee;
-    private EditText needPeople;
     private EditText matchPhoneNumber;
     private EditText matchEtc;
     private String today;
@@ -123,7 +123,6 @@ public class CreateFragment extends Fragment implements CreateContract.view, Vie
         sixFootSal = rootView.findViewById(R.id.sixFootSal);
         soccer = rootView.findViewById(R.id.soccer);
         matchFee = rootView.findViewById(R.id.matchFee);
-        needPeople = rootView.findViewById(R.id.needPeople);
         matchPhoneNumber = rootView.findViewById(R.id.matchPhoneNumber);
         matchEtc = rootView.findViewById(R.id.matchEtc);
         mapId = rootView.findViewById(R.id.mapId);
@@ -135,17 +134,25 @@ public class CreateFragment extends Fragment implements CreateContract.view, Vie
     public void calendarInit() {
 
         Calendar startDate = Calendar.getInstance();
-        startDate.add(Calendar.MONTH, -1);
+        startDate.add(Calendar.MONTH, 0);
 
+        /* end after 1 month from now */
         Calendar endDate = Calendar.getInstance();
-        endDate.add(Calendar.MONTH, 1);
+        endDate.add(Calendar.MONTH,1);
 
         horizontalCalendar = new HorizontalCalendar.Builder(rootView, R.id.calendarViewMatchCreate)
                 .range(startDate, endDate)
                 .datesNumberOnScreen(5)
+                .configure()
+                .showTopText(false)
+                .selectedDateBackground(rootView.getContext().getDrawable(R.drawable.calendar_round_corner))
+                .selectorColor(Color.TRANSPARENT)
+                .sizeBottomText(15)
+                .sizeBottomText(15)
+                .end()
                 .build();
-
     }
+
 
     @Override
     public String convertDate(Calendar date) {
@@ -229,7 +236,7 @@ public class CreateFragment extends Fragment implements CreateContract.view, Vie
 
         CreateMatchRequest matchRequest = new CreateMatchRequest(type, matchEtc.getText().toString(), startTime,
                 endTime, Integer.parseInt(matchFee.getText().toString()),matchPhoneNumber.getText().toString(),
-                Integer.parseInt(needPeople.getText().toString()), Integer.parseInt(mapId.getText().toString()),
+                0, Integer.parseInt(mapId.getText().toString()),
                 matchLocationMap.getText().toString(),addressName.getText().toString(), matchDetailMap.getText().toString());
 
         presenter.sendMatchInfo(userKey, matchRequest);

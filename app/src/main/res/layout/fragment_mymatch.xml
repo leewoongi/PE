@@ -10,6 +10,7 @@
         android:id="@+id/materialToolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -20,8 +21,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:fontFamily="sans-serif"
+            android:gravity="center_horizontal"
+            android:lineSpacingExtra="6sp"
             android:text="나의 매치 정보"
-            android:textSize="20dp"
+            android:textColor="#000000"
+            android:textSize="20sp"
             android:textStyle="bold" />
     </com.google.android.material.appbar.MaterialToolbar>
 
@@ -32,6 +37,9 @@
         android:layout_marginStart="40dp"
         android:layout_marginTop="40dp"
         android:layout_marginEnd="40dp"
+        app:tabSelectedTextColor="@color/black"
+        app:tabBackground="@drawable/tab_background_selector"
+        app:tabIndicator="@null"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/materialToolbar">
@@ -40,13 +48,23 @@
             android:id="@+id/registerMyMatch"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="내가 등록한 매치"/>
+            android:text="내가 등록한 매치"
+            android:fontFamily="sans-serif"
+            android:textStyle="bold"
+            android:textSize="12sp"
+            android:textColor="#000000"
+            android:lineSpacingExtra="4sp" />
 
         <com.google.android.material.tabs.TabItem
             android:id="@+id/applyStatus"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="나의 신청 현황"/>
+            android:text="나의 신청 현황"
+            android:fontFamily="sans-serif"
+            android:textStyle="bold"
+            android:textSize="12sp"
+            android:textColor="#000000"
+            android:lineSpacingExtra="4sp"/>
 
     </com.google.android.material.tabs.TabLayout>
 
