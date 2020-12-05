@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.experiencers.playeasy.R;
 import com.experiencers.playeasy.application.TokenManger;
+import com.experiencers.playeasy.utill.RecyclerViewDeco;
 
 public class RegisterFragment extends Fragment implements RegisterContract.view{
 
@@ -21,6 +22,7 @@ public class RegisterFragment extends Fragment implements RegisterContract.view{
     private RecyclerView recyclerView;
     private RegisterRecyclerViewAdapter adapter;
     private RecyclerView.LayoutManager layoutManager;
+    private RecyclerViewDeco recyclerViewDeco;
 
     @Nullable
     @Override
@@ -53,6 +55,8 @@ public class RegisterFragment extends Fragment implements RegisterContract.view{
     public void recyclerInit() {
         adapter = new RegisterRecyclerViewAdapter();
         layoutManager = new LinearLayoutManager(rootView.getContext());
+        recyclerViewDeco = new RecyclerViewDeco(30);
+        recyclerView.addItemDecoration(recyclerViewDeco);
     }
 
     @Override

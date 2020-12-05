@@ -10,8 +10,9 @@ public class StatusMatch {
     private String phone;
     private int quota;
     private String status;
+    private Location location;
 
-    public StatusMatch(int id, String type, String description, String startAt, String endAt, int fee, String phone, int quota, String status) {
+    public StatusMatch(int id, String type, String description, String startAt, String endAt, int fee, String phone, int quota, String status, Location location) {
         this.id = id;
         this.type = type;
         this.description = description;
@@ -21,6 +22,7 @@ public class StatusMatch {
         this.phone = phone;
         this.quota = quota;
         this.status = status;
+        this.location = location;
     }
 
     public int getId() {
@@ -93,5 +95,13 @@ public class StatusMatch {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public Location getLocation() {
+        return location;
+    }
+
+    public void setLocation(Location location) {
+        this.location = location;
     }
 }

@@ -1,6 +1,7 @@
 package com.experiencers.playeasy.view.main.fragment.mymatch.childfragment.myapplicationstatus;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,7 +13,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.experiencers.playeasy.R;
 import com.experiencers.playeasy.model.entity.ApplyStatusResponse;
-import com.experiencers.playeasy.model.entity.Match;
 import com.experiencers.playeasy.view.main.fragment.mymatch.popup.cancel.MatchCancelActivity;
 
 import java.util.ArrayList;
@@ -31,19 +31,34 @@ public class MatchApplyRecyclerViewAdapter extends RecyclerView.Adapter<MatchApp
 
     @Override
     public void onBindViewHolder(@NonNull myViewHolder holder, int position) {
+
+        holder.applyMatchDate.setText(item.get(position).getMatch().getStartAt().substring(0,10));
         holder.applyMatchTime.setText(item.get(position).getMatch().getStartAt().substring(12, 16) + " ~ " + item.get(position).getMatch().getEndAt().substring(12, 16));
-        //holder.applyMatchPlace.setText(item.get(position).getLocation().getPlaceName() + " " + item.get(position).getLocation().getPlaceDetail());
+        holder.applyMatchPlace.setText(item.get(position).getMatch().getLocation().getPlaceDetail() + " " + item.get(position).getMatch().getLocation().getPlaceDetail());
 
         String type;
-        if (item.get(position).getType() == "SOCCER") {
-            type = "11";
-        } else if (item.get(position).getType() == "FUTSAL5") {
-            type = "5";
+        if (item.get(position).getMatch().getType().equals("SOCCER")) {
+            holder.applyMatchType.setText("축구 11 : 11");
+        } else if (item.get(position).getMatch().getType().equals("FUTSAL5")) {
+            holder.applyMatchType.setText("풋살 5 : 5");
         } else {
-            type = "6";
+            holder.applyMatchType.setText("풋살 6 : 6");
         }
-        holder.applyPeople.setText(item.get(position).getQuota() + " / " + type);
-        holder.applyMatchContinue.setText(item.get(position).getStatus());
+
+        if(item.get(position).getStatus().equals("WAITING")){
+            holder.applyMatchContinue.setText("대기 중");
+            holder.applyMatchContinue.setTextColor(Color.rgb(144,144,144));
+
+        }else if(item.get(position).getStatus().equals("CONFIRMED")){
+            holder.applyMatchContinue.setText("승인됨");
+            holder.applyMatchContinue.setTextColor(Color.rgb(124,255,85));
+
+        }else{
+            holder.applyMatchContinue.setText("취소됨");
+            holder.applyMatchContinue.setTextColor(Color.rgb(205,12,34));
+            holder.applyCancel.setEnabled(false);
+        }
+
         holder.applyMatchId.setText(String.valueOf(item.get(position).getId()));
 
     }
@@ -65,19 +80,22 @@ public class MatchApplyRecyclerViewAdapter extends RecyclerView.Adapter<MatchApp
 
     public class myViewHolder extends RecyclerView.ViewHolder {
 
+        private TextView applyMatchDate;
         private TextView applyMatchTime;
         private TextView applyMatchPlace;
-        private TextView applyPeople;
         private TextView applyMatchId;
+        private TextView applyMatchType;
         private TextView applyMatchContinue;
         private Button applyCancel;
 
         public myViewHolder(@NonNull View itemView) {
             super(itemView);
+
+            applyMatchDate = itemView.findViewById(R.id.applyMatchDate);
             applyMatchTime = itemView.findViewById(R.id.applyMatchTime);
             applyMatchPlace = itemView.findViewById(R.id.applyMatchPlace);
-            applyPeople = itemView.findViewById(R.id.applyPeople);
             applyMatchId = itemView.findViewById(R.id.applyMatchId);
+            applyMatchType = itemView.findViewById(R.id.applyMatchType);
             applyMatchContinue = itemView.findViewById(R.id.applyMatchContinue);
             applyCancel = itemView.findViewById(R.id.applyCancel);
 
