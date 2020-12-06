@@ -22,7 +22,6 @@ public class DetailMatchActivity extends AppCompatActivity implements DetailMatc
     private TextView detailTeamName;
     private TextView detailPlace;
     private TextView detailLocation;
-    private TextView detailNeed;
     private TextView detailType;
     private TextView detailFee;
     private TextView detailPhone;
@@ -58,7 +57,6 @@ public class DetailMatchActivity extends AppCompatActivity implements DetailMatc
         detailTeamName = findViewById(R.id.detailTeamName);
         detailPlace = findViewById(R.id.detailPlace);
         detailLocation = findViewById(R.id.detailLocation);
-        detailNeed = findViewById(R.id.detailNeed);
         detailType = findViewById(R.id.detailType);
         detailFee = findViewById(R.id.detailFee);
         detailPhone = findViewById(R.id.detailPhone);
@@ -84,7 +82,6 @@ public class DetailMatchActivity extends AppCompatActivity implements DetailMatc
         detailTeamName.setText(item.getTeamName());
         detailPlace.setText(item.getLocation().getPlaceName() + " " +item.getLocation().getPlaceDetail());
         detailLocation.setText(item.getLocation().getAddressName());
-        detailNeed.setText(String.valueOf(item.getQuota()));
         detailType.setText(item.getType());
         detailFee.setText(String.valueOf(item.getFee()));
         detailPhone.setText(item.getPhone());
