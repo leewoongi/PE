@@ -1,5 +1,6 @@
 package com.experiencers.playeasy.view.modifymatch;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -48,7 +49,6 @@ public class ModifyMatchActivity extends AppCompatActivity implements ModifyMatc
     private TimePicker timePickerStartModify,timePickerEndModify;
     private Button fiveFootSalModify,sixFootSalModify,soccerModify;
     private EditText matchModifyFee;
-    private EditText needPeopleModify;
     private EditText matchModifyPhoneNumber;
     private EditText matchModifyEtc;
 
@@ -134,9 +134,16 @@ public class ModifyMatchActivity extends AppCompatActivity implements ModifyMatc
         Calendar endDate = Calendar.getInstance();
         endDate.add(Calendar.MONTH, 1);
 
-        calendarViewMatchModify = new HorizontalCalendar.Builder(this, R.id.calendarViewMatchModify)
+        calendarViewMatchModify =  new HorizontalCalendar.Builder(this,R.id.calendarViewMatchModify)
                 .range(startDate, endDate)
                 .datesNumberOnScreen(5)
+                .configure()
+                    .showTopText(false)
+                    .selectedDateBackground(getDrawable(R.drawable.calendar_round_corner))
+                    .selectorColor(Color.TRANSPARENT)
+                    .sizeBottomText(15)
+                    .sizeBottomText(15)
+                    .end()
                 .build();
     }
 
@@ -250,7 +257,7 @@ public class ModifyMatchActivity extends AppCompatActivity implements ModifyMatc
                 endTime,
                 Integer.parseInt(matchModifyFee.getText().toString()),
                 matchModifyPhoneNumber.getText().toString(),
-                Integer.parseInt(needPeopleModify.getText().toString()),
+                0,
                 Integer.parseInt(mapIdModify.getText().toString()),
                 matchModifyLocationMap.getText().toString(),
                 addressNameModify.getText().toString(),
@@ -272,7 +279,6 @@ public class ModifyMatchActivity extends AppCompatActivity implements ModifyMatc
         matchModifyLocationMap.setText(item.getLocation().getPlaceName());
         matchModifyDetailMap.setText(item.getLocation().getPlaceDetail());
         matchModifyFee.setText(String.valueOf(item.getFee()));
-        needPeopleModify.setText(String.valueOf(item.getQuota()));
         matchModifyPhoneNumber.setText(item.getPhone());
         matchModifyEtc.setText(item.getDescription());
         mapIdModify.setText(String.valueOf(item.getLocation().getId()));

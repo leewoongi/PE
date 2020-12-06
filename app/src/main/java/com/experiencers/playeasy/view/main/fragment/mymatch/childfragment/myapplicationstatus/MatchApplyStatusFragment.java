@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.experiencers.playeasy.R;
 import com.experiencers.playeasy.application.TokenManger;
+import com.experiencers.playeasy.utill.RecyclerViewDeco;
 
 public class MatchApplyStatusFragment extends Fragment implements MatchApplyContract.view {
 
@@ -28,6 +29,7 @@ public class MatchApplyStatusFragment extends Fragment implements MatchApplyCont
     private RecyclerView recyclerView;
     private MatchApplyRecyclerViewAdapter adapter;
     private RecyclerView.LayoutManager layoutManager;
+    private RecyclerViewDeco recyclerViewDeco;
 
     @Nullable
     @Override
@@ -47,6 +49,7 @@ public class MatchApplyStatusFragment extends Fragment implements MatchApplyCont
 
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapter);
+        recyclerView.addItemDecoration(recyclerViewDeco);
 
         selectType.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -85,6 +88,7 @@ public class MatchApplyStatusFragment extends Fragment implements MatchApplyCont
     public void recyclerInit() {
         adapter = new MatchApplyRecyclerViewAdapter();
         layoutManager = new LinearLayoutManager(getContext());
+        recyclerViewDeco = new RecyclerViewDeco(30);
     }
 
     @Override

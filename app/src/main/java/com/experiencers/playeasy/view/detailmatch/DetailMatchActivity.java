@@ -82,8 +82,15 @@ public class DetailMatchActivity extends AppCompatActivity implements DetailMatc
         detailTeamName.setText(item.getTeamName());
         detailPlace.setText(item.getLocation().getPlaceName() + " " +item.getLocation().getPlaceDetail());
         detailLocation.setText(item.getLocation().getAddressName());
-        detailType.setText(item.getType());
-        detailFee.setText(String.valueOf(item.getFee()));
+        if(item.getType().equals("FUTSAL5")){
+            detailType.setText("풋살 5 : 5");
+        }else if(item.getType().equals("FUTSAL6")){
+            detailType.setText("풋살 6 : 6");
+        }else{
+            detailType.setText("축구 11 : 11");
+        }
+
+        detailFee.setText(String.valueOf(item.getFee()) + " 원");
         detailPhone.setText(item.getPhone());
         detailEtc.setText(item.getDescription());
     }

@@ -30,9 +30,18 @@ public class HomeRecyclerAdapter extends RecyclerView.Adapter<HomeRecyclerAdapte
 
     @Override
     public void onBindViewHolder(@NonNull myViewHolder holder, int position) {
+        holder.matchDate.setText(item.get(position).getStartAt().substring(0,10));
         holder.matchTime.setText(item.get(position).getStartAt().substring(12,16) + " ~ "+ item.get(position).getEndAt().substring(12,16));
         holder.matchPlace.setText(item.get(position).getLocation().getPlaceName() + " " +item.get(position).getLocation().getPlaceDetail());
-        holder.matchType.setText(item.get(position).getType());
+
+        if(item.get(position).getType().equals("FUTSAL5")){
+            holder.matchType.setText("풋살 5 : 5");
+        }else if(item.get(position).getType().equals("FUTSAL6")){
+            holder.matchType.setText("풋살 6 : 6");
+        }else{
+            holder.matchType.setText("축구 11 : 11");
+        }
+
         String status = "";
         if(item.get(position).getStatus().equals("WAITING")) {
             holder.matchStatus.setText("신청 가능");
@@ -60,6 +69,7 @@ public class HomeRecyclerAdapter extends RecyclerView.Adapter<HomeRecyclerAdapte
     }
 
     public class myViewHolder extends RecyclerView.ViewHolder {
+        private TextView matchDate;
         private TextView matchTime;
         private TextView matchPlace;
         private TextView matchType;
@@ -69,6 +79,7 @@ public class HomeRecyclerAdapter extends RecyclerView.Adapter<HomeRecyclerAdapte
         public myViewHolder(@NonNull View itemView) {
             super(itemView);
 
+            matchDate = itemView.findViewById(R.id.matchDate);
             matchTime = itemView.findViewById(R.id.matchTime);
             matchPlace = itemView.findViewById(R.id.matchPlace);
             matchType = itemView.findViewById(R.id.matchType);
