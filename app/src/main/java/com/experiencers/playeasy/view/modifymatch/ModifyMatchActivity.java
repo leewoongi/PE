@@ -118,7 +118,6 @@ public class ModifyMatchActivity extends AppCompatActivity implements ModifyMatc
         sixFootSalModify = findViewById(R.id.sixFootSalModify);
         soccerModify = findViewById(R.id.soccerModify);
         matchModifyFee = findViewById(R.id.matchModifyFee);
-        needPeopleModify = findViewById(R.id.needPeopleModify);
         matchModifyPhoneNumber = findViewById(R.id.matchModifyPhoneNumber);
         matchModifyEtc = findViewById(R.id.matchModifyEtc);
         mapIdModify = findViewById(R.id.mapIdModify);
