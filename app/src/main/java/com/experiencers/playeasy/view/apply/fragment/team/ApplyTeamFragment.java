@@ -49,8 +49,8 @@ public class ApplyTeamFragment extends Fragment implements ApplyTeamContract.vie
 
     @Override
     public void init() {
-        applyTeamMember = rootView.findViewById(R.id.applyUserMember);
-        applyTeamButton = rootView.findViewById(R.id.applyUserButton);
+        applyTeamMember = rootView.findViewById(R.id.applyTeamMember);
+        applyTeamButton = rootView.findViewById(R.id.applyTeamButton);
     }
 
     @Override

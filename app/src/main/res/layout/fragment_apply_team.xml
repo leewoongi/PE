@@ -7,54 +7,72 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <TextView
-        android:id="@+id/applyUserMemberTitle"
+        android:id="@+id/applyTeamMemberTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginStart="76dp"
+        android:layout_marginTop="34dp"
+        android:fontFamily="sans-serif"
+        android:lineSpacingExtra="6sp"
         android:text="참석인원"
-        android:textSize="20dp"
+        android:textColor="#000000"
+        android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/applyUserMember"
-        android:layout_width="76dp"
-        android:layout_height="37dp"
-        android:layout_marginStart="120dp"
+        android:id="@+id/applyTeamMember"
+        android:layout_width="105dp"
+        android:layout_height="44dp"
+        android:layout_marginStart="38dp"
         android:layout_marginTop="27dp"
-        android:layout_marginEnd="20dp"
-        android:ems="10"
         android:hint="6"
+        android:fontFamily="sans-serif"
+        android:textStyle="normal"
+        android:textSize="18sp"
+        android:textColor="#7f7f7f"
+        android:letterSpacing="0.02"
+        android:lineSpacingExtra="6sp"
+        android:gravity="center"
         android:inputType="number"
-        android:textSize="14dp"
-        app:layout_constraintEnd_toStartOf="@+id/applyUserMemberCountTitle"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/applyUserMemberTitle" />
+        android:background="@drawable/textview_round_corner"
+        app:layout_constraintStart_toStartOf="@+id/applyTeamMemberTitle"
+        app:layout_constraintTop_toBottomOf="@+id/applyTeamMemberTitle" />
 
     <TextView
-        android:id="@+id/applyUserMemberCountTitle"
+        android:id="@+id/applyTeamMemberCountTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="10dp"
+        android:fontFamily="sans-serif"
+        android:letterSpacing="0.02"
+        android:lineSpacingExtra="6sp"
         android:text="명"
-        android:textSize="20dp"
-        app:layout_constraintBottom_toBottomOf="@+id/applyUserMember"
-        app:layout_constraintStart_toEndOf="@+id/applyUserMember" />
+        android:textColor="#404040"
+        android:textSize="18sp"
+        android:textStyle="normal"
+        app:layout_constraintBottom_toBottomOf="@+id/applyTeamMember"
+        app:layout_constraintStart_toEndOf="@+id/applyTeamMember"
+        app:layout_constraintTop_toTopOf="@+id/applyTeamMember" />
 
     <Button
-        android:id="@+id/applyUserButton"
-        style="@style/Widget.MaterialComponents.Button.TextButton"
-        android:layout_width="0dp"
+        android:id="@+id/applyTeamButton"
+        android:layout_width="match_parent"
         android:layout_height="74dp"
-        android:layout_marginTop="63dp"
+        android:layout_marginTop="72dp"
         android:text="확인"
-        android:textSize="20dp"
+        android:fontFamily="sans-serif"
         android:textStyle="bold"
+        android:textSize="23sp"
+        android:textColor="#000000"
+        android:lineSpacingExtra="7sp"
+        android:gravity="center"
+        android:background="@color/colorPoint"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/applyUserMember" />
+        app:layout_constraintTop_toBottomOf="@+id/applyTeamMember" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

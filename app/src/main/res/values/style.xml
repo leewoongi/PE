@@ -11,4 +11,7 @@
         <item name="android:textSize">12dp</item>
     </style>
 
+    <style name="myTextButton" parent="Widget.MaterialComponents.Button.TextButton">
+        <item name = "android:backgroundTint">@color/colorPoint</item>
+    </style>
 </resources>

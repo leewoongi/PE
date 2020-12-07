@@ -1,11 +1,7 @@
 package com.experiencers.playeasy.view.apply.activity;
 
-import android.content.Context;
-import android.os.Bundle;
-import android.view.Display;
-import android.view.Window;
-import android.view.WindowManager;
 
+import android.os.Bundle;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager2.widget.ViewPager2;
