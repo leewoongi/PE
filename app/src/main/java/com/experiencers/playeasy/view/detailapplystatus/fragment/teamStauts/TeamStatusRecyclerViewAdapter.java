@@ -15,6 +15,8 @@ import com.experiencers.playeasy.model.entity.ApplyStatusResponse;
 import java.util.ArrayList;
 import java.util.List;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class TeamStatusRecyclerViewAdapter extends RecyclerView.Adapter<TeamStatusRecyclerViewAdapter.myViewHolder> implements TeamStatusContract.adapterView, TeamStatusContract.adapterModel {
     private List<ApplyStatusResponse> item = new ArrayList<>();
     private TeamStatusPresenter presenter;
@@ -33,8 +35,9 @@ public class TeamStatusRecyclerViewAdapter extends RecyclerView.Adapter<TeamStat
 
     @Override
     public void onBindViewHolder(@NonNull myViewHolder holder, int position) {
+       //나중에 사진 추가
         holder.teamStatusName.setText(item.get(position).getUser().getTeamName());
-        holder.teamStatusQuota.setText(String.valueOf(item.get(position).getQuota()));
+        holder.teamStatusMember.setText(item.get(position).getQuota() + "명");
         holder.teamStatusPhone.setText("전화번호 : " + item.get(position).getUser().getPhone());
         matchId = item.get(position).getMatch().getId();
     }
@@ -55,8 +58,10 @@ public class TeamStatusRecyclerViewAdapter extends RecyclerView.Adapter<TeamStat
     }
 
     public class myViewHolder extends RecyclerView.ViewHolder {
+
+        private CircleImageView circleImageView;
         private TextView teamStatusName;
-        private TextView teamStatusQuota;
+        private TextView teamStatusMember;
         private TextView teamStatusPhone;
         private Button teamStatusOk;
         private Button teamStatusX;
@@ -64,8 +69,9 @@ public class TeamStatusRecyclerViewAdapter extends RecyclerView.Adapter<TeamStat
         public myViewHolder(@NonNull View itemView) {
             super(itemView);
 
+            circleImageView = itemView.findViewById(R.id.circleImageView);
             teamStatusName = itemView.findViewById(R.id.teamStatusName);
-            teamStatusQuota = itemView.findViewById(R.id.teamStatusQuota);
+            teamStatusMember = itemView.findViewById(R.id.teamStatusMember);
             teamStatusPhone = itemView.findViewById(R.id.teamStatusPhone);
             teamStatusOk = itemView.findViewById(R.id.teamStatusOk);
             teamStatusX = itemView.findViewById(R.id.teamStatusX);

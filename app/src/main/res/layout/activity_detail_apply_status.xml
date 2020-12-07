@@ -22,18 +22,25 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:fontFamily="sans-serif"
+            android:gravity="center_horizontal"
+            android:lineSpacingExtra="6sp"
             android:text="지원 현황"
-            android:textSize="20dp"
+            android:textColor="#000000"
+            android:textSize="20sp"
             android:textStyle="bold" />
     </com.google.android.material.appbar.MaterialToolbar>
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/detailApplyStatusTabLayout"
-        android:layout_width="match_parent"
+        android:layout_width="234dp"
         android:layout_height="0dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
+        app:tabBackground="@drawable/tab_background_selector"
+        app:tabIndicator="@null"
+        app:tabSelectedTextColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/detailApplyStatusToolbar">
@@ -56,17 +63,32 @@
         android:id="@+id/detailApplyViewpager"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="22dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginEnd="22dp"
         android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/detailApplyStatusTabLayout">
+        app:layout_constraintTop_toBottomOf="@+id/applyTotalCount">
 
     </androidx.viewpager2.widget.ViewPager2>
 
+    <TextView
+        android:id="@+id/applyTotalCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="22dp"
+        android:layout_marginTop="22dp"
+        android:fontFamily="sans-serif"
+        android:gravity="center_horizontal"
+        android:lineSpacingExtra="5sp"
+        android:text="1개 팀"
+        android:textColor="#db2391"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/detailApplyStatusTabLayout" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
