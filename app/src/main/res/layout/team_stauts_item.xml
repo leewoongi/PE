@@ -77,12 +77,12 @@
             app:layout_constraintTop_toBottomOf="@+id/teamStatusMemberTitle" />
 
         <Button
-            style="@style/Widget.MaterialComponents.Button.TextButton"
             android:id="@+id/teamStatusOk"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="49dp"
-            android:layout_marginEnd="42dp"
+            android:layout_marginEnd="4dp"
             android:layout_marginBottom="17dp"
             android:text="승인"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -90,11 +90,11 @@
             app:layout_constraintTop_toBottomOf="@+id/teamStatusPhone" />
 
         <Button
-            style="@style/Widget.MaterialComponents.Button.TextButton"
             android:id="@+id/teamStatusX"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
-            android:layout_marginEnd="16dp"
+            android:layout_marginEnd="4dp"
             android:text="거절"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/teamStatusOk" />
@@ -103,7 +103,7 @@
             android:id="@+id/teamStatusContinue"
             android:layout_width="86dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="23dp"
+            android:layout_marginStart="16dp"
             android:layout_marginBottom="31dp"
             android:fontFamily="sans-serif"
             android:gravity="center_horizontal"
