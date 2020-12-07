@@ -66,7 +66,6 @@ public class UserStatusRecyclerViewAdapter extends RecyclerView.Adapter<UserStat
             super(itemView);
 
             userStatusName = itemView.findViewById(R.id.userStatusName);
-            userStatusQuota = itemView.findViewById(R.id.userStatusQuota);
             userStatusPhone = itemView.findViewById(R.id.userStatusPhone);
             userStatusOk = itemView.findViewById(R.id.userStatusOk);
             userStatusX = itemView.findViewById(R.id.userStatusX);

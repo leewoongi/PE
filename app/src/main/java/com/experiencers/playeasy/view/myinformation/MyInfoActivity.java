@@ -27,9 +27,9 @@ public class MyInfoActivity extends AppCompatActivity implements MyInfoContract.
 
     private CircleImageView myImage;
     private TextView myEmail;
-    private EditText myName;
+    private TextView myName;
     private EditText myAge;
-    private TextView myTeam;
+    private EditText myTeam;
     private EditText myPhone;
     private EditText myDescription;
 
