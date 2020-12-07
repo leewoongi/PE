@@ -35,7 +35,6 @@ public class UserStatusRecyclerViewAdapter extends RecyclerView.Adapter<UserStat
     @Override
     public void onBindViewHolder(@NonNull myViewHolder holder, int position) {
         holder.userStatusName.setText(item.get(position).getUser().getTeamName());
-        holder.userStatusQuota.setText(String.valueOf(item.get(position).getQuota()));
         holder.userStatusPhone.setText("전화번호 : " + item.get(position).getUser().getPhone());
         matchId = item.get(position).getMatch().getId();
     }

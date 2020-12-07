@@ -60,20 +60,17 @@
         android:id="@+id/myEmail"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="43dp"
-        android:layout_marginTop="28dp"
-        android:layout_marginEnd="32dp"
-        android:text="t2korea@naver.com"
+        android:layout_marginStart="104dp"
+        android:background="@drawable/edit_text_bottomline"
         android:fontFamily="sans-serif"
+        android:gravity="center"
         android:lineSpacingExtra="8sp"
+        android:text="t2korea@naver.com"
         android:textColor="#61000000"
         android:textSize="16sp"
         android:textStyle="normal"
-        android:gravity="center"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/myPageEmailTitle"
-        app:layout_constraintTop_toBottomOf="@+id/myImage" />
+        app:layout_constraintTop_toTopOf="@+id/myPageEmailTitle" />
 
     <TextView
         android:id="@+id/myPageMyNameTitle"
@@ -93,21 +90,20 @@
 
     <TextView
         android:id="@+id/myName"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="32dp"
-        android:text="이운기"
+        android:background="@drawable/edit_text_bottomline"
         android:fontFamily="sans-serif"
+        android:gravity="center"
         android:lineSpacingExtra="8sp"
+        android:privateImeOptions="defaultInputmode = korean"
+        android:text="이운기"
         android:textColor="#61000000"
         android:textSize="16sp"
         android:textStyle="normal"
-        android:gravity="center"
-        android:privateImeOptions="defaultInputmode = korean"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/myEmail"
         app:layout_constraintStart_toStartOf="@+id/myEmail"
-        app:layout_constraintTop_toBottomOf="@+id/myEmail" />
+        app:layout_constraintTop_toTopOf="@+id/myPageMyNameTitle" />
 
     <TextView
         android:id="@+id/myPageMyAgeTitle"
@@ -128,20 +124,18 @@
         android:id="@+id/myAge"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="32dp"
-        android:text="29"
         android:fontFamily="sans-serif"
+        android:gravity="center"
+        android:inputType="number"
         android:lineSpacingExtra="8sp"
+        android:text="29"
         android:textColor="#61000000"
         android:textSize="16sp"
         android:textStyle="normal"
-        android:background="@null"
-        android:gravity="center"
-        android:inputType="number"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:background="@drawable/edit_text_bottomline"
+        app:layout_constraintEnd_toEndOf="@+id/myName"
         app:layout_constraintStart_toStartOf="@+id/myName"
-        app:layout_constraintTop_toBottomOf="@+id/myName" />
+        app:layout_constraintTop_toTopOf="@+id/myPageMyAgeTitle" />
 
     <TextView
         android:id="@+id/myPageMyTeamTitle"
@@ -161,22 +155,20 @@
 
     <EditText
         android:id="@+id/myTeam"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="32dp"
-        android:text="없음"
+        android:background="@drawable/edit_text_bottomline"
         android:fontFamily="sans-serif"
+        android:gravity="center"
         android:lineSpacingExtra="8sp"
+        android:privateImeOptions="defaultInputmode = korean"
+        android:text="없음"
         android:textColor="#61000000"
         android:textSize="16sp"
         android:textStyle="normal"
-        android:background="@null"
-        android:gravity="center"
-        android:privateImeOptions="defaultInputmode = korean"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/myAge"
         app:layout_constraintStart_toStartOf="@+id/myAge"
-        app:layout_constraintTop_toBottomOf="@+id/myAge" />
+        app:layout_constraintTop_toTopOf="@+id/myPageMyTeamTitle" />
 
     <TextView
         android:id="@+id/myPageMyPhoneTitle"
@@ -196,22 +188,20 @@
 
     <EditText
         android:id="@+id/myPhone"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="32dp"
-        android:text="010-8631-0498"
-        android:background="@null"
+        android:background="@drawable/edit_text_bottomline"
         android:fontFamily="sans-serif"
+        android:gravity="center"
+        android:inputType="phone"
         android:lineSpacingExtra="8sp"
+        android:text="010-8631-0498"
         android:textColor="#61000000"
         android:textSize="16sp"
         android:textStyle="normal"
-        android:inputType="phone"
-        android:gravity="center"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/myTeam"
         app:layout_constraintStart_toStartOf="@+id/myTeam"
-        app:layout_constraintTop_toBottomOf="@+id/myTeam" />
+        app:layout_constraintTop_toTopOf="@+id/myPageMyPhoneTitle" />
 
     <TextView
         android:id="@+id/myPageMyInformationTitle"
@@ -234,7 +224,6 @@
         android:layout_width="370dp"
         android:layout_height="72dp"
         android:layout_marginTop="16dp"
-        android:background="@null"
         android:fontFamily="sans-serif"
         android:lineSpacingExtra="8sp"
         android:textColor="#61000000"
@@ -243,7 +232,9 @@
         android:hint="자기 소개 글을 써주세요"
         android:inputType="text"
         android:lines="3"
+        android:gravity="center"
         android:privateImeOptions="defaultInputmode = korean"
+        android:background="@drawable/edit_text_bottomline"
         app:layout_constraintEnd_toEndOf="@+id/myPageMyInformationTitle"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/myPageMyInformationTitle"
