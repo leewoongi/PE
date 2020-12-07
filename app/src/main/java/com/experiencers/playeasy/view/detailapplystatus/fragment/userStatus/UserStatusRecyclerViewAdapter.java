@@ -57,7 +57,6 @@ public class UserStatusRecyclerViewAdapter extends RecyclerView.Adapter<UserStat
 
     public class myViewHolder extends RecyclerView.ViewHolder {
         private TextView userStatusName;
-        private TextView userStatusQuota;
         private TextView userStatusPhone;
         private Button userStatusOk;
         private Button userStatusX;
