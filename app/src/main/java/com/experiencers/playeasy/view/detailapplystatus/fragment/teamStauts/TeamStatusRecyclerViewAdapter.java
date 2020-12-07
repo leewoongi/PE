@@ -69,7 +69,7 @@ public class TeamStatusRecyclerViewAdapter extends RecyclerView.Adapter<TeamStat
         public myViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            circleImageView = itemView.findViewById(R.id.circleImageView);
+            circleImageView = itemView.findViewById(R.id.teamCircleImageView);
             teamStatusName = itemView.findViewById(R.id.teamStatusName);
             teamStatusMember = itemView.findViewById(R.id.teamStatusMember);
             teamStatusPhone = itemView.findViewById(R.id.teamStatusPhone);
