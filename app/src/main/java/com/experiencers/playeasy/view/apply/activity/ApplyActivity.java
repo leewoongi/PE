@@ -23,8 +23,8 @@ public class ApplyActivity extends AppCompatActivity implements ApplyContract.vi
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_apply);
 
-        popUpInit();
         init();
 
         applyViewPagerAdapter = new ApplyViewPagerAdapter(this);
@@ -37,6 +37,7 @@ public class ApplyActivity extends AppCompatActivity implements ApplyContract.vi
         presenter.setViewPagerModel(applyViewPagerAdapter);
 
         int matchId = getIntent().getIntExtra("matchId",0);
+
         presenter.loadFragment(matchId);
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
 
@@ -80,26 +81,6 @@ public class ApplyActivity extends AppCompatActivity implements ApplyContract.vi
 
     }
 
-    @Override
-    public void popUpInit() {
-        // 팝업이 올라오면 배경 블러처리
-        WindowManager.LayoutParams layoutParams = new WindowManager.LayoutParams();
-        layoutParams.flags = WindowManager.LayoutParams.FLAG_DIM_BEHIND;
-        layoutParams.dimAmount = 0.1f;
-        getWindow().setAttributes(layoutParams);
-        // 레이아웃 설정
-        setContentView(R.layout.activity_apply);
-        // 사이즈조절
-        // 1. 디스플레이 화면 사이즈 구하기
-        Display dp = ((WindowManager)getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay();
-        // 2. 화면 비율 설정
-        int width = (int)(dp.getWidth());
-        int height = (int)(dp.getHeight()*0.6);
-        // 3. 현재 화면에 적용
-        getWindow().getAttributes().width = width;
-        getWindow().getAttributes().height = height;
-
-    }
 
     @Override
     public void changeActivity() {

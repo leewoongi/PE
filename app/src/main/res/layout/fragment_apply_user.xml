@@ -44,7 +44,8 @@
         app:layout_constraintBottom_toBottomOf="@+id/applyUserMember"
         app:layout_constraintStart_toEndOf="@+id/applyUserMember" />
 
-    <com.google.android.material.button.MaterialButton
+    <Button
+        style="@style/Widget.MaterialComponents.Button.TextButton"
         android:id="@+id/applyUserButton"
         android:layout_width="402dp"
         android:layout_height="74dp"

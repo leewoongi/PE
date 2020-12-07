@@ -10,7 +10,6 @@ public interface ApplyContract {
     interface view extends BaseContract.view{
         @Override
         void init();
-        void popUpInit();
 
         @Override
         void changeActivity();

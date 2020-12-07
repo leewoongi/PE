@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,7 +24,7 @@ public class ApplyUserFragment extends Fragment implements ApplyUserContract.vie
     private ApplyUserPresenter presenter;
 
     private TextView applyUserMember;
-    private MaterialButton applyUserButton;
+    private Button applyUserButton;
 
     @Nullable
     @Override

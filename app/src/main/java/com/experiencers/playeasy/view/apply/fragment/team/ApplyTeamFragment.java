@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,7 +23,7 @@ public class ApplyTeamFragment extends Fragment implements ApplyTeamContract.vie
     private ApplyTeamPresenter presenter;
     private ViewGroup rootView;
     private TextView applyTeamMember;
-    private MaterialButton applyTeamButton;
+    private Button applyTeamButton;
 
     @Nullable
     @Override
