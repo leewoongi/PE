@@ -5,6 +5,10 @@ public class ApplyResponse {
     private String message;
     private String stack;
 
+    public ApplyResponse(){
+
+    }
+
     public ApplyResponse(String name, String message, String stack) {
         this.name = name;
         this.message = message;

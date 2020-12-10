@@ -5,6 +5,7 @@ import android.util.Log;
 import com.experiencers.playeasy.application.RetrofitClient;
 import com.experiencers.playeasy.model.datasource.WebService;
 import com.experiencers.playeasy.model.entity.Apply;
+import com.experiencers.playeasy.model.entity.ApplyResponse;
 import com.experiencers.playeasy.model.entity.ChangeMatchStatusRequest;
 import com.experiencers.playeasy.model.entity.CloseMatchRequest;
 import com.experiencers.playeasy.model.entity.CreateMatchRequest;
@@ -110,6 +111,12 @@ public class Repository {
         Disposable disposable = webService.sendMatchApply(userKey, apply)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
+                .map(item -> {
+                    if (item == null) {
+                       item = new ApplyResponse();
+                    }
+                    return item;
+                })
                 .subscribe((item) ->{
                     presenter.onSuccess(item);
                 },throwable -> {
@@ -126,6 +133,12 @@ public class Repository {
         Disposable disposable = webService.sendMatchApply(userKey, apply)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
+                .map(item -> {
+                    if (item == null) {
+                        item = new ApplyResponse();
+                    }
+                    return item;
+                })
                 .subscribe((item) ->{
                     presenter.onSuccess(item);
                 },throwable -> {
