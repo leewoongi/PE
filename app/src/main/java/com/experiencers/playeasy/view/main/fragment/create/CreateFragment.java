@@ -24,6 +24,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.experiencers.playeasy.R;
 import com.experiencers.playeasy.application.TokenManger;
@@ -82,6 +84,7 @@ public class CreateFragment extends Fragment implements CreateContract.view, Vie
         sixFootSal.setOnClickListener(this);
         soccer.setOnClickListener(this);
 
+        today = convertDate(Calendar.getInstance());
         horizontalCalendar.setCalendarListener(new HorizontalCalendarListener() {
             @Override
             public void onDateSelected(Calendar date, int position) {
@@ -218,7 +221,9 @@ public class CreateFragment extends Fragment implements CreateContract.view, Vie
     @Override
     public void changeActivity() {
         Toast.makeText(getActivity(), "매치가 작성되었습니다.", Toast.LENGTH_SHORT).show();
+  
     }
+
 
 
     @Override
@@ -231,15 +236,24 @@ public class CreateFragment extends Fragment implements CreateContract.view, Vie
 
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
 
-        String startTime = today + "T" + convertSTime();
-        String endTime = today + "T" + convertETime();
+        if(matchLocationMap.getText().toString().equals("")){
+            Toast.makeText(getActivity(), "주소를 입력해 주세요.", Toast.LENGTH_SHORT).show();
+        }else if(matchFee.getText().toString().equals("")) {
+            Toast.makeText(getActivity(), "참가비를 입력해주세요.", Toast.LENGTH_SHORT).show();
+        }else if(matchPhoneNumber.getText().toString().equals("")){
+            Toast.makeText(getActivity(), "전화번호를 입력해주세요.", Toast.LENGTH_SHORT).show();
+        }else{
+            String startTime = today + "T" + convertSTime();
+            String endTime = today + "T" + convertETime();
 
-        CreateMatchRequest matchRequest = new CreateMatchRequest(type, matchEtc.getText().toString(), startTime,
-                endTime, Integer.parseInt(matchFee.getText().toString()),matchPhoneNumber.getText().toString(),
-                0, Integer.parseInt(mapId.getText().toString()),
-                matchLocationMap.getText().toString(),addressName.getText().toString(), matchDetailMap.getText().toString());
+            CreateMatchRequest matchRequest = new CreateMatchRequest(type, matchEtc.getText().toString(), startTime,
+                    endTime, Integer.parseInt(matchFee.getText().toString()),matchPhoneNumber.getText().toString(),
+                    0, Integer.parseInt(mapId.getText().toString()),
+                    matchLocationMap.getText().toString(),addressName.getText().toString(), matchDetailMap.getText().toString());
 
-        presenter.sendMatchInfo(userKey, matchRequest);
+            presenter.sendMatchInfo(userKey, matchRequest);
+        }
+
         return false;
     }
 
