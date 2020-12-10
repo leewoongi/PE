@@ -40,9 +40,14 @@ public class ApplyUserFragment extends Fragment implements ApplyUserContract.vie
         applyUserButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Apply apply = new Apply(Integer.valueOf(applyUserMember.getText().toString()),
-                        "PERSONAL",matchId);
-                presenter.completionApply(TokenManger.read(rootView.getContext()), apply);
+                if(applyUserMember.getText().toString().equals("") || Integer.valueOf(applyUserMember.getText().toString()) == 0){
+                    Toast.makeText(rootView.getContext(), "참여 인원을 입력해 주세요.", Toast.LENGTH_SHORT).show();
+
+                }else {
+                    Apply apply = new Apply(Integer.valueOf(applyUserMember.getText().toString()),
+                            "PERSONAL",matchId);
+                    presenter.completionApply(TokenManger.read(rootView.getContext()), apply);
+                }
             }
         });
 

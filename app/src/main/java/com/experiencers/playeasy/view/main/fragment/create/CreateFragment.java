@@ -286,39 +286,79 @@ public class CreateFragment extends Fragment implements CreateContract.view, Vie
                 if(clickResult == 0){
                     clickResult = 1;
                     type = "FUTSAL5";
+
+                    fiveFootSal.setBackgroundColor(Color.rgb(124,225,85));
+
                     sixFootSal.setEnabled(false);
+                    sixFootSal.setBackgroundColor(Color.rgb(155,155,155));
+
                     soccer.setEnabled(false);
+                    soccer.setBackgroundColor(Color.rgb(155,155,155));
+
                 }else if(clickResult == 1){
                     clickResult = 0;
                     type = "";
+
+                    fiveFootSal.setBackgroundColor(Color.rgb(255,255,255));
+
                     sixFootSal.setEnabled(true);
+                    sixFootSal.setBackgroundColor(Color.rgb(255,255,255));
+
                     soccer.setEnabled(true);
+                    soccer.setBackgroundColor(Color.rgb(255,255,255));
+
                 }
                 break;
             case R.id.sixFootSal:
                 if(clickResult == 0){
                     clickResult = 2;
                     type = "FUTSAL6";
+
+                    fiveFootSal.setBackgroundColor(Color.rgb(155,155,155));
                     fiveFootSal.setEnabled(false);
+
+                    sixFootSal.setBackgroundColor(Color.rgb(124,225,85));
+
                     soccer.setEnabled(false);
+                    soccer.setBackgroundColor(Color.rgb(155,155,155));
+
                 }else if(clickResult == 2){
                     clickResult = 0;
                     type = "";
+
+                    fiveFootSal.setBackgroundColor(Color.rgb(255,255,255));
                     fiveFootSal.setEnabled(true);
+
+                    sixFootSal.setBackgroundColor(Color.rgb(255,255,255));
+
                     soccer.setEnabled(true);
+                    soccer.setBackgroundColor(Color.rgb(255,255,255));
+
                 }
                 break;
             case R.id.soccer:
                 if(clickResult == 0){
                     clickResult = 3;
                     type = "SOCCER";
+
                     fiveFootSal.setEnabled(false);
+                    fiveFootSal.setBackgroundColor(Color.rgb(155,155,155));
+
                     sixFootSal.setEnabled(false);
+                    sixFootSal.setBackgroundColor(Color.rgb(155,155,155));
+
+                    soccer.setBackgroundColor(Color.rgb(124,225,85));
+
                 }else if(clickResult == 3){
                     clickResult = 0;
                     type = "";
                     fiveFootSal.setEnabled(true);
+                    fiveFootSal.setBackgroundColor(Color.rgb(255,255,255));
+
                     sixFootSal.setEnabled(true);
+                    sixFootSal.setBackgroundColor(Color.rgb(255,255,255));
+
+                    soccer.setBackgroundColor(Color.rgb(255,255,255));
                 }
                 break;
         }

@@ -38,9 +38,14 @@ public class ApplyTeamFragment extends Fragment implements ApplyTeamContract.vie
         applyTeamButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Apply apply = new Apply(Integer.valueOf(applyTeamMember.getText().toString()),
-                        "TEAM",matchId);
-                presenter.completionApply(TokenManger.read(rootView.getContext()), apply);
+
+                if(applyTeamMember.getText().toString().equals("") || Integer.valueOf(applyTeamMember.getText().toString()) == 0){
+                    Toast.makeText(rootView.getContext(), "참여 인원을 입력해 주세요.", Toast.LENGTH_SHORT).show();
+                }else{
+                    Apply apply = new Apply(Integer.valueOf(applyTeamMember.getText().toString()),
+                            "TEAM",matchId);
+                    presenter.completionApply(TokenManger.read(rootView.getContext()), apply);
+                }
             }
         });
 

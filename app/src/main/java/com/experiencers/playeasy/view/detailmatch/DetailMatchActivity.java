@@ -45,6 +45,7 @@ public class DetailMatchActivity extends AppCompatActivity implements DetailMatc
         detailApplyButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //매치 아이디
                 presenter.clickApply(matchId);
             }
         });
