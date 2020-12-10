@@ -61,7 +61,8 @@ public class CreateFragment extends Fragment implements CreateContract.view, Vie
     private EditText matchPhoneNumber;
     private EditText matchEtc;
     private String today;
-    private int clickResult;
+
+    private int clickResult = 0;
     private String type;
 
 
@@ -183,15 +184,15 @@ public class CreateFragment extends Fragment implements CreateContract.view, Vie
     public String convertSTime() {
         String s = "";
         if(timePickerStart.getHour() > 10){
-            s = String.valueOf(timePickerStart.getHour())+":";
+            s = timePickerStart.getHour() +":";
         }else{
-            s = "0"+ String.valueOf(timePickerStart.getHour()+":");
+            s = "0"+ timePickerStart.getHour() + ":";
         }
 
         if(timePickerStart.getMinute() > 10){
-            s = s + String.valueOf(timePickerStart.getMinute());
+            s = s + timePickerStart.getMinute();
         }else{
-            s = s + "0" +  String.valueOf(timePickerStart.getMinute());
+            s = s + "0" + timePickerStart.getMinute();
         }
 
         s = s+":"+"00";
@@ -202,15 +203,15 @@ public class CreateFragment extends Fragment implements CreateContract.view, Vie
     public String convertETime() {
         String s = "";
         if(timePickerEnd.getHour() > 10){
-            s = String.valueOf(timePickerEnd.getHour())+":";
+            s = timePickerEnd.getHour() +":";
         }else{
-            s = "0"+ String.valueOf(timePickerEnd.getHour()+":");
+            s = "0"+ timePickerEnd.getHour() + ":";
         }
 
         if(timePickerEnd.getMinute() > 10){
-            s = s + String.valueOf(timePickerEnd.getMinute());
+            s = s + timePickerEnd.getMinute();
         }else{
-            s = s + "0" +  String.valueOf(timePickerEnd.getMinute());
+            s = s + "0" + timePickerEnd.getMinute();
         }
 
         s = s+":"+"00";
@@ -221,7 +222,20 @@ public class CreateFragment extends Fragment implements CreateContract.view, Vie
     @Override
     public void changeActivity() {
         Toast.makeText(getActivity(), "매치가 작성되었습니다.", Toast.LENGTH_SHORT).show();
-  
+
+        matchLocationMap.setText("");
+        matchDetailMap.setText("");
+        horizontalCalendar.goToday(true);
+
+        Calendar calInit = Calendar.getInstance();
+        timePickerStart.setHour(calInit.HOUR);
+        timePickerStart.setMinute(calInit.MINUTE);
+        timePickerEnd.setHour(calInit.HOUR);
+        timePickerEnd.setMinute(calInit.MINUTE);
+
+        matchFee.setText("");
+        matchPhoneNumber.setText("");
+        matchEtc.setText("");
     }
 
 
@@ -269,12 +283,12 @@ public class CreateFragment extends Fragment implements CreateContract.view, Vie
         //매치타입 선택할때
         switch (v.getId()){
             case R.id.fiveFootSal:
-                if(clickResult != 2 || clickResult != 3){
+                if(clickResult == 0){
                     clickResult = 1;
                     type = "FUTSAL5";
                     sixFootSal.setEnabled(false);
                     soccer.setEnabled(false);
-                }else{
+                }else if(clickResult == 1){
                     clickResult = 0;
                     type = "";
                     sixFootSal.setEnabled(true);
@@ -282,12 +296,12 @@ public class CreateFragment extends Fragment implements CreateContract.view, Vie
                 }
                 break;
             case R.id.sixFootSal:
-                if(clickResult != 1 || clickResult != 3){
+                if(clickResult == 0){
                     clickResult = 2;
                     type = "FUTSAL6";
                     fiveFootSal.setEnabled(false);
                     soccer.setEnabled(false);
-                }else{
+                }else if(clickResult == 2){
                     clickResult = 0;
                     type = "";
                     fiveFootSal.setEnabled(true);
@@ -295,12 +309,12 @@ public class CreateFragment extends Fragment implements CreateContract.view, Vie
                 }
                 break;
             case R.id.soccer:
-                if(clickResult != 1 || clickResult != 2){
+                if(clickResult == 0){
                     clickResult = 3;
                     type = "SOCCER";
                     fiveFootSal.setEnabled(false);
                     sixFootSal.setEnabled(false);
-                }else{
+                }else if(clickResult == 3){
                     clickResult = 0;
                     type = "";
                     fiveFootSal.setEnabled(true);
