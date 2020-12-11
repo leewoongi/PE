@@ -15,8 +15,6 @@ import androidx.fragment.app.Fragment;
 import com.experiencers.playeasy.R;
 import com.experiencers.playeasy.application.TokenManger;
 import com.experiencers.playeasy.model.entity.Apply;
-import com.experiencers.playeasy.model.entity.ApplyResponse;
-import com.google.android.material.button.MaterialButton;
 
 public class ApplyTeamFragment extends Fragment implements ApplyTeamContract.view {
 

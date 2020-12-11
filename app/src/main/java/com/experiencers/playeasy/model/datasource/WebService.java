@@ -2,10 +2,8 @@ package com.experiencers.playeasy.model.datasource;
 
 
 import com.experiencers.playeasy.model.entity.Apply;
-import com.experiencers.playeasy.model.entity.ApplyResponse;
 import com.experiencers.playeasy.model.entity.ApplyStatusResponse;
 import com.experiencers.playeasy.model.entity.ChangeMatchStatusRequest;
-import com.experiencers.playeasy.model.entity.ChangeMatchStatusResponse;
 import com.experiencers.playeasy.model.entity.CloseMatchRequest;
 import com.experiencers.playeasy.model.entity.CreateMatchRequest;
 import com.experiencers.playeasy.model.entity.MapResponse;
@@ -18,7 +16,6 @@ import com.experiencers.playeasy.model.entity.LoginResponse;
 import java.util.List;
 
 import io.reactivex.rxjava3.core.Maybe;
-import retrofit2.Response;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.Header;

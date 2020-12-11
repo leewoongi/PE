@@ -5,7 +5,6 @@ import android.util.Log;
 import com.experiencers.playeasy.application.RetrofitClient;
 import com.experiencers.playeasy.model.datasource.WebService;
 import com.experiencers.playeasy.model.entity.Apply;
-import com.experiencers.playeasy.model.entity.ApplyResponse;
 import com.experiencers.playeasy.model.entity.ChangeMatchStatusRequest;
 import com.experiencers.playeasy.model.entity.CloseMatchRequest;
 import com.experiencers.playeasy.model.entity.CreateMatchRequest;
@@ -28,9 +27,7 @@ import com.experiencers.playeasy.view.modifymatch.ModifyMatchPresenter;
 import com.experiencers.playeasy.view.myinformation.MyInfoPresenter;
 
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
-import io.reactivex.rxjava3.core.MaybeSource;
 import io.reactivex.rxjava3.disposables.Disposable;
-import io.reactivex.rxjava3.functions.Function;
 import io.reactivex.rxjava3.schedulers.Schedulers;
 
 

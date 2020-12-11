@@ -2,7 +2,6 @@ package com.experiencers.playeasy.view.apply.fragment.team;
 
 import com.experiencers.playeasy.model.Repository;
 import com.experiencers.playeasy.model.entity.Apply;
-import com.experiencers.playeasy.model.entity.ApplyResponse;
 import com.experiencers.playeasy.model.entity.ApplyStatusResponse;
 import com.experiencers.playeasy.view.callback.RetrofitCallback;
 
