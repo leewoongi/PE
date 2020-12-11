@@ -68,7 +68,7 @@ public class ApplyUserFragment extends Fragment implements ApplyUserContract.vie
 
     @Override
     public void showResult(Object object) {
-        ApplyResponse applyResponse = (ApplyResponse) object;
-        Toast.makeText(rootView.getContext(), applyResponse.getMessage(), Toast.LENGTH_LONG).show();
+        Toast.makeText(rootView.getContext(), "본인의 매치에는 신청 할 수 없습니다.", Toast.LENGTH_SHORT).show();
+        getActivity().finish();
     }
 }

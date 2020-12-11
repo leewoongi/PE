@@ -28,7 +28,9 @@ import com.experiencers.playeasy.view.modifymatch.ModifyMatchPresenter;
 import com.experiencers.playeasy.view.myinformation.MyInfoPresenter;
 
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
+import io.reactivex.rxjava3.core.MaybeSource;
 import io.reactivex.rxjava3.disposables.Disposable;
+import io.reactivex.rxjava3.functions.Function;
 import io.reactivex.rxjava3.schedulers.Schedulers;
 
 
@@ -111,17 +113,15 @@ public class Repository {
         Disposable disposable = webService.sendMatchApply(userKey, apply)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .map(item -> {
-                    if (item == null) {
-                       item = new ApplyResponse();
-                    }
-                    return item;
-                })
                 .subscribe((item) ->{
+
                     presenter.onSuccess(item);
                 },throwable -> {
                     Log.d("error", "TT.. " + throwable.getMessage());
                     throwable.printStackTrace();
+                    String error = throwable.getMessage().toString();
+                    presenter.onSuccess(error);
+
                 },()->{
                     Log.d("onComplete", "nothing");
                 });
@@ -133,17 +133,13 @@ public class Repository {
         Disposable disposable = webService.sendMatchApply(userKey, apply)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .map(item -> {
-                    if (item == null) {
-                        item = new ApplyResponse();
-                    }
-                    return item;
-                })
                 .subscribe((item) ->{
                     presenter.onSuccess(item);
                 },throwable -> {
                     Log.d("error", "TT.. " + throwable.getMessage());
                     throwable.printStackTrace();
+                    String error = throwable.getMessage().toString();
+                    presenter.onSuccess(error);
                 },()->{
                     Log.d("onComplete", "nothing");
                 });

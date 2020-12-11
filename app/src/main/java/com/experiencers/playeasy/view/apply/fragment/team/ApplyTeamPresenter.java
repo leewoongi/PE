@@ -3,6 +3,7 @@ package com.experiencers.playeasy.view.apply.fragment.team;
 import com.experiencers.playeasy.model.Repository;
 import com.experiencers.playeasy.model.entity.Apply;
 import com.experiencers.playeasy.model.entity.ApplyResponse;
+import com.experiencers.playeasy.model.entity.ApplyStatusResponse;
 import com.experiencers.playeasy.view.callback.RetrofitCallback;
 
 public class ApplyTeamPresenter implements ApplyTeamContract.presenter, RetrofitCallback {
@@ -25,11 +26,11 @@ public class ApplyTeamPresenter implements ApplyTeamContract.presenter, Retrofit
 
     @Override
     public void onSuccess(Object object) {
-        ApplyResponse applyResponse = (ApplyResponse) object;
-        if(applyResponse.getMessage() == null){
-            view.changeActivity();
-        }else{
+        if( object instanceof  String){
             view.showResult(object);
+        }else{
+            ApplyStatusResponse applyResponse = (ApplyStatusResponse) object;
+            view.changeActivity();
         }
     }
 

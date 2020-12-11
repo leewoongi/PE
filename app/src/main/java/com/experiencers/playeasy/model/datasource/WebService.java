@@ -72,7 +72,7 @@ public interface WebService {
 
     //신청하기
     @POST("api/application")
-    Maybe<ApplyResponse> sendMatchApply(@Header("Authorization")String userKey,
+    Maybe<ApplyStatusResponse> sendMatchApply(@Header("Authorization")String userKey,
                                         @Body Apply apply);
 
     /** 나의매치 **/
