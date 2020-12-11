@@ -1,6 +1,7 @@
 package com.experiencers.playeasy.view.myinformation;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -13,6 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.bumptech.glide.Glide;
 import com.experiencers.playeasy.R;
 import com.experiencers.playeasy.application.TokenManger;
 import com.experiencers.playeasy.model.entity.User;
@@ -88,7 +90,8 @@ public class MyInfoActivity extends AppCompatActivity implements MyInfoContract.
         Log.d("myInfo",myInfo.toString());
 
         /* Todo 이미지는 글라이드 */
-
+        Uri userImageUri = Uri.parse(myInfo.getPicture());
+        Glide.with(this).load(userImageUri).into(myImage);
         myEmail.setText(myInfo.getEmail());
         myName.setText(myInfo.getName());
         myAge.setText(String.valueOf(myInfo.getAge()));
