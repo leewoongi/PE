@@ -34,8 +34,10 @@ import com.experiencers.playeasy.model.entity.MapResponse;
 import com.experiencers.playeasy.utill.UiHelper;
 import com.experiencers.playeasy.view.main.activity.MainActivity;
 
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import devs.mulham.horizontalcalendar.HorizontalCalendar;
@@ -222,22 +224,39 @@ public class CreateFragment extends Fragment implements CreateContract.view, Vie
     @Override
     public void changeActivity() {
         Toast.makeText(getActivity(), "매치가 작성되었습니다.", Toast.LENGTH_SHORT).show();
+        viewInit();
+    }
 
+    @Override
+    public void viewInit() {
         matchLocationMap.setText("");
         matchDetailMap.setText("");
         horizontalCalendar.goToday(true);
 
-        Calendar calInit = Calendar.getInstance();
-        timePickerStart.setHour(calInit.HOUR);
-        timePickerStart.setMinute(calInit.MINUTE);
-        timePickerEnd.setHour(calInit.HOUR);
-        timePickerEnd.setMinute(calInit.MINUTE);
+        Calendar cal = Calendar.getInstance();
+        int h = cal.get(Calendar.HOUR_OF_DAY);
+        int m = cal.get(Calendar.MINUTE);
+
+        timePickerStart.setHour(h);
+        timePickerStart.setMinute(m);
+
+        timePickerEnd.setHour(h);
+        timePickerEnd.setMinute(m);
+
+        fiveFootSal.setBackgroundColor(Color.rgb(255,255,255));
+        sixFootSal.setBackgroundColor(Color.rgb(255,255,255));
+        soccer.setBackgroundColor(Color.rgb(255,255,255));
+
+        fiveFootSal.setEnabled(true);
+        sixFootSal.setEnabled(true);
+        soccer.setEnabled(true);
+
+        clickResult = 0;
 
         matchFee.setText("");
         matchPhoneNumber.setText("");
         matchEtc.setText("");
     }
-
 
 
     @Override
@@ -247,7 +266,6 @@ public class CreateFragment extends Fragment implements CreateContract.view, Vie
     }
 
     @Override
-
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
 
         if(matchLocationMap.getText().toString().equals("")){

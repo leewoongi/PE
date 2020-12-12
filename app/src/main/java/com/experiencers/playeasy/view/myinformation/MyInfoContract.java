@@ -1,5 +1,6 @@
 package com.experiencers.playeasy.view.myinformation;
 
+import com.experiencers.playeasy.model.entity.User;
 import com.experiencers.playeasy.view.base.BaseContract;
 
 public interface MyInfoContract {
@@ -18,7 +19,8 @@ public interface MyInfoContract {
         @Override
         void setView(view view);
         void setUserInfo(String userKey);
-        void confirmButtonClick(int itemId, String userKey);
+        void confirmButtonClick(int itemId, String userKey, User user);
+        void getUserImage();
 
         @Override
         void deleteView();

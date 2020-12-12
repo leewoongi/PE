@@ -40,7 +40,6 @@ public class HomeFragment extends Fragment implements HomeContract.view {
         rootView = inflater.inflate(R.layout.fragment_home, container, false);
 
         init();
-        dateInit();
         calenderInit();
         recyclerViewInit();
         findDate();
@@ -57,6 +56,7 @@ public class HomeFragment extends Fragment implements HomeContract.view {
         horizontalCalendar.setCalendarListener(new HorizontalCalendarListener() {
             @Override
             public void onDateSelected(Calendar date, int position) {
+                dateInit(date);
                 presenter.receiveDate(date, presenter);
             }
         });
@@ -64,10 +64,9 @@ public class HomeFragment extends Fragment implements HomeContract.view {
         return rootView;
     }
 
-    private void dateInit() {
-        GregorianCalendar today = new GregorianCalendar();
-        int Month = today.get(Calendar.MONTH);
-        matchMonth.setText(String.valueOf(Month + 1) + " 월");
+    private void dateInit(Calendar date) {
+        int month = date.get(Calendar.MONTH) + 1;
+        matchMonth.setText(month + "월");
     }
 
     @Override
@@ -82,7 +81,9 @@ public class HomeFragment extends Fragment implements HomeContract.view {
         layoutManager = new LinearLayoutManager(rootView.getContext());
         adapter = new HomeRecyclerAdapter();
 
-
+        GregorianCalendar today = new GregorianCalendar();
+        int Month = today.get(Calendar.MONTH);
+        matchMonth.setText((Month + 1) + "월");
     }
 
     @Override
@@ -108,7 +109,7 @@ public class HomeFragment extends Fragment implements HomeContract.view {
     @Override
     public void calenderInit() {
         Calendar startDate = Calendar.getInstance();
-        startDate.add(Calendar.MONTH, 0);
+        startDate.add(Calendar.MONTH, -1);
 
         /* end after 1 month from now */
         Calendar endDate = Calendar.getInstance();

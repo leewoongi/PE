@@ -59,6 +59,8 @@ public class TeamStatusPresenter implements TeamStatusContract.presenter, Retrof
         adapterModel.add(item);
         adapterView.refresh();
 
+        int size = item.size();
+        view.showResult(size);
     }
 
 

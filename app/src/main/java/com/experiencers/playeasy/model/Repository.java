@@ -11,6 +11,7 @@ import com.experiencers.playeasy.model.entity.CreateMatchRequest;
 import com.experiencers.playeasy.model.entity.LoginRequest;
 import com.experiencers.playeasy.model.entity.MapResponse;
 import com.experiencers.playeasy.model.entity.ModifyMatchRequest;
+import com.experiencers.playeasy.model.entity.User;
 import com.experiencers.playeasy.view.apply.fragment.team.ApplyTeamPresenter;
 import com.experiencers.playeasy.view.apply.fragment.user.ApplyUserPresenter;
 import com.experiencers.playeasy.view.detailapplystatus.fragment.teamStauts.TeamStatusPresenter;
@@ -29,6 +30,7 @@ import com.experiencers.playeasy.view.myinformation.MyInfoPresenter;
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
 import io.reactivex.rxjava3.disposables.Disposable;
 import io.reactivex.rxjava3.schedulers.Schedulers;
+import retrofit2.Retrofit;
 
 
 public class Repository {
@@ -86,7 +88,21 @@ public class Repository {
                     Log.d("onComplete", "nothing");
                 });
     }
-
+    // 내 정보 수정하기
+    public void putUserInformation(String userKey, User user, MyInfoPresenter presenter){
+        WebService webService = RetrofitClient.getInstance().create(WebService.class);
+        Disposable disposable = webService.modifyUserInfo(userKey, user)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(item->{
+                    presenter.onSuccess(item);
+                },throwable -> {
+                    Log.d("error", "TT.. " + throwable.getMessage());
+                    throwable.printStackTrace();
+                },()->{
+                    Log.d("onComplete", "nothing");
+                });
+    }
 
     //매치 상세보기
     public void getMatch(int matchId, String userKey, DetailMatchPresenter presenter){

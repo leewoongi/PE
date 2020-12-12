@@ -63,6 +63,7 @@ public class MatchCancelActivity extends AppCompatActivity implements MatchCance
                 break;
             case R.id.cancelOk:
                 presenter.sendCancelStatus(userKey, matchId, "CANCEL");
+                finish();
                 break;
             case R.id.cancelBack:
                 finish();

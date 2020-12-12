@@ -17,6 +17,7 @@ public interface CreateContract {
         String convertETime();
         @Override
         void changeActivity();
+        void viewInit();
 
         @Override
         void showResult(Object object);

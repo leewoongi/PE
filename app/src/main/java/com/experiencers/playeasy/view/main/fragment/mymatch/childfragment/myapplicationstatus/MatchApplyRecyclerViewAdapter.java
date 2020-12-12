@@ -33,7 +33,7 @@ public class MatchApplyRecyclerViewAdapter extends RecyclerView.Adapter<MatchApp
     public void onBindViewHolder(@NonNull myViewHolder holder, int position) {
 
         holder.applyMatchDate.setText(item.get(position).getMatch().getStartAt().substring(0,10));
-        holder.applyMatchTime.setText(item.get(position).getMatch().getStartAt().substring(12, 16) + " ~ " + item.get(position).getMatch().getEndAt().substring(12, 16));
+        holder.applyMatchTime.setText(item.get(position).getMatch().getStartAt().substring(11, 16) + " ~ " + item.get(position).getMatch().getEndAt().substring(12, 16));
         holder.applyMatchPlace.setText(item.get(position).getMatch().getLocation().getPlaceDetail() + " " + item.get(position).getMatch().getLocation().getPlaceDetail());
 
         String type;
@@ -96,6 +96,7 @@ public class MatchApplyRecyclerViewAdapter extends RecyclerView.Adapter<MatchApp
             applyMatchPlace = itemView.findViewById(R.id.applyMatchPlace);
             applyMatchId = itemView.findViewById(R.id.applyMatchId);
             applyMatchType = itemView.findViewById(R.id.applyMatchType);
+
             applyMatchContinue = itemView.findViewById(R.id.applyMatchContinue);
             applyCancel = itemView.findViewById(R.id.applyCancel);
 

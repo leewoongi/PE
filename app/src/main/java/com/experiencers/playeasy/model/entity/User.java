@@ -11,6 +11,27 @@ public class User {
     private String picture;
     private String teamName;
 
+    public User(String name, int age, String email, String phone, String description, String picture, String teamName) {
+        this.name = name;
+        this.age = age;
+        this.email = email;
+        this.phone = phone;
+        this.description = description;
+        this.picture = picture;
+        this.teamName = teamName;
+    }
+
+    public User(int id, String name, int age, String email, String phone, String description, String picture, String teamName) {
+        this.id = id;
+        this.name = name;
+        this.age = age;
+        this.email = email;
+        this.phone = phone;
+        this.description = description;
+        this.picture = picture;
+        this.teamName = teamName;
+    }
+
     public User(int id, String name, int age, String email, String phone, String socialType, String description, String picture, String teamName) {
         this.id = id;
         this.name = name;

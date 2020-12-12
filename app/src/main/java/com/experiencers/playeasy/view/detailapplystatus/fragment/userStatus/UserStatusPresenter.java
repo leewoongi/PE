@@ -58,6 +58,9 @@ public class UserStatusPresenter implements UserStatusContract.presenter, Retrof
 
         adapterModel.add(item);
         adapterView.refresh();
+
+        int size = item.size();
+        view.showResult(size);
     }
 
 

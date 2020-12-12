@@ -3,17 +3,16 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="360dp"
+    android:layout_width="match_parent"
     android:layout_height="381dp">
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/applyTab"
         android:layout_width="0dp"
         android:layout_height="49dp"
-        android:layout_marginStart="72dp"
+        android:layout_marginStart="60dp"
         android:layout_marginTop="18dp"
-        android:layout_marginEnd="72dp"
-        android:background="@drawable/tab_background_selector"
+        android:layout_marginEnd="60dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"

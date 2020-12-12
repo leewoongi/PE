@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -23,6 +24,7 @@ public class TeamStatusFragment extends Fragment implements TeamStatusContract.v
     private RecyclerView.LayoutManager layoutManager;
     private TeamStatusRecyclerViewAdapter adapter;
 
+    private TextView teamApplyCount;
     private String userKey;
     private int matchId;
 
@@ -54,7 +56,7 @@ public class TeamStatusFragment extends Fragment implements TeamStatusContract.v
     @Override
     public void init() {
         recyclerTeamStatus = rootView.findViewById(R.id.recyclerTeamStatus);
-
+        teamApplyCount = rootView.findViewById(R.id.teamApplyCount);
     }
 
     @Override
@@ -70,11 +72,16 @@ public class TeamStatusFragment extends Fragment implements TeamStatusContract.v
 
     @Override
     public void showResult(Object object) {
-        int check = (int) object;
-        if(check == 1){
-            Toast.makeText(getActivity(), "매치를 승인했습니다.", Toast.LENGTH_SHORT).show();
+
+        if(object instanceof String){
+            int check = (int) object;
+            if(check == 1){
+                Toast.makeText(getActivity(), "매치를 승인했습니다.", Toast.LENGTH_SHORT).show();
+            }else{
+                Toast.makeText(getActivity(), "매치를 거절 했습니다.", Toast.LENGTH_SHORT).show();
+            }
         }else{
-            Toast.makeText(getActivity(), "매치를 거절 했습니다.", Toast.LENGTH_SHORT).show();
+            teamApplyCount.setText(object + "개 팀");
         }
     }
 }

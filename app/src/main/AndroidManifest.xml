@@ -26,13 +26,18 @@
         <activity android:name=".view.main.activity.MainActivity"/>
         <activity android:name=".view.myinformation.MyInfoActivity"/>
         <activity android:name=".view.detailmatch.DetailMatchActivity"/>
+
         <activity android:name=".view.apply.activity.ApplyActivity"
             android:theme="@style/theme.myDialog"/>
+
         <activity android:name=".view.main.fragment.mymatch.popup.cancel.MatchCancelActivity"
             android:theme="@style/theme.myDialog"/>
+
         <activity android:name=".view.modifymatch.ModifyMatchActivity"/>
+
         <activity android:name=".view.main.fragment.mymatch.popup.close.MatchCloseActivity"
             android:theme="@style/theme.myDialog"/>
+
         <activity android:name=".view.detailapplystatus.DetailApplyStatusActivity"/>
 
         <meta-data

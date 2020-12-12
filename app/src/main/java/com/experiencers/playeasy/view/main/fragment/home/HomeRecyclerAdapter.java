@@ -31,7 +31,7 @@ public class HomeRecyclerAdapter extends RecyclerView.Adapter<HomeRecyclerAdapte
     @Override
     public void onBindViewHolder(@NonNull myViewHolder holder, int position) {
         holder.matchDate.setText(item.get(position).getStartAt().substring(0,10));
-        holder.matchTime.setText(item.get(position).getStartAt().substring(12,16) + " ~ "+ item.get(position).getEndAt().substring(12,16));
+        holder.matchTime.setText(item.get(position).getStartAt().substring(11,16) + " ~ "+ item.get(position).getEndAt().substring(12,16));
         holder.matchPlace.setText(item.get(position).getLocation().getPlaceName() + " " +item.get(position).getLocation().getPlaceDetail());
 
         if(item.get(position).getType().equals("FUTSAL5")){

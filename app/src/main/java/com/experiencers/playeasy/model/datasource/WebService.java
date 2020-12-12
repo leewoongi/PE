@@ -45,8 +45,11 @@ public interface WebService {
     // 불러오기
     @GET("api/user")
     Maybe<User> retrieveUserInfo(@Header("Authorization")String userKey);
-    //Call<User> UserInfo(@Header("Authorization")String userKey);
 
+    // 수정하기
+    @PUT("api/user")
+    Maybe<User> modifyUserInfo(@Header("Authorization")String userKey,
+                               @Body User user);
 
     /**
      * 매치

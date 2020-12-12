@@ -7,8 +7,10 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -35,7 +37,9 @@ public class MyInfoActivity extends AppCompatActivity implements MyInfoContract.
     private EditText myPhone;
     private EditText myDescription;
 
+    private int myId;
     private String userKey;
+    private Uri userImageUri;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -47,6 +51,14 @@ public class MyInfoActivity extends AppCompatActivity implements MyInfoContract.
         presenter = new MyInfoPresenter();
         presenter.setView(this);
         presenter.setUserInfo(userKey);
+
+        //TODO 이미지뷰 클릭시 사진 불러오기
+        /*myImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                presenter.getUserImage();
+            }
+        });*/
     }
 
     @Override
@@ -73,12 +85,24 @@ public class MyInfoActivity extends AppCompatActivity implements MyInfoContract.
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        presenter.confirmButtonClick(item.getItemId(), userKey);
+
+        int id = myId;
+        String name = myName.getText().toString();
+        int age = Integer.parseInt(myAge.getText().toString());
+        String email = myEmail.getText().toString();
+        String phone = myPhone.getText().toString();
+        String des = myDescription.getText().toString();
+        String url = userImageUri.toString();
+        String teamName = myTeam.getText().toString();
+
+        User user = new User(id, name, age, email, phone, des, url, teamName);
+        presenter.confirmButtonClick(item.getItemId(),userKey, user);
         return super.onOptionsItemSelected(item);
     }
 
     @Override
     public void changeActivity() {
+        Toast.makeText(this, "정보가 입력 되었습니다.", Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
         startActivity(intent);
         finish();
@@ -89,9 +113,9 @@ public class MyInfoActivity extends AppCompatActivity implements MyInfoContract.
         User myInfo = (User) object;
         Log.d("myInfo",myInfo.toString());
 
-        /* Todo 이미지는 글라이드 */
-        Uri userImageUri = Uri.parse(myInfo.getPicture());
+        userImageUri = Uri.parse(myInfo.getPicture());
         Glide.with(this).load(userImageUri).into(myImage);
+        myId = myInfo.getId();
         myEmail.setText(myInfo.getEmail());
         myName.setText(myInfo.getName());
         myAge.setText(String.valueOf(myInfo.getAge()));
