@@ -109,11 +109,11 @@ public class HomeFragment extends Fragment implements HomeContract.view {
     @Override
     public void calenderInit() {
         Calendar startDate = Calendar.getInstance();
-        startDate.add(Calendar.MONTH, -1);
+        startDate.add(Calendar.MONTH, 0);
 
         /* end after 1 month from now */
         Calendar endDate = Calendar.getInstance();
-        endDate.add(Calendar.MONTH,1);
+        endDate.add(Calendar.MONTH,11);
 
         horizontalCalendar = new HorizontalCalendar.Builder(rootView, R.id.horizontalCalendarView)
                 .range(startDate, endDate)
