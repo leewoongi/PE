@@ -1,5 +1,6 @@
 package com.experiencers.playeasy.view.detailapplystatus.fragment.teamStauts;
 
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,7 +21,6 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class TeamStatusRecyclerViewAdapter extends RecyclerView.Adapter<TeamStatusRecyclerViewAdapter.myViewHolder> implements TeamStatusContract.adapterView, TeamStatusContract.adapterModel {
     private List<ApplyStatusResponse> item = new ArrayList<>();
     private TeamStatusPresenter presenter;
-    private int matchId;
 
     public TeamStatusRecyclerViewAdapter(TeamStatusPresenter presenter) {
         this.presenter = presenter;
@@ -39,7 +39,27 @@ public class TeamStatusRecyclerViewAdapter extends RecyclerView.Adapter<TeamStat
         holder.teamStatusName.setText(item.get(position).getUser().getTeamName());
         holder.teamStatusMember.setText(item.get(position).getQuota() + "명");
         holder.teamStatusPhone.setText("전화번호 : " + item.get(position).getUser().getPhone());
-        matchId = item.get(position).getMatch().getId();
+        holder.teamApplicationId.setText(String.valueOf(item.get(position).getId()));
+
+        if(item.get(position).getStatus().equals("CONFIRMED")){
+
+            holder.teamStatusContinue.setText("승인됨");
+            holder.teamStatusContinue.setTextColor(Color.rgb(124,255,85));
+            holder.teamStatusOk.setEnabled(false);
+            holder.teamStatusX.setEnabled(false);
+
+        }else if(item.get(position).getStatus().equals("DENIED")){
+
+            holder.teamStatusContinue.setText("거절됨");
+            holder.teamStatusContinue.setTextColor(Color.rgb(144,144,144));
+            holder.teamStatusOk.setEnabled(false);
+            holder.teamStatusX.setEnabled(false);
+
+        }else if(holder.teamStatusContinue.equals("진행중")){
+            holder.teamStatusOk.setEnabled(true);
+            holder.teamStatusX.setEnabled(true);
+        }
+
     }
 
     @Override
@@ -65,6 +85,8 @@ public class TeamStatusRecyclerViewAdapter extends RecyclerView.Adapter<TeamStat
         private TextView teamStatusPhone;
         private Button teamStatusOk;
         private Button teamStatusX;
+        private TextView teamStatusContinue;
+        private TextView teamApplicationId;
 
         public myViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -75,18 +97,22 @@ public class TeamStatusRecyclerViewAdapter extends RecyclerView.Adapter<TeamStat
             teamStatusPhone = itemView.findViewById(R.id.teamStatusPhone);
             teamStatusOk = itemView.findViewById(R.id.teamStatusOk);
             teamStatusX = itemView.findViewById(R.id.teamStatusX);
+            teamStatusContinue = itemView.findViewById(R.id.teamStatusContinue);
+            teamApplicationId = itemView.findViewById(R.id.teamApplicationId);
 
             teamStatusOk.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    presenter.matchOk(matchId,"CONFIRMED");
+                    int applicationId = Integer.parseInt(teamApplicationId.getText().toString());
+                    presenter.matchOk(applicationId,"CONFIRMED");
                 }
             });
 
             teamStatusX.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    presenter.matchReject(matchId, "DENIED");
+                    int applicationId = Integer.parseInt(teamApplicationId.getText().toString());
+                    presenter.matchReject(applicationId, "DENIED");
                 }
             });
         }

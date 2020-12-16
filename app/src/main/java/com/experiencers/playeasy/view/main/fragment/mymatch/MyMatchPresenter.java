@@ -54,4 +54,5 @@ public class MyMatchPresenter implements MyMatchContract.presenter {
     public void deleteView() {
         view = null;
     }
+
 }

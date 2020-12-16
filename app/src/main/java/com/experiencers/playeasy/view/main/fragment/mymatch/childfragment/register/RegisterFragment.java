@@ -32,7 +32,7 @@ public class RegisterFragment extends Fragment implements RegisterContract.view{
         init();
         recyclerInit();
 
-        String userKey = TokenManger.read(getActivity());
+
         presenter = new RegisterPresenter();
         presenter.setView(this);
 
@@ -42,8 +42,15 @@ public class RegisterFragment extends Fragment implements RegisterContract.view{
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapter);
 
-        presenter.receiveMatchList(userKey);
+
         return rootView;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        String userKey = TokenManger.read(getActivity());
+        presenter.receiveMatchList(userKey);
     }
 
     @Override

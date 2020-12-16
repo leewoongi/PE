@@ -2,7 +2,6 @@ package com.experiencers.playeasy.view.main.activity;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
 import java.util.ArrayList;
@@ -15,8 +14,6 @@ public class MainViewPagerAdapter extends FragmentStateAdapter implements MainCo
     public MainViewPagerAdapter(@NonNull MainActivity fragment) {
         super(fragment);
     }
-
-
 
     @NonNull
     @Override

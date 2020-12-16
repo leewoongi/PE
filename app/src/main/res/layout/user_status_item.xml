@@ -30,7 +30,7 @@
             android:layout_marginTop="20dp"
             android:fontFamily="sans-serif"
             android:lineSpacingExtra="7sp"
-            android:text="팀 이름"
+            android:text="유저 이름"
             android:textColor="#de000000"
             android:textSize="22sp"
             android:textStyle="normal"
@@ -112,5 +112,15 @@
             android:text="거절"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/userStatusOk" />
+
+        <TextView
+            android:id="@+id/userApplicationId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:layout_marginEnd="18dp"
+            android:text="TextView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

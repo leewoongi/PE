@@ -1,5 +1,6 @@
 package com.experiencers.playeasy.view.detailapplystatus.fragment.userStatus;
 
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,7 +20,6 @@ public class UserStatusRecyclerViewAdapter extends RecyclerView.Adapter<UserStat
 
     private List<ApplyStatusResponse> item = new ArrayList<>();
     private UserStatusPresenter presenter;
-    private int matchId;
 
     public UserStatusRecyclerViewAdapter(UserStatusPresenter presenter) {
         this.presenter = presenter;
@@ -34,9 +34,28 @@ public class UserStatusRecyclerViewAdapter extends RecyclerView.Adapter<UserStat
 
     @Override
     public void onBindViewHolder(@NonNull myViewHolder holder, int position) {
-        holder.userStatusName.setText(item.get(position).getUser().getTeamName());
+        holder.userStatusName.setText(item.get(position).getUser().getName());
         holder.userStatusPhone.setText("전화번호 : " + item.get(position).getUser().getPhone());
-        matchId = item.get(position).getMatch().getId();
+        holder.userApplicationId.setText(String.valueOf(item.get(position).getId()));
+
+        if(item.get(position).getStatus().equals("CONFIRMED")){
+
+            holder.userStatusContinue.setText("승인됨");
+            holder.userStatusContinue.setTextColor(Color.rgb(124,255,85));
+            holder.userStatusOk.setEnabled(false);
+            holder.userStatusX.setEnabled(false);
+
+        }else if(item.get(position).getStatus().equals("DENIED")){
+
+            holder.userStatusContinue.setText("거절됨");
+            holder.userStatusContinue.setTextColor(Color.rgb(144,144,144));
+            holder.userStatusOk.setEnabled(false);
+            holder.userStatusX.setEnabled(false);
+
+        }else if(holder.userStatusContinue.equals("진행중")){
+            holder.userStatusOk.setEnabled(true);
+            holder.userStatusX.setEnabled(true);
+        }
     }
 
     @Override
@@ -59,6 +78,8 @@ public class UserStatusRecyclerViewAdapter extends RecyclerView.Adapter<UserStat
         private TextView userStatusPhone;
         private Button userStatusOk;
         private Button userStatusX;
+        private TextView userStatusContinue;
+        private TextView userApplicationId;
 
         public myViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -67,18 +88,24 @@ public class UserStatusRecyclerViewAdapter extends RecyclerView.Adapter<UserStat
             userStatusPhone = itemView.findViewById(R.id.userStatusPhone);
             userStatusOk = itemView.findViewById(R.id.userStatusOk);
             userStatusX = itemView.findViewById(R.id.userStatusX);
+            userStatusContinue = itemView.findViewById(R.id.userStatusContinue);
+            userApplicationId = itemView.findViewById(R.id.userApplicationId);
 
             userStatusOk.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    presenter.matchOk(matchId,"CONFIRMED");
+
+                    int applicationId = Integer.parseInt(userApplicationId.getText().toString());
+                    presenter.matchOk(applicationId,"CONFIRMED");
                 }
             });
 
             userStatusX.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    presenter.matchReject(matchId, "DENIED");
+
+                    int applicationId = Integer.parseInt(userApplicationId.getText().toString());
+                    presenter.matchReject(applicationId, "DENIED");
                 }
             });
         }

@@ -17,7 +17,6 @@ public class MyPageFragment extends Fragment implements MyPageContract.view, Vie
     private ViewGroup rootView;
 
     private MaterialButton myInfo;
-    private MaterialButton myMatchInfo;
     private MaterialButton alarmSetting;
     private MaterialButton myTeamManagement;
 
@@ -29,7 +28,6 @@ public class MyPageFragment extends Fragment implements MyPageContract.view, Vie
         init();
 
         myInfo.setOnClickListener(this);
-        myMatchInfo.setOnClickListener(this);
         alarmSetting.setOnClickListener(this);
         myTeamManagement.setOnClickListener(this);
 
@@ -39,7 +37,6 @@ public class MyPageFragment extends Fragment implements MyPageContract.view, Vie
     @Override
     public void init() {
         myInfo = rootView.findViewById(R.id.firstButton);
-        myMatchInfo = rootView.findViewById(R.id.secondButton);
         alarmSetting = rootView.findViewById(R.id.thirdButton);
         myTeamManagement = rootView.findViewById(R.id.forthButton);
     }

@@ -50,9 +50,6 @@ public class HomeFragment extends Fragment implements HomeContract.view {
         presenter.setAdapterView(adapter);
         presenter.setAdapterModel(adapter);
 
-        presenter.initMatchList(nowDate, presenter);
-
-
         horizontalCalendar.setCalendarListener(new HorizontalCalendarListener() {
             @Override
             public void onDateSelected(Calendar date, int position) {
@@ -67,6 +64,13 @@ public class HomeFragment extends Fragment implements HomeContract.view {
     private void dateInit(Calendar date) {
         int month = date.get(Calendar.MONTH) + 1;
         matchMonth.setText(month + "월");
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        presenter.initMatchList(nowDate, presenter);
+
     }
 
     @Override

@@ -9,7 +9,6 @@ public interface RegisterContract {
         void recyclerInit();
         @Override
         void changeActivity();
-
         @Override
         void showResult(Object object);
     }

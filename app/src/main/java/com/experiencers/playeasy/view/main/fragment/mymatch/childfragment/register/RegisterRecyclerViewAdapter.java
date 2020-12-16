@@ -31,10 +31,12 @@ public class RegisterRecyclerViewAdapter extends RecyclerView.Adapter<RegisterRe
         return new myViewHolder(view);
     }
 
+
+
     @Override
     public void onBindViewHolder(@NonNull myViewHolder holder, int position) {
         holder.registerMatchDate.setText(item.get(position).getStartAt().substring(0,10));
-        holder.registerMatchTime.setText(item.get(position).getStartAt().substring(11,16) + " ~ "+ item.get(position).getEndAt().substring(12,16));
+        holder.registerMatchTime.setText(item.get(position).getStartAt().substring(11,16) + " ~ "+ item.get(position).getEndAt().substring(11,16));
         holder.registerMatchPlace.setText(item.get(position).getLocation().getPlaceName() + " " +item.get(position).getLocation().getPlaceDetail());
         String type;
         if(item.get(position).getType().equals("SOCCER")){
@@ -51,6 +53,9 @@ public class RegisterRecyclerViewAdapter extends RecyclerView.Adapter<RegisterRe
             holder.registerMatchContinue.setTextColor(Color.rgb(124,255,85));
             holder.registerMatchEnd.setText("마감하기");
             holder.registerMatchEnd.setTextColor(Color.rgb(183,111,255));
+            holder.registerMatchEnd.setEnabled(true);
+            holder.itemView.setEnabled(true);
+            holder.confirmApplyStatus.setEnabled(true);
 
         }else if(item.get(position).getStatus().equals("CONFIRMED")){
 

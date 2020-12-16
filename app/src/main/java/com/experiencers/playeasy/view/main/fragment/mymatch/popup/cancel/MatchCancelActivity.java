@@ -53,6 +53,7 @@ public class MatchCancelActivity extends AppCompatActivity implements MatchCance
     @Override
     public void showResult(Object object) {
         Toast.makeText(getApplicationContext(),"신청이 취소 되었습니다", Toast.LENGTH_LONG).show();
+        finish();
     }
 
     @Override
@@ -63,7 +64,6 @@ public class MatchCancelActivity extends AppCompatActivity implements MatchCance
                 break;
             case R.id.cancelOk:
                 presenter.sendCancelStatus(userKey, matchId, "CANCEL");
-                finish();
                 break;
             case R.id.cancelBack:
                 finish();

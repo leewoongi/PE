@@ -12,6 +12,7 @@ public class RegisterPresenter implements RegisterContract.presenter, RetrofitCa
     private RegisterContract.adapterView adapterView;
     private RegisterContract.adapterModel adapterModel;
     private Repository repository;
+
     public RegisterPresenter() {
         repository = new Repository();
     }

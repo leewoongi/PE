@@ -1,23 +1,26 @@
 package com.experiencers.playeasy.view.main.activity;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 import androidx.viewpager2.widget.ViewPager2;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.experiencers.playeasy.R;
 import com.experiencers.playeasy.utill.UiHelper;
+import com.experiencers.playeasy.view.main.fragment.mymatch.childfragment.register.RegisterFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity implements MainContract.view, BottomNavigationView.OnNavigationItemSelectedListener, ViewPager.OnPageChangeListener {
 
     private MainContract.presenter presenter;
     private MainViewPagerAdapter mainViewPagerAdapter;
-    private ViewPager2 viewPager;
-    private BottomNavigationView bottomNavigationView;
+    public static ViewPager2 viewPager;
+    public static BottomNavigationView bottomNavigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -93,4 +96,5 @@ public class MainActivity extends AppCompatActivity implements MainContract.view
     public void onPageScrollStateChanged(int state) {
 
     }
+
 }

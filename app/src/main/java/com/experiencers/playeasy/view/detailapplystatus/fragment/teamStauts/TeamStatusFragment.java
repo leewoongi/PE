@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.experiencers.playeasy.R;
 import com.experiencers.playeasy.application.TokenManger;
+import com.experiencers.playeasy.utill.RecyclerViewDeco;
 
 public class TeamStatusFragment extends Fragment implements TeamStatusContract.view{
 
@@ -23,6 +24,7 @@ public class TeamStatusFragment extends Fragment implements TeamStatusContract.v
     private RecyclerView recyclerTeamStatus;
     private RecyclerView.LayoutManager layoutManager;
     private TeamStatusRecyclerViewAdapter adapter;
+    private RecyclerViewDeco recyclerViewDeco;
 
     private TextView teamApplyCount;
     private String userKey;
@@ -45,12 +47,16 @@ public class TeamStatusFragment extends Fragment implements TeamStatusContract.v
         presenter.setRecyclerAdapterView(adapter);
         presenter.setRecyclerAdapterModel(adapter);
 
-        presenter.receiveTeamMatch(userKey, matchId, "TEAM");
-
         recyclerTeamStatus.setLayoutManager(layoutManager);
         recyclerTeamStatus.setAdapter(adapter);
 
         return rootView;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        presenter.receiveTeamMatch(userKey, matchId, "TEAM");
     }
 
     @Override
@@ -63,6 +69,8 @@ public class TeamStatusFragment extends Fragment implements TeamStatusContract.v
     public void recyclerInit() {
         adapter = new TeamStatusRecyclerViewAdapter(presenter);
         layoutManager = new LinearLayoutManager(getContext());
+        recyclerViewDeco = new RecyclerViewDeco(30);
+        recyclerTeamStatus.addItemDecoration(recyclerViewDeco);
     }
 
     @Override
@@ -74,13 +82,13 @@ public class TeamStatusFragment extends Fragment implements TeamStatusContract.v
     public void showResult(Object object) {
 
         if(object instanceof String){
-            int check = (int) object;
-            if(check == 1){
+            if(object.equals("CONFIRMED")){
                 Toast.makeText(getActivity(), "매치를 승인했습니다.", Toast.LENGTH_SHORT).show();
             }else{
                 Toast.makeText(getActivity(), "매치를 거절 했습니다.", Toast.LENGTH_SHORT).show();
             }
         }else{
+
             teamApplyCount.setText(object + "개 팀");
         }
     }

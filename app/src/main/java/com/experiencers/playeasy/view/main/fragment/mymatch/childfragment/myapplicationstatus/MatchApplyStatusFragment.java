@@ -31,6 +31,9 @@ public class MatchApplyStatusFragment extends Fragment implements MatchApplyCont
     private RecyclerView.LayoutManager layoutManager;
     private RecyclerViewDeco recyclerViewDeco;
 
+    private String type;
+    private String userKey;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -40,7 +43,7 @@ public class MatchApplyStatusFragment extends Fragment implements MatchApplyCont
         spinnerInit();
         recyclerInit();
 
-        String userKey = TokenManger.read(getContext());
+        userKey = TokenManger.read(getContext());
         presenter = new MatchApplyPresenter();
         presenter.setView(this);
 
@@ -54,7 +57,7 @@ public class MatchApplyStatusFragment extends Fragment implements MatchApplyCont
         selectType.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                String type = selectType.getItemAtPosition(position).toString();
+                type = selectType.getItemAtPosition(position).toString();
                 if(type.equals("개인")){
                     type = "PERSONAL";
                 }else{
@@ -70,6 +73,12 @@ public class MatchApplyStatusFragment extends Fragment implements MatchApplyCont
         });
 
         return rootView;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        presenter.sendType(type, userKey);
     }
 
     @Override

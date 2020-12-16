@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -41,24 +42,6 @@
 
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/secondButton"
-        style="@style/Widget.MaterialComponents.Button.TextButton"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:text="나의 매칭 정보"
-        android:textSize="20dp"
-        android:gravity="left"
-        android:textColor="#000000"
-        android:background="@drawable/click_effect"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/firstButton" />
-
-    <com.google.android.material.button.MaterialButton
         android:id="@+id/thirdButton"
         style="@style/Widget.MaterialComponents.Button.TextButton"
         android:layout_width="0dp"
@@ -66,15 +49,15 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:text="알림 설정"
-        android:textSize="20dp"
-        android:gravity="left"
-        android:textColor="#000000"
         android:background="@drawable/click_effect"
+        android:gravity="left"
+        android:text="알림 설정 ( 추후 업데이트 )"
+        android:textColor="#000000"
+        android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/secondButton" />
+        app:layout_constraintTop_toBottomOf="@+id/firstButton" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/forthButton"
@@ -84,7 +67,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:text="나의 팀 관리"
+        android:text="나의 팀 관리 ( 추후 업데이트 )"
         android:textSize="20dp"
         android:gravity="left"
         android:textColor="#000000"

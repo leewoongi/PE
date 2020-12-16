@@ -76,9 +76,9 @@ public class TeamStatusPresenter implements TeamStatusContract.presenter, Retrof
         String statusType = applyStatusResponse.getStatus();
 
         if(statusType.equals("CONFIRMED")){
-            view.showResult(1);
+            view.showResult("CONFIRMED");
         }else{
-            view.showResult(2);
+            view.showResult("DENIED");
         }
 
     }

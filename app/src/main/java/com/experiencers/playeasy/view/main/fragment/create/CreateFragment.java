@@ -1,5 +1,6 @@
 package com.experiencers.playeasy.view.main.fragment.create;
 
+import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Editable;
@@ -33,6 +34,8 @@ import com.experiencers.playeasy.model.entity.CreateMatchRequest;
 import com.experiencers.playeasy.model.entity.MapResponse;
 import com.experiencers.playeasy.utill.UiHelper;
 import com.experiencers.playeasy.view.main.activity.MainActivity;
+import com.experiencers.playeasy.view.main.activity.MainPresenter;
+import com.experiencers.playeasy.view.main.activity.MainViewPagerAdapter;
 
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
@@ -133,6 +136,7 @@ public class CreateFragment extends Fragment implements CreateContract.view, Vie
         matchEtc = rootView.findViewById(R.id.matchEtc);
         mapId = rootView.findViewById(R.id.mapId);
         addressName = rootView.findViewById(R.id.addressName);
+
         UiHelper.toolBarInitialize((AppCompatActivity) getActivity(), rootView.findViewById(R.id.matchCreateToolBar));
     }
 
@@ -223,8 +227,11 @@ public class CreateFragment extends Fragment implements CreateContract.view, Vie
 
     @Override
     public void changeActivity() {
-        Toast.makeText(getActivity(), "매치가 작성되었습니다.", Toast.LENGTH_SHORT).show();
         viewInit();
+
+        Toast.makeText(getActivity(), "매치가 작성되었습니다.", Toast.LENGTH_SHORT).show();
+        MainActivity.viewPager.setCurrentItem(0);
+        MainActivity.bottomNavigationView.getMenu().findItem(R.id.home).setChecked(true);
     }
 
     @Override
