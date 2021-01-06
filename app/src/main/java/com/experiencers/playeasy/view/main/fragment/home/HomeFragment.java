@@ -67,10 +67,14 @@ public class HomeFragment extends Fragment implements HomeContract.view {
     }
 
     @Override
+    public void onStart() {
+        super.onStart();
+        presenter.initMatchList(nowDate, presenter);
+    }
+
+    @Override
     public void onResume() {
         super.onResume();
-        presenter.initMatchList(nowDate, presenter);
-
     }
 
     @Override
