@@ -37,7 +37,8 @@ public class LoginPresenter implements LoginContract.presenter, RetrofitCallback
     @Override
     public void onSuccess(Object jwt) {
         int result = 0;
-        if(TokenManger.read(mContext) == null){
+        String tmp = TokenManger.read(mContext);
+        if(TokenManger.read(mContext).length() == 0){
             String key = (String) jwt;
             TokenManger.save(mContext, key);
         }else{

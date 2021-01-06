@@ -14,6 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PlayEasy">
 
+        <activity android:name=".utill.KeyHash"/>
         <activity android:name=".view.landing.LandingActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
