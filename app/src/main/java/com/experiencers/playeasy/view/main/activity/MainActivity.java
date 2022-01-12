@@ -17,6 +17,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity implements MainContract.view, BottomNavigationView.OnNavigationItemSelectedListener, ViewPager.OnPageChangeListener {
 
+    // 비트라이즈 테스트
     private MainContract.presenter presenter;
     private MainViewPagerAdapter mainViewPagerAdapter;
     public static ViewPager2 viewPager;
